@@ -181,3 +181,11 @@ wandb/
 swanlog/
 generated_predictions.jsonl
 predictions_score.json
+
+# sprite
+models/
+data/v3-*/
+data/*.zip
+*.pid
+llamafactory_runs/**/swanlab/
+planner_val/.sdd/

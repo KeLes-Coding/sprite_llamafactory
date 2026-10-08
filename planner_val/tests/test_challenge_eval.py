@@ -167,6 +167,80 @@ def test_audit_challenge_cases_reports_novelty_and_valid_ground_truth(tmp_path: 
     assert audit["ready"] is True
 
 
+def _weather_tool() -> dict[str, object]:
+    return {
+        "name": "get_weather",
+        "kind": "query",
+        "arguments_schema": {
+            "type": "object",
+            "properties": {
+                "city": {"type": "string", "minLength": 1},
+                "query_type": {"type": "string", "enum": ["now", "7d"]},
+            },
+            "required": ["city", "query_type"],
+            "additionalProperties": False,
+        },
+    }
+
+
+def _jsonl_row(name: str, naming: str, aliases: dict[str, str]) -> dict[str, object]:
+    tool = _weather_tool() | {"name": name}
+    expected = [
+        {"kind": "query", "instruction": "查天气", "name": name, "arguments": {"city": "长沙", "query_type": "now"}}
+    ]
+    return {
+        "messages": [
+            {"role": "system", "content": "planner system"},
+            {"role": "user", "content": json.dumps({"tools": [tool], "instruction": "查天气"}, ensure_ascii=False)},
+            {"role": "assistant", "content": json.dumps(expected, ensure_ascii=False)},
+        ],
+        "metadata": {"tool_naming": naming, "tool_aliases": aliases},
+    }
+
+
+def test_load_challenge_cases_uses_real_named_jsonl_reference_and_drops_removed_weather_coordinates(
+    tmp_path: Path,
+) -> None:
+    package_path = tmp_path / "validation.jsonl"
+    rows = [
+        _jsonl_row("tool_04", "alias", {"get_weather": "tool_04"}),
+        _jsonl_row("get_weather", "real", {}),
+    ]
+    package_path.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows), encoding="utf-8")
+    challenge_path = tmp_path / "challenges.json"
+    challenge = {
+        "schema_version": 1,
+        "name": "weather",
+        "cases": [
+            {
+                "case_id": "challenge-001",
+                "category": "unseen_value",
+                "language": "zh",
+                "difficulty": "easy",
+                "polarity": "positive",
+                "query": "长沙现在天气",
+                "expected": [
+                    {
+                        "kind": "query",
+                        "instruction": "查询长沙当前天气",
+                        "name": "get_weather",
+                        "arguments": {"city": "长沙", "latitude": 28.23, "longitude": 112.94, "query_type": "now"},
+                    }
+                ],
+                "forbidden_functions": [],
+                "novelty_tags": ["new_city"],
+            }
+        ],
+    }
+    challenge_path.write_text(json.dumps(challenge, ensure_ascii=False), encoding="utf-8")
+
+    case = load_challenge_cases(challenge_path, package_path)[0]
+
+    assert [tool["name"] for tool in json.loads(case.user)["tools"]] == ["get_weather"]
+    assert json.loads(case.expected_raw)[0]["arguments"] == {"city": "长沙", "query_type": "now"}
+    assert case.eval_case.expected[0].arguments == {"city": "长沙", "query_type": "now"}
+
+
 def test_load_challenge_cases_rejects_duplicate_ids(tmp_path: Path) -> None:
     package_path = tmp_path / "dataset.zip"
     challenge_path = tmp_path / "challenges.json"

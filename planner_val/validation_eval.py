@@ -23,7 +23,7 @@ import shlex
 import time
 import zipfile
 from collections.abc import Callable, Mapping, Sequence
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -39,7 +39,7 @@ from planner_val.backends import (
 )
 from planner_val.models import ContractSnapshot, EvalCase, ExpectedTask
 from planner_val.production_prompt import ProductionPromptProfile, load_benchmark_20260913_profile
-from planner_val.scoring import score_benchmark_compatible, score_output
+from planner_val.scoring import _extract_array_text, score_benchmark_compatible, score_output
 from planner_val.validation_reporting import summarize_model
 
 
@@ -66,6 +66,8 @@ class ValidationCase:
     source_atom_ids: tuple[str, ...]
     source_item_id: str
     example_id: str
+    tool_naming: str = "real"
+    alias_to_name: Mapping[str, str] = field(default_factory=dict)
 
 
 def _now_ms() -> float:
@@ -199,9 +201,17 @@ def _contract(system: str, user_payload: Mapping[str, Any], *, case_id: str) -> 
     )
 
 
-def load_validation_cases(package_path: Path, limit: int | None = None) -> list[ValidationCase]:
-    if limit is not None and limit <= 0:
-        raise ValueError("limit must be positive")
+def _dataset_member(package_path: Path) -> str:
+    return package_path.name if package_path.suffix == ".jsonl" else _VALIDATION_MEMBER
+
+
+def _read_validation_rows(package_path: Path) -> list[Any]:
+    if package_path.suffix == ".jsonl":
+        try:
+            lines = package_path.read_text(encoding="utf-8").splitlines()
+        except FileNotFoundError as exc:
+            raise ValueError(f"dataset not found: {package_path}") from exc
+        return [json.loads(line) for line in lines if line.strip()]
     try:
         with zipfile.ZipFile(package_path) as archive:
             member = archive.read(_VALIDATION_MEMBER)
@@ -209,8 +219,57 @@ def load_validation_cases(package_path: Path, limit: int | None = None) -> list[
         raise ValueError(f"package not found: {package_path}") from exc
     except KeyError as exc:
         raise ValueError(f"missing {_VALIDATION_MEMBER}: {package_path}") from exc
+    return pq.read_table(io.BytesIO(member)).to_pylist()
 
-    rows = pq.read_table(io.BytesIO(member)).to_pylist()
+
+def _alias_to_name(metadata: Mapping[str, Any], *, case_id: str) -> dict[str, str]:
+    if metadata.get("tool_naming") != "alias":
+        return {}
+    aliases = metadata.get("tool_aliases")
+    if not isinstance(aliases, Mapping) or not all(
+        isinstance(name, str) and isinstance(alias, str) for name, alias in aliases.items()
+    ):
+        raise ValueError(f"{case_id}: alias rows must provide tool_aliases")
+    return {alias: name for name, alias in aliases.items()}
+
+
+def _dealias_plan(raw: str | None, alias_to_name: Mapping[str, str]) -> str | None:
+    """Rewrite aliased tool names to real names; names outside the alias map become unknown tools."""
+    if raw is None or not alias_to_name:
+        return raw
+    array_text = _extract_array_text(raw)
+    if array_text is None:
+        return raw
+    try:
+        payload = json.loads(array_text)
+    except json.JSONDecodeError:
+        return raw
+    if not isinstance(payload, list):
+        return raw
+    for item in payload:
+        if isinstance(item, dict) and isinstance(item.get("name"), str):
+            item["name"] = alias_to_name.get(item["name"], f"unaliased:{item['name']}")
+    return json.dumps(payload, ensure_ascii=False)
+
+
+def _dealias_tools(
+    user_payload: Mapping[str, Any], alias_to_name: Mapping[str, str], *, case_id: str
+) -> dict[str, Any]:
+    tools = user_payload.get("tools")
+    if not alias_to_name or not isinstance(tools, list):
+        return dict(user_payload)
+    renamed = []
+    for tool in tools:
+        if not isinstance(tool, Mapping) or tool.get("name") not in alias_to_name:
+            raise ValueError(f"{case_id}: tool name is missing from tool_aliases")
+        renamed.append({**tool, "name": alias_to_name[tool["name"]]})
+    return {**user_payload, "tools": renamed}
+
+
+def load_validation_cases(package_path: Path, limit: int | None = None) -> list[ValidationCase]:
+    if limit is not None and limit <= 0:
+        raise ValueError("limit must be positive")
+    rows = _read_validation_rows(package_path)
     selected = rows if limit is None else rows[:limit]
     cases: list[ValidationCase] = []
     for index, row in enumerate(selected):
@@ -228,6 +287,10 @@ def load_validation_cases(package_path: Path, limit: int | None = None) -> list[
         query = user_payload.get("instruction")
         if not isinstance(query, str) or not query:
             raise ValueError(f"{case_id}: missing instruction")
+        alias_to_name = _alias_to_name(metadata, case_id=case_id)
+        expected = _expected_tasks(_dealias_plan(expected_raw, alias_to_name), case_id=case_id)
+        if any(task.name is not None and task.name.startswith("unaliased:") for task in expected):
+            raise ValueError(f"{case_id}: assistant tool name is missing from tool_aliases")
         cases.append(
             ValidationCase(
                 case_id=case_id,
@@ -238,7 +301,7 @@ def load_validation_cases(package_path: Path, limit: int | None = None) -> list[
                 eval_case=EvalCase(
                     case_id=case_id,
                     query=query,
-                    expected=_expected_tasks(expected_raw, case_id=case_id),
+                    expected=expected,
                     forbidden_functions=_forbidden_functions(metadata),
                     level=_string_value(metadata, "level"),
                     language=_string_value(metadata, "language"),
@@ -246,7 +309,9 @@ def load_validation_cases(package_path: Path, limit: int | None = None) -> list[
                     polarity=_string_value(metadata, "polarity"),
                     source_atom_ids=frozenset(_source_atom_ids(metadata)),
                 ),
-                contract=_contract(system, user_payload, case_id=case_id),
+                contract=_contract(
+                    system, _dealias_tools(user_payload, alias_to_name, case_id=case_id), case_id=case_id
+                ),
                 level=_string_value(metadata, "level"),
                 language=_string_value(metadata, "language"),
                 polarity=_string_value(metadata, "polarity"),
@@ -257,6 +322,8 @@ def load_validation_cases(package_path: Path, limit: int | None = None) -> list[
                 source_atom_ids=_source_atom_ids(metadata),
                 source_item_id=_string_value(metadata, "source_item_id", ""),
                 example_id=_string_value(metadata, "example_id", ""),
+                tool_naming=_string_value(metadata, "tool_naming", "real"),
+                alias_to_name=alias_to_name,
             )
         )
     return cases
@@ -284,9 +351,10 @@ def _scored_record(
     model_name: str,
     base_record: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
-    score = score_output(case.eval_case, result.text, case.contract, backend_error=result.error)
+    scored_text = _dealias_plan(result.text, case.alias_to_name)
+    score = score_output(case.eval_case, scored_text, case.contract, backend_error=result.error)
     benchmark_score = score_benchmark_compatible(
-        case.eval_case, result.text, case.contract, backend_error=result.error
+        case.eval_case, scored_text, case.contract, backend_error=result.error
     )
     aligned_kind_name_matches = sum(
         expected.kind == actual.kind and expected.name == actual.name
@@ -337,6 +405,7 @@ def _scored_record(
                 "language": case.language,
                 "polarity": case.polarity,
                 "provenance": case.provenance,
+                "tool_naming": case.tool_naming,
                 "task_count": len(case.eval_case.expected),
                 "kinds": list(case.kinds),
                 "tools": list(case.tools),
@@ -506,6 +575,7 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Re-score output-dir/results.jsonl without calling a model backend.",
     )
     parser.add_argument("--qwen-only", action="store_true", help="Skip the vLLM backend and SSH tunnel.")
+    parser.add_argument("--vllm-only", action="store_true", help="Skip qwen; --cosa-env is not required.")
     parser.add_argument(
         "--qwen-production-profile",
         action="store_true",
@@ -534,11 +604,15 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(json.dumps(summary, ensure_ascii=False, indent=2))
         return 0
 
-    if args.cosa_env is None:
-        raise ValueError("--cosa-env is required unless --rescore-results is used")
-    api_key = _read_env_value(args.cosa_env, "DASHSCOPE_API_KEY")
-    if not api_key:
-        raise ValueError(f"DASHSCOPE_API_KEY is missing from {args.cosa_env}")
+    if args.qwen_only and args.vllm_only:
+        raise ValueError("--qwen-only and --vllm-only are mutually exclusive")
+    api_key: str | None = None
+    if not args.vllm_only:
+        if args.cosa_env is None:
+            raise ValueError("--cosa-env is required unless --rescore-results or --vllm-only is used")
+        api_key = _read_env_value(args.cosa_env, "DASHSCOPE_API_KEY")
+        if not api_key:
+            raise ValueError(f"DASHSCOPE_API_KEY is missing from {args.cosa_env}")
 
     prompt_profile: ProductionPromptProfile | None = None
     if args.qwen_production_profile:
@@ -560,13 +634,14 @@ def main(argv: Sequence[str] | None = None) -> int:
         if prompt_profile is not None
         else args.qwen_model
     )
-    backends[qwen_result_name] = OpenAICompatibleBackend(
-        model=args.qwen_model,
-        base_url=args.qwen_url,
-        api_key=api_key,
-        concurrency=args.concurrency,
-        max_tokens=args.max_tokens,
-    )
+    if not args.vllm_only:
+        backends[qwen_result_name] = OpenAICompatibleBackend(
+            model=args.qwen_model,
+            base_url=args.qwen_url,
+            api_key=api_key,
+            concurrency=args.concurrency,
+            max_tokens=args.max_tokens,
+        )
     tunnel = (
         SshTunnel(host=args.ssh_host, user=args.ssh_user, ssh_port=args.ssh_port)
         if args.ssh_host is not None and not args.qwen_only
@@ -587,7 +662,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         model_config: dict[str, dict[str, str]] = {}
         if not args.qwen_only:
             model_config[args.vllm_model] = {"model": args.vllm_model, "base_url": args.vllm_url}
-        model_config[qwen_result_name] = {"model": args.qwen_model, "base_url": args.qwen_url}
+        if not args.vllm_only:
+            model_config[qwen_result_name] = {"model": args.qwen_model, "base_url": args.qwen_url}
         summary = evaluate_validation(
             cases,
             backends,
@@ -595,6 +671,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             request_builders=request_builders,
             run_config={
                 "qwen_only": args.qwen_only,
+                "vllm_only": args.vllm_only,
                 "concurrency": args.concurrency,
                 "max_tokens": args.max_tokens,
                 "temperature": 0,
@@ -604,7 +681,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             dataset_info={
                 "package": str(args.package),
                 "package_sha256": _file_sha256(args.package),
-                "member": _VALIDATION_MEMBER,
+                "member": _dataset_member(args.package),
                 "requested_limit": args.limit,
             },
             prompt_profile=prompt_profile,

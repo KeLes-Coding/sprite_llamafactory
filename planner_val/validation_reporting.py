@@ -20,7 +20,17 @@ from collections.abc import Mapping, Sequence
 from typing import Any
 
 
-_SLICE_FIELDS = ("level", "language", "polarity", "provenance", "task_count", "kind", "tool", "action")
+_SLICE_FIELDS = (
+    "level",
+    "language",
+    "polarity",
+    "provenance",
+    "tool_naming",
+    "task_count",
+    "kind",
+    "tool",
+    "action",
+)
 
 
 def _rate(numerator: int | float, denominator: int | float) -> float | None:
@@ -164,6 +174,8 @@ def _aggregate(records: Sequence[Mapping[str, Any]], batch_wall_time_ms: float |
 
 def _slice_values(record: Mapping[str, Any], field: str) -> tuple[str, ...]:
     metadata = record["metadata"]
+    if field == "tool_naming":
+        return (str(metadata.get(field, "unknown")),)
     if field in {"level", "language", "polarity", "provenance", "task_count"}:
         return (str(metadata[field]),)
     values = metadata[{"kind": "kinds", "tool": "tools", "action": "actions"}[field]]

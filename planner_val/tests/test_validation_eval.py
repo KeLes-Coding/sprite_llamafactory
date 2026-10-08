@@ -568,8 +568,129 @@ def test_cli_qwen_production_profile_replaces_messages_and_records_provenance(tm
             }
         },
         "qwen_only": True,
+        "vllm_only": False,
         "stream": False,
         "temperature": 0,
     }
     assert summary["dataset"]["package"] == str(package_path)
     assert len(summary["dataset"]["package_sha256"]) == 64
+
+
+def _alias_row(expected: list[dict[str, object]]) -> dict[str, object]:
+    tools = [
+        {
+            "name": "tool_17",
+            "kind": "query",
+            "arguments_schema": {
+                "type": "object",
+                "properties": {"query": {"type": "string"}},
+                "required": ["query"],
+                "additionalProperties": False,
+            },
+        },
+        {
+            "name": "tool_36",
+            "kind": "query",
+            "arguments_schema": {"type": "object", "properties": {}, "additionalProperties": False},
+        },
+    ]
+    return {
+        "messages": [
+            {"role": "system", "content": "planner system"},
+            {"role": "user", "content": json.dumps({"instruction": "查地铁", "tools": tools}, ensure_ascii=False)},
+            {"role": "assistant", "content": json.dumps(expected, ensure_ascii=False)},
+        ],
+        "metadata": {
+            "actions": [],
+            "example_id": "example-alias",
+            "kinds": ["query"],
+            "language": "zh",
+            "level": 1,
+            "lineage": [{"source_atom_id": "cur_web_search_x", "task_index": 0}],
+            "polarity": "positive",
+            "provenance": "generated",
+            "source_item_id": "i1",
+            "tool_aliases": {"web_search": "tool_17", "robot_status": "tool_36"},
+            "tool_naming": "alias",
+            "tools": ["web_search"],
+        },
+    }
+
+
+def _write_alias_jsonl(path: Path) -> dict[str, object]:
+    row = _alias_row([{"kind": "query", "instruction": "查地铁", "name": "tool_17", "arguments": {"query": "地铁"}}])
+    path.write_text(json.dumps(row, ensure_ascii=False) + "\n", encoding="utf-8")
+    return row
+
+
+def test_load_validation_cases_reads_jsonl_and_maps_aliases_to_real_tools(tmp_path: Path) -> None:
+    dataset_path = tmp_path / "validation.jsonl"
+    row = _write_alias_jsonl(dataset_path)
+
+    case = load_validation_cases(dataset_path)[0]
+
+    assert case.user == row["messages"][1]["content"]
+    assert case.expected_raw == row["messages"][2]["content"]
+    assert case.tool_naming == "alias"
+    assert [task.name for task in case.eval_case.expected] == ["web_search"]
+    assert set(case.contract.tool_kinds) == {"web_search", "robot_status"}
+
+
+def test_evaluate_validation_scores_aliased_output_and_rejects_real_tool_names(tmp_path: Path) -> None:
+    dataset_path = tmp_path / "validation.jsonl"
+    row = _write_alias_jsonl(dataset_path)
+    case = load_validation_cases(dataset_path)[0]
+    real_name_output = row["messages"][2]["content"].replace("tool_17", "web_search")
+
+    summary = evaluate_validation(
+        [case],
+        {
+            "aliased": _FakeBackend({case.case_id: row["messages"][2]["content"]}),
+            "real-name": _FakeBackend({case.case_id: real_name_output}),
+        },
+        tmp_path / "out",
+    )
+
+    assert summary["models"]["aliased"]["strict_pass"] == 1
+    assert summary["models"]["aliased"]["benchmark_compatible_pass"] == 1
+    assert summary["models"]["real-name"]["strict_pass"] == 0
+    assert summary["models"]["real-name"]["benchmark_compatible_pass"] == 0
+    assert list(summary["models"]["aliased"]["slices"]["tool_naming"]) == ["alias"]
+    records = [json.loads(line) for line in (tmp_path / "out" / "results.jsonl").read_text().splitlines()]
+    assert records[0]["output"] == row["messages"][2]["content"]
+    assert records[1]["reason"] == "contract_violation"
+
+
+def test_cli_vllm_only_skips_qwen_and_environment(tmp_path: Path, monkeypatch) -> None:
+    dataset_path = tmp_path / "validation.jsonl"
+    row = _write_alias_jsonl(dataset_path)
+    created: list[dict[str, object]] = []
+
+    class FakeOpenAIBackend(_FakeBackend):
+        def __init__(self, **kwargs) -> None:
+            created.append(kwargs)
+            super().__init__({"validation-0000": row["messages"][2]["content"]})
+
+    monkeypatch.setattr("planner_val.validation_eval.OpenAICompatibleBackend", FakeOpenAIBackend)
+    output_dir = tmp_path / "out"
+
+    exit_code = main(
+        [
+            "--package",
+            str(dataset_path),
+            "--limit",
+            "1",
+            "--output-dir",
+            str(output_dir),
+            "--vllm-only",
+            "--vllm-model",
+            "deployed-sft",
+        ]
+    )
+
+    assert exit_code == 0
+    assert [kwargs["model"] for kwargs in created] == ["deployed-sft"]
+    summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
+    assert list(summary["models"]) == ["deployed-sft"]
+    assert summary["models"]["deployed-sft"]["strict_accuracy"] == 1.0
+    assert summary["dataset"]["member"] == "validation.jsonl"

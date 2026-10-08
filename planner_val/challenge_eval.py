@@ -68,10 +68,30 @@ def _task_metadata(expected: list[Mapping[str, Any]]) -> tuple[tuple[str, ...], 
     return kinds, tools, tuple(actions)
 
 
+def _project_removed_weather_coordinates(
+    expected: list[Mapping[str, Any]], weather_schema: Mapping[str, Any] | None
+) -> list[Mapping[str, Any]]:
+    """Drop coordinates authored for v3.2.0 when the reference contract no longer has them."""
+    if weather_schema is None or "latitude" in weather_schema.get("properties", {}):
+        return expected
+    projected = deepcopy(expected)
+    for task in projected:
+        if task.get("name") == "get_weather" and isinstance(task.get("arguments"), dict):
+            task["arguments"].pop("latitude", None)
+            task["arguments"].pop("longitude", None)
+    return projected
+
+
 def load_challenge_cases(challenge_path: Path, package_path: Path) -> list[ValidationCase]:
     payload = _load_payload(challenge_path)
-    reference = load_validation_cases(package_path, limit=1)[0]
+    reference = next(
+        (case for case in load_validation_cases(package_path) if case.tool_naming == "real"),
+        None,
+    )
+    if reference is None:
+        raise ValueError("challenge reference requires a validation row with real tool names")
     base_user = json.loads(reference.user)
+    weather_schema = reference.contract.tool_schemas.get("get_weather")
     raw_cases = payload["cases"]
     case_ids = [item.get("case_id") for item in raw_cases if isinstance(item, Mapping)]
     if len(case_ids) != len(raw_cases) or len(case_ids) != len(set(case_ids)):
@@ -93,6 +113,7 @@ def load_challenge_cases(challenge_path: Path, package_path: Path) -> list[Valid
         if not isinstance(forbidden, list) or any(name not in known_tools for name in forbidden):
             raise ValueError(f"{case_id}: forbidden_functions contains an unknown tool")
 
+        expected = _project_removed_weather_coordinates(expected, weather_schema)
         expected_raw = json.dumps(expected, ensure_ascii=False, separators=(",", ":"))
         expected_tasks = _expected_tasks(expected_raw, case_id=case_id)
         kinds, tools, actions = _task_metadata(expected)

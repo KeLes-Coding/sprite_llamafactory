@@ -32,6 +32,22 @@ ssh -N -p 1024 \
 
 Increase `--limit` to evaluate more of the 1,839 validation rows.
 
+## Evaluate a JSONL Export (v3.3.0+)
+
+`--package` also accepts a validation `.jsonl` file. Rows with `metadata.tool_naming == "alias"` keep their aliased
+request unchanged, while scoring maps `tool_NN` names back through `metadata.tool_aliases`. A real tool name in an alias
+row is scored as an unknown tool. Summaries add a `tool_naming` slice. Use `--vllm-only` to skip qwen and `--cosa-env`:
+
+```bash
+.venv/bin/python -m planner_val.validation_eval \
+  --package PATH/TO/action_sequence_sft_validation_2k.jsonl \
+  --limit 2000 \
+  --vllm-only \
+  --vllm-model gemma3-270m-lora-v330 \
+  --concurrency 64 \
+  --output-dir "planner_val/results/v330-lora-val2k-$(date +%Y%m%d-%H%M%S)"
+```
+
 ## Run Qwen Only
 
 When the vLLM server is unavailable, skip both the vLLM backend and SSH tunnel:

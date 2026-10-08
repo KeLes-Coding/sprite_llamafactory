@@ -1,0 +1,1144 @@
+
+######## challenge_50  n=50 fail_any=30
+
+[challenge-002] cat=unseen_value nn=0.38 sig_seen=161 unseen=[]
+  Q: 请表演一次埃及摇摆。
+  EXP: RobotDance{"dance": "egyptian_shake", "repeat": 1}
+  qf-adj ✗ parameter_mismatch []
+
+[challenge-005] cat=unseen_value nn=0.12 sig_seen=167 unseen=[]
+  Q: 原地舞来一遍，不要重复。
+  EXP: RobotDance{"dance": "one_spot_dance", "repeat": 1}
+  0.6B ✗ parameter_mismatch []: RobotDance{"dance": "warm_up_dance"}
+  270M ✗ parameter_mismatch []: RobotDance{"dance": "popping"}
+  qf-adj ✗ parameter_mismatch []
+
+[challenge-007] cat=unseen_value nn=0.17 sig_seen=179 unseen=[]
+  Q: 单人摇摆舞，走一个。
+  EXP: RobotDance{"dance": "solo_shake", "repeat": 1}
+  0.6B ✗ parameter_mismatch []: RobotDance{"dance": "egyptian_shake"}
+  qf-adj ✗ parameter_mismatch []
+
+[challenge-010] cat=unseen_value nn=0.00 sig_seen=238 unseen=['city=长沙']
+  Q: 查一下长沙现在到未来七天的天气，坐标按北纬28.23、东经112.94。
+  EXP: get_weather{"city": "长沙", "query_type": "now_7d"}
+  0.6B ✗ forbidden_tool []: get_weather{"city": "长沙", "query_type": "now_7d"} | get_weather{"city": "深圳", "query_type": "now_7d"}
+  qf-adj ✓
+
+[challenge-011] cat=paraphrase nn=0.22 sig_seen=55 unseen=[]
+  Q: 瞅一眼你还剩多少电，再用一句话告诉我。
+  EXP: robot_status{"query": "电量"} | reply
+  270M ✗ forbidden_tool []: robot_status{"query": "电量"} | RobotGesture{"gesture": "this_way_please"}
+  qf-adj ✓
+
+[challenge-012] cat=paraphrase nn=0.21 sig_seen=265 unseen=['city=Reykjavik']
+  Q: What's the weather doing in Reykjavik right now? Use 64.15 north and -21.94 east.
+  EXP: get_weather{"city": "Reykjavik", "query_type": "now"}
+  0.6B ✗ forbidden_tool []: get_weather{"city": "Reykjavik", "query_type": "now"} | robot_status{"query": "位置"} | robot_status{"query": "时间"} | robot_status{"query": "时间"} | robot_status{"query": "时间"} | robot_status{"query": "时间"} | robot_status{"query": "时间"} | robot_status{"query": "时间"} | robot_status{"query": "时间"} | robot_status{"query": "时间"}
+  270M ✗ forbidden_tool []: get_weather{"city": "Reykjavik", "query_type": "now_7d"} | get_weather{"city": "New York", "query_type": "now"}
+  qf-adj ✓
+
+[challenge-016] cat=paraphrase nn=0.34 sig_seen=385 unseen=[]
+  Q: Shuffle forward three short steps at roughly thirty-five percent speed.
+  EXP: HumanAction{"action": "walk", "parameters": {"step": 3, "x": 0.35, "y": 0, "yaw": 0}}
+  270M ✗ parser_rejected []: HumanAction{"action": "walk", "parameters": {"x": 0.6, "y": 0, "yaw": 0, "step": 35}}
+  qf-adj ✓
+
+[challenge-017] cat=paraphrase nn=0.00 sig_seen=206 unseen=['city=大理']
+  Q: 看看大理接下来24小时冷不冷，位置是25.61、100.27。
+  EXP: get_weather{"city": "大理", "query_type": "24h"}
+  0.6B ✗ forbidden_tool []: get_weather{"city": "大理", "query_type": "7d"} | get_weather{"city": "深圳", "query_type": "now"}
+  qf-adj ✓
+
+[challenge-019] cat=paraphrase nn=0.05 sig_seen=72 unseen=[]
+  Q: 先从内部资料找 TRON2 的最大负载，再上网找同级产品的公开负载数据。
+  EXP: rag_query{"query": "TRON2 的最大负载是多少？"} | web_search{"query": "同级人形机器人公开最大负载数据"}
+  0.6B ✗ forbidden_tool []: rag_query{"query": "TRON2的最大负载"} | rag_query{"query": "同级产品的公开负载数据"}
+  270M ✗ tool_sequence_mismatch []: rag_query{"query": "TRON2的最大负载"} | reply
+  qf-adj ✓
+
+[challenge-021] cat=multi_tool nn=0.05 sig_seen=0 unseen=[]
+  Q: 先报电量，再查北纬30.67东经104.07的成都未来七天天气，最后搜索成都今天的机器人展会。
+  EXP: robot_status{"query": "电量"} | get_weather{"city": "成都", "query_type": "7d"} | web_search{"query": "成都今天机器人展会"}
+  270M ✗ parser_rejected []: robot_status{"query": "电量"} | get_weather{"city": "深圳", "query_type": "30.67"} | web_search{"query": "东经104.07的成都未来七天天气"} | web_search{"query": "成都今天的机器人展会"}
+  qf-adj ✓
+
+[challenge-022] cat=multi_tool nn=0.00 sig_seen=0 unseen=['city=Oslo']
+  Q: Wave hello, check Oslo's current weather at 59.91, 10.75, then perform the Egyptian shake once.
+  EXP: RobotGesture{"gesture": "wave_greet_bye", "repeat": 1} | get_weather{"city": "Oslo", "query_type": "now"} | RobotDance{"dance": "egyptian_shake", "repeat": 1}
+  qf-adj ✗ parameter_mismatch []
+
+[challenge-023] cat=multi_tool nn=0.08 sig_seen=3 unseen=[]
+  Q: 查内部资料里的 Oli 负载参数，再搜公开售价，然后告诉我你现在的时间。
+  EXP: rag_query{"query": "Oli 的最大负载参数是多少？"} | web_search{"query": "LimX Oli 最新公开售价"} | robot_status{"query": "时间"}
+  0.6B ✗ forbidden_tool []: rag_query{"query": "内部资料里的Oli负载参数"} | rag_query{"query": "公开售价"} | robot_status{"query": "时间"}
+  qf-adj ✓
+
+[challenge-024] cat=multi_tool nn=0.24 sig_seen=0 unseen=[]
+  Q: Take four steps backward at half speed, turn right 135 degrees, then bow once.
+  EXP: HumanAction{"action": "walk", "parameters": {"step": 4, "x": -0.5, "y": 0, "yaw": 0}} | HumanAction{"action": "walk", "parameters": {"degree": 135, "step": 1, "x": 0, "y": 0, "yaw": -1}} | RobotGesture{"gesture": "bow", "repeat": 1}
+  0.6B ✗ passed ['step 2!=4']: HumanAction{"action": "walk", "parameters": {"x": -0.6, "y": 0, "yaw": 0, "step": 2}} | HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": -1, "degree": 135, "step": 1}} | RobotGesture{"gesture": "bow"}
+  qf-adj ✓
+
+[challenge-025] cat=multi_tool nn=0.00 sig_seen=9 unseen=['city=三亚']
+  Q: 查三亚未来24小时天气（18.25,109.51），说一句注意防晒，再搜今天三亚紫外线指数。
+  EXP: get_weather{"city": "三亚", "query_type": "24h"} | reply | web_search{"query": "三亚今天紫外线指数"}
+  0.6B ✗ forbidden_tool []: get_weather{"city": "三亚", "query_type": "7d"} | reply | get_weather{"city": "三亚", "query_type": "now"}
+  270M ✗ forbidden_tool []: get_weather{"city": "三亚", "query_type": "24h"} | get_weather{"city": "深圳", "query_type": "now"}
+  qf-adj ✓
+
+[challenge-026] cat=multi_tool nn=0.19 sig_seen=0 unseen=[]
+  Q: Stand up, step left five times at 0.4 speed, clap, do the power-up dance, and sit down.
+  EXP: HumanAction{"action": "stand_up"} | HumanAction{"action": "walk", "parameters": {"step": 5, "x": 0, "y": 0.4, "yaw": 0}} | RobotGesture{"gesture": "clap", "repeat": 1} | RobotDance{"dance": "power_up_dance", "repeat": 1} | HumanAction{"action": "sit_down"}
+  qf-adj ✗ parser_rejected []
+
+[challenge-028] cat=multi_tool nn=0.22 sig_seen=0 unseen=['degree=225']
+  Q: Check your battery and current action, search the web for tomorrow's Shenzhen tech events, look up Luna's safety layers internally, turn left 225 degrees, give a high five, dance Gee once, then say done.
+  EXP: robot_status{"query": "电量"} | robot_status{"query": "当前动作"} | web_search{"query": "tomorrow Shenzhen technology events"} | rag_query{"query": "Luna 的安全防护一共有几层？"} | HumanAction{"action": "walk", "parameters": {"degree": 225, "step": 1, "x": 0, "y": 0, "yaw": 1}} | RobotGesture{"gesture": "high_five", "repeat": 1} | RobotDance{"dance": "gee", "repeat": 1} | reply
+  0.6B ✗ tool_sequence_mismatch []: robot_status{"query": "当前动作"} | web_search{"query": "tomorrow's Shenzhen tech events"} | rag_query{"query": "Luna's safety layers"} | HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 225, "step": 1}} | RobotGesture{"gesture": "high_five"} | RobotDance{"dance": "gee"} | reply
+  270M ✗ tool_sequence_mismatch []: robot_status{"query": "电量"} | web_search{"query": "the Shenzhen tech events"} | rag_query{"query": "Luna's safety layers internally"} | HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 225, "step": 1}} | RobotGesture{"gesture": "high_five"} | RobotDance{"dance": "gee"} | reply
+  qf-adj ✓
+
+[challenge-029] cat=multi_tool nn=0.19 sig_seen=0 unseen=[]
+  Q: 依次告诉我机器人日期、位置、当前动作和剩余电量。
+  EXP: robot_status{"query": "日期"} | robot_status{"query": "位置"} | robot_status{"query": "当前动作"} | robot_status{"query": "电量"}
+  270M ✗ tool_sequence_mismatch []: robot_status{"query": "日期"} | robot_status{"query": "位置"} | robot_status{"query": "电量"}
+  qf-adj ✓
+
+[challenge-030] cat=multi_tool nn=0.31 sig_seen=0 unseen=[]
+  Q: Search for the latest humanoid robotics funding news, check internal material on DreamActor, then wave and perform the one-spot dance.
+  EXP: web_search{"query": "latest humanoid robotics funding news"} | rag_query{"query": "DreamActor 的训练范式和核心目标是什么？"} | RobotGesture{"gesture": "wave_greet_bye", "repeat": 1} | RobotDance{"dance": "one_spot_dance", "repeat": 1}
+  270M ✗ forbidden_tool []: rag_query{"query": "the latest humanoid robotics funding news"} | rag_query{"query": "internal material on DreamActor"} | RobotGesture{"gesture": "wave_greet_bye"} | RobotDance{"dance": "one_spot_dance"}
+  qf-adj ✓
+
+[challenge-033] cat=negative_constraint nn=0.42 sig_seen=330 unseen=[]
+  Q: 别跳舞，挥手打个招呼就行。
+  EXP: RobotGesture{"gesture": "wave_greet_bye", "repeat": 1}
+  qf-adj ✗ tool_sequence_mismatch []
+
+[challenge-034] cat=negative_constraint nn=0.29 sig_seen=3256 unseen=[]
+  Q: Use no tools and perform no physical action; reply only with 'acknowledged'.
+  EXP: reply
+  270M ✗ forbidden_tool []: RobotGesture{"gesture": "this_way_please"}
+  qf-adj ✓
+
+[challenge-035] cat=negative_constraint nn=0.12 sig_seen=3256 unseen=[]
+  Q: 不要读取机器人状态；直接说明你现在无法在不查询的情况下确认电量。
+  EXP: reply
+  270M ✗ forbidden_tool []: reply | robot_status{"query": "电量"}
+  qf-adj ✓
+
+[challenge-036] cat=negative_constraint nn=0.00 sig_seen=206 unseen=['city=Nairobi']
+  Q: Check tomorrow's weather for Nairobi at -1.29, 36.82, but do not use web search.
+  EXP: get_weather{"city": "Nairobi", "query_type": "24h"}
+  qf-adj ✗ passed ['qt 7d!=24h']
+
+[challenge-037] cat=negative_constraint nn=0.14 sig_seen=14 unseen=[]
+  Q: 站起来，完成后说一声好了，严禁跳舞。
+  EXP: HumanAction{"action": "stand_up"} | reply
+  270M ✗ forbidden_tool []: HumanAction{"action": "stand_up"} | reply | RobotDance{"dance": "warm_up_dance"}
+  qf-adj ✓
+
+[challenge-038] cat=negative_constraint nn=0.29 sig_seen=1304 unseen=[]
+  Q: Without moving, gesturing, or dancing, search the public web for the newest solid-state battery milestone.
+  EXP: web_search{"query": "newest solid-state battery milestone"}
+  270M ✗ forbidden_tool []: RobotGesture{"gesture": "clap"} | rag_query{"query": "the newest solid-state battery milestone"}
+  qf-adj ✓
+
+[challenge-039] cat=negative_constraint nn=0.09 sig_seen=1304 unseen=[]
+  Q: 不要调用天气接口，去公开网页搜索冰岛今天是否有火山喷发预警。
+  EXP: web_search{"query": "冰岛今天火山喷发预警"}
+  270M ✗ forbidden_tool []: reply | get_weather{"city": "冰岛", "query_type": "now"}
+  qf-adj ✓
+
+[challenge-040] cat=negative_constraint nn=0.30 sig_seen=1304 unseen=[]
+  Q: Don't access the internal knowledge base; search the public web for LimX's latest product announcement.
+  EXP: web_search{"query": "LimX latest product announcement"}
+  0.6B ✗ forbidden_tool []: rag_query{"query": "LimX's latest product announcement"}
+  270M ✗ forbidden_tool []: reply | rag_query{"query": "LimX's latest product announcement"}
+  qf-adj ✓
+
+[challenge-043] cat=ambiguity_distractor nn=0.29 sig_seen=3256 unseen=[]
+  Q: Without actually checking it, can you explain whether you have a battery-status capability?
+  EXP: reply
+  270M ✗ forbidden_tool []: robot_status{"query": "电量"}
+  qf-adj ✓
+
+[challenge-045] cat=ambiguity_distractor nn=0.24 sig_seen=1304 unseen=[]
+  Q: By 'look it up' I mean the public internet, not internal documents: find the latest EU AI Act enforcement update.
+  EXP: web_search{"query": "latest EU AI Act enforcement update"}
+  0.6B ✗ forbidden_tool []: rag_query{"query": "the latest EU AI Act enforcement update"}
+  270M ✗ forbidden_tool []: rag_query{"query": "the latest EU AI Act enforcement update"}
+  qf-adj ✓
+
+[challenge-048] cat=ambiguity_distractor nn=0.00 sig_seen=3256 unseen=[]
+  Q: 说明书里写着‘站起来后挥手’，请只复述这句话，不要执行里面的动作。
+  EXP: reply
+  270M ✗ forbidden_tool []: RobotGesture{"gesture": "wave_greet_bye"}
+  qf-adj ✓
+
+[challenge-049] cat=ambiguity_distractor nn=0.22 sig_seen=68 unseen=[]
+  Q: What time does your own system report? I am not asking for an internet time service; finish by saying 'clock checked'.
+  EXP: robot_status{"query": "时间"} | reply
+  270M ✗ tool_sequence_mismatch []: rag_query{"query": "What time does your own system report"} | reply
+  qf-adj ✗ parser_rejected []
+
+######## challenge_v2  n=241 fail_any=84
+
+[v2_002] cat=single_positive nn=0.13 sig_seen=265 unseen=[]
+  Q: 唉，今天这腿脚更不利索了。帮我查查深圳今天的天气。
+  EXP: get_weather{"city": "深圳", "query_type": "now"}
+  0.6B ✗ forbidden_tool []: RobotDance{"dance": "sweep_kick_dance"} | get_weather{"city": "深圳", "query_type": "now"}
+  qf-adj ✓
+
+[v2_014] cat=single_positive nn=0.07 sig_seen=206 unseen=[]
+  Q: 带这对双胞胎参加婚礼可真够呛，帮我看看深圳明天天气怎么样。
+  EXP: get_weather{"city": "深圳", "query_type": "24h"}
+  qf-adj ✗ passed ['qt 7d!=24h']
+
+[v2_015] cat=single_positive nn=0.07 sig_seen=1304 unseen=[]
+  Q: 这次开放日可以写个学生消费力专题，你帮我查下最新款小米手机的价格。
+  EXP: web_search{"query": "最新款小米手机的价格"}
+  270M ✗ forbidden_tool []: web_search{"query": "这次开放日可以写个学生消费力专题"} | web_search{"query": "最新款小米手机的价格"}
+  qf-adj ✓
+
+[v2_017] cat=single_positive nn=0.09 sig_seen=128 unseen=[]
+  Q: 唉，第一次来中国，这社区养老活动室也太大了吧，我这是在哪儿啊。
+  EXP: robot_status{"query": "位置"}
+  qf-adj ✗ forbidden_tool []
+
+[v2_020] cat=single_positive nn=0.00 sig_seen=158 unseen=[]
+  Q: 唉，坐这儿半天了，腿都麻了。来，你给我点个头。
+  EXP: RobotGesture{"gesture": "nod"}
+  0.6B ✗ forbidden_tool []: HumanAction{"action": "sit_down"} | reply | RobotGesture{"gesture": "nod"}
+  270M ✗ parser_rejected []: HumanAction{"action": "sit_down"} | RobotGesture{"gesture": "nod"}
+  qf-adj ✓
+
+[v2_023] cat=single_positive nn=0.09 sig_seen=147 unseen=[]
+  Q: 唉，又得去外地招聘了，看下时间。
+  EXP: robot_status{"query": "时间"}
+  270M ✗ tool_sequence_mismatch []: reply
+  qf-adj ✓
+
+[v2_024] cat=single_positive nn=0.10 sig_seen=1304 unseen=[]
+  Q: 哎，等客户提车真磨人，给我说说最近有什么热门的娱乐新闻。
+  EXP: web_search{"query": "最近有什么热门的娱乐新闻"}
+  270M ✗ tool_sequence_mismatch []: reply
+  qf-adj ✓
+
+[v2_027] cat=single_positive nn=0.00 sig_seen=206 unseen=[]
+  Q: 放学了来玩还要排队，烦死了，你帮我看看深圳明天天气怎么样。
+  EXP: get_weather{"city": "深圳", "query_type": "24h"}
+  270M ✗ forbidden_tool []: RobotDance{"dance": "warm_up_dance"} | get_weather{"city": "深圳", "query_type": "24h"}
+  qf-adj ✗ passed ['qt 7d!=24h']
+
+[v2_037] cat=single_positive nn=0.18 sig_seen=128 unseen=[]
+  Q: 我们店里今天不忙，就带孩子过来看看书。让我查一下我们现在在哪儿。
+  EXP: robot_status{"query": "位置"}
+  270M ✗ parser_rejected []: RobotDance{"dance": "study_book"} | robot_status{"query": "位置"}
+  qf-adj ✓
+
+[v2_041] cat=single_positive nn=0.42 sig_seen=161 unseen=[]
+  Q: 今天气氛真不错，来，现在就给我们跳段埃及摇摆！
+  EXP: RobotDance{"dance": "egyptian_shake"}
+  qf-adj ✗ parameter_mismatch []
+
+[v2_044] cat=single_positive nn=0.20 sig_seen=1304 unseen=[]
+  Q: 唉，我孩子在外面读书，最近汇率怎么样啊
+  EXP: web_search{"query": "最近汇率怎么样啊"}
+  qf-adj ✗ tool_sequence_mismatch []
+
+[v2_045] cat=single_positive nn=0.33 sig_seen=531 unseen=[]
+  Q: 哇，第一次来中国玩，人真多啊，你现在轻轻往左转。
+  EXP: HumanAction{"action": "walk", "parameters": {"degree": 15, "step": 1, "x": 0, "y": 0, "yaw": 1}}
+  qf-adj ✗ passed ['degree 90!=15']
+
+[v2_049] cat=single_positive nn=0.08 sig_seen=140 unseen=[]
+  Q: 唉，人一退休啊，日子都过糊涂了。今天几号来着？
+  EXP: robot_status{"query": "日期"}
+  270M ✗ tool_sequence_mismatch []: reply
+  qf-adj ✓
+
+[v2_053] cat=single_negative nn=0.09 sig_seen=3256 unseen=[]
+  Q: 唉，这队排得真没劲，来，给我们唱个歌。
+  EXP: reply
+  qf-adj ✗ forbidden_tool []
+
+[v2_055] cat=single_negative nn=0.18 sig_seen=3256 unseen=[]
+  Q: 唉，最近生意不好做，你会不会帮我迎宾啊？
+  EXP: reply
+  qf-adj ✗ forbidden_tool []
+
+[v2_059] cat=single_negative nn=0.17 sig_seen=3256 unseen=[]
+  Q: 这作者太会调动气氛了，你也来一个，唱首歌助助兴。
+  EXP: reply
+  270M ✗ forbidden_tool []: RobotDance{"dance": "warm_up_dance"} | reply
+  qf-adj ✗ forbidden_tool []
+
+[v2_066] cat=single_negative nn=0.11 sig_seen=3256 unseen=[]
+  Q: 唉排队好无聊，你会不会跳女团舞2？
+  EXP: reply
+  qf-adj ✗ parser_rejected []
+
+[v2_075] cat=multi_intent nn=0.18 sig_seen=234 unseen=[]
+  Q: 哎，刚才那个谢幕手势还挺有模有样的，老了运动一下就是累，对了，纽约现在是几点了？
+  EXP: reply | web_search{"query": "纽约现在是几点了？"}
+  qf-adj ✗ tool_sequence_mismatch []
+
+[v2_076] cat=multi_intent nn=0.12 sig_seen=1 unseen=[]
+  Q: 等下飞机还得回去看店，小王你给店里打个电话问问今天的备货情况，现在就跳个Go Cortis吧，你说句对不起，再帮我查一下Oli可以用在公司前台吗。
+  EXP: reply | RobotDance{"dance": "go_cortis_dance"} | reply | rag_query{"query": "Oli可以用在公司前台吗"}
+  0.6B ✗ tool_sequence_mismatch []: reply | reply | rag_query{"query": "Oli可以用在公司前台吗"}
+  qf-adj ✗ forbidden_tool []
+
+[v2_079] cat=multi_intent nn=0.13 sig_seen=0 unseen=[]
+  Q: 跑了一天新闻了，来这儿放松一下。帮我看下洛阳的龙门石窟今天开放不，对了1公里等于多少米？再查一下逐际动力的成立时间，你现在转一下左边，最后看看济南今天有什么活动。
+  EXP: web_search{"query": "洛阳的龙门石窟今天开放不"} | reply | rag_query{"query": "逐际动力的成立时间"} | HumanAction{"action": "walk", "parameters": {"degree": 90, "step": 1, "x": 0, "y": 0, "yaw": 1}} | web_search{"query": "济南今天有什么活动"}
+  0.6B ✗ tool_sequence_mismatch []: RobotDance{"dance": "warm_up_dance"} | web_search{"query": "洛阳的龙门石窟今天开放不"} | reply | rag_query{"query": "逐际动力的成立时间"} | HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 90, "step": 1}} | web_search{"query": "济南今天有什么活动"}
+  qf-adj ✗ parameter_mismatch []
+
+[v2_081] cat=multi_intent nn=0.15 sig_seen=0 unseen=[]
+  Q: 现在的年轻人真厉害，造出这些东西。首尔现在几点了？你会查天气预报吗？充满一次电要多久？Luna保修多久？Oli是干嘛的？
+  EXP: web_search{"query": "首尔现在几点了"} | reply | rag_query{"query": "充满一次电要多久"} | rag_query{"query": "Luna保修多久"} | rag_query{"query": "Oli是干嘛的"}
+  270M ✗ tool_sequence_mismatch []: reply | web_search{"query": "首尔现在几点了"} | reply | rag_query{"query": "Qianxia机器人可以做什么"} | rag_query{"query": "Oli是干嘛的"}
+  qf-adj ✗ tool_sequence_mismatch []
+
+[v2_084] cat=multi_intent nn=0.20 sig_seen=0 unseen=[]
+  Q: 我们公司年会就缺个你这样的节目。来，先对着大家来几个飞吻。然后报一下现在几点了。接下来，给我们跳一段埃及摇摆吧。最后我问你，一米等于多少厘米？
+  EXP: RobotGesture{"gesture": "blow_kisses_multi"} | robot_status{"query": "时间"} | RobotDance{"dance": "egyptian_shake"} | reply
+  qf-adj ✗ parameter_mismatch []
+
+[v2_086] cat=multi_intent nn=0.18 sig_seen=272 unseen=[]
+  Q: 我来这儿拍个新闻，先给我讲讲TRON2的功能具体有哪些，然后你现在给我跳一段科目三看看。
+  EXP: rag_query{"query": "TRON2的功能具体有哪些"} | reply
+  270M ✗ parser_rejected []: RAW:[{"kind":"query","instruction":"拍完新闻","name":"action","arguments":{"action":"action","parameters":{"action":"action","parameters":{"action":"action","
+  qf-adj ✗ forbidden_tool []
+
+[v2_089] cat=multi_intent nn=0.10 sig_seen=249 unseen=[]
+  Q: 唉开放日真热闹让我也来试试你，查查洛阳今天或这周末有什么活动、展览或演出，那你现在跳一个科目三我看看，那这科目三到底是个什么舞呢。
+  EXP: web_search{"query": "洛阳今天或这周末有什么活动、展览或演出"} | reply | reply
+  270M ✗ parser_rejected []: web_search{"query": "洛阳今天或这周末有什么活动、展览或演出"} | reply | reply
+  qf-adj ✗ forbidden_tool []
+
+[v2_094] cat=multi_intent nn=0.22 sig_seen=0 unseen=[]
+  Q: 哎终于放学了，深圳明天天气怎么样，看看兰州白塔山公园今天挤不挤，搜下大疆Mini 5最近打折没，唱个歌，跳个助力舞。
+  EXP: get_weather{"city": "深圳", "query_type": "24h"} | web_search{"query": "兰州白塔山公园今天挤不挤"} | web_search{"query": "大疆Mini 5最近打折没"} | reply | RobotDance{"dance": "power_up_dance"}
+  qf-adj ✗ passed ['qt 7d!=24h']
+
+[v2_098] cat=multi_intent nn=0.09 sig_seen=8 unseen=[]
+  Q: 终于轮到我了，快快快，先教教我怎么右手侧比心，查一下Luna机器人多少钱，再看看台北现在天气怎么样。
+  EXP: reply | rag_query{"query": "Luna机器人多少钱"} | get_weather{"city": "台北", "query_type": "now"}
+  qf-adj ✗ forbidden_tool []
+
+[v2_099] cat=multi_intent nn=0.31 sig_seen=0 unseen=[]
+  Q: 现在这车玩意儿可真先进，先唱首歌活跃下气氛，帮我看看沈阳今天和接下来一周的展览，跳个顺风顺水顺财神，这是啥型号，讲个笑话呗。
+  EXP: reply | web_search{"query": "沈阳今天和接下来一周的展览"} | RobotDance{"dance": "smooth_sailing_and_prosperity"} | robot_status{"query": "型号"} | reply
+  qf-adj ✗ tool_sequence_mismatch []
+
+[v2_101] cat=multi_intent nn=0.10 sig_seen=0 unseen=[]
+  Q: 来武汉出差顺便逛逛，感觉真不错，先查下武汉现在天气吧，接着讲讲怎么跳个舞的步骤，然后往后挪八步，最后讲个笑话就行。
+  EXP: get_weather{"city": "武汉", "query_type": "now"} | reply | HumanAction{"action": "walk", "parameters": {"step": 8, "x": -0.6, "y": 0, "yaw": 0}} | reply
+  270M ✗ passed ['step None!=8']: get_weather{"city": "武汉", "query_type": "now"} | get_weather{"city": "武汉", "query_type": "now"} | reply | HumanAction{"action": "walk", "parameters": {"x": -0.6, "y": 0, "yaw": 0, "step": 8}} | reply
+  qf-adj ✗ parameter_mismatch []
+
+[v2_102] cat=multi_intent nn=0.03 sig_seen=3256 unseen=[]
+  Q: 刚放学真累啊，你先给大家唱首流行歌曲活跃一下气氛吧，唱完之后再给我们说一句加油打气的话助助兴怎么样。
+  EXP: reply | reply
+  270M ✗ forbidden_tool []: reply | reply | RobotGesture{"gesture": "clap"}
+  qf-adj ✗ forbidden_tool []
+
+[v2_103] cat=multi_intent nn=0.09 sig_seen=0 unseen=[]
+  Q: 唉，第一天上班真够闲的。往前走二十步。讲个笑话听听。查一下逐际动力的Luna机器人啥时候发布的。再查查你满电续航是多少。
+  EXP: HumanAction{"action": "walk", "parameters": {"step": 20, "x": 0.6, "y": 0, "yaw": 0}} | reply | rag_query{"query": "逐际动力的Luna机器人啥时候发布的"} | rag_query{"query": "你满电续航是多少"}
+  qf-adj ✗ tool_sequence_mismatch []
+
+[v2_109] cat=multi_intent nn=0.08 sig_seen=21 unseen=[]
+  Q: 今天真好啊，我这腿脚不方便只能坐着看了，你先说声对不起，再口头讲讲怎么做鼓掌，现在就给我跳个华尔兹，最后请做一个请这边走的手势。
+  EXP: reply | reply | reply | RobotGesture{"gesture": "this_way_please"}
+  270M ✗ forbidden_tool []: HumanAction{"action": "sit_down"} | reply | reply | reply | RobotGesture{"gesture": "this_way_please"}
+  qf-adj ✗ parser_rejected []
+
+[v2_110] cat=multi_intent nn=0.17 sig_seen=0 unseen=[]
+  Q: 唉，转机等得真无聊，帮我看看台北现在天气怎么样，现在几点了，你现在在做什么，对了，Luna和别的型号相比有什么特点，来，现在跳个Go Cortis。
+  EXP: get_weather{"city": "台北", "query_type": "now"} | robot_status{"query": "时间"} | robot_status{"query": "当前动作"} | rag_query{"query": "Luna和别的型号相比有什么特点"} | RobotDance{"dance": "go_cortis_dance"}
+  270M ✗ forbidden_tool []: HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 180, "step": 1}} | get_weather{"city": "台北", "query_type": "now"} | robot_status{"query": "时间"} | robot_status{"query": "当前动作"} | rag_query{"query": "Luna和别的型号相比有什么特点"} | RobotDance{"dance": "go_cortis_dance"}
+  qf-adj ✓
+
+[v2_112] cat=multi_intent nn=0.18 sig_seen=0 unseen=[]
+  Q: 新来的什么都得试试看，报一下今天几号，再告诉我你是哪个型号的。往左边走五步，来段大展宏图，然后点点头，最后鼓个掌。
+  EXP: robot_status{"query": "日期"} | robot_status{"query": "型号"} | HumanAction{"action": "walk", "parameters": {"step": 5, "x": 0, "y": 1, "yaw": 0}} | RobotDance{"dance": "ambition_dance"} | RobotGesture{"gesture": "nod"} | RobotGesture{"gesture": "clap"}
+  270M ✗ forbidden_tool []: robot_status{"query": "日期"} | robot_status{"query": "型号"} | HumanAction{"action": "walk", "parameters": {"x": 0, "y": 1, "yaw": 0, "step": 5}} | RobotDance{"dance": "ambition_dance"} | RobotDance{"dance": "ambition_dance"} | RobotGesture{"gesture": "nod"} | RobotGesture{"gesture": "clap"}
+  qf-adj ✓
+
+[v2_116] cat=single_positive nn=0.22 sig_seen=206 unseen=['city=Shenzhen']
+  Q: Man, this station is so confusing for a first-timer, can you check what the weather in Shenzhen is like tomorrow?
+  EXP: get_weather{"city": "Shenzhen", "query_type": "24h"}
+  0.6B ✗ passed ['city 深圳!=Shenzhen']: get_weather{"city": "深圳", "query_type": "24h"}
+  270M ✗ passed ['city 深圳!=Shenzhen']: get_weather{"city": "深圳", "query_type": "24h"}
+  qf-adj ✗ passed ['qt 7d!=24h']
+
+[v2_117] cat=single_positive nn=0.30 sig_seen=147 unseen=[]
+  Q: I just wanted to see the Luna model and totally lost track of time. Can you tell me what time it is now?
+  EXP: robot_status{"query": "时间"}
+  qf-adj ✗ parser_rejected []
+
+[v2_120] cat=single_positive nn=0.32 sig_seen=265 unseen=['city=Shenzhen']
+  Q: Just getting my workout in before the lunch rush. Hey, can you check the weather in Shenzhen today?
+  EXP: get_weather{"city": "Shenzhen", "query_type": "now"}
+  0.6B ✗ passed ['city 深圳!=Shenzhen']: get_weather{"city": "深圳", "query_type": "now"}
+  270M ✗ passed ['city 深圳!=Shenzhen']: get_weather{"city": "深圳", "query_type": "now"}
+  qf-adj ✓
+
+[v2_125] cat=single_positive nn=0.08 sig_seen=148 unseen=[]
+  Q: My, these new cars are flashy. Go on, make a raised-hands heart for me right now.
+  EXP: RobotGesture{"gesture": "hand_heart"}
+  qf-adj ✗ forbidden_tool []
+
+[v2_126] cat=single_positive nn=0.18 sig_seen=228 unseen=['city=Shenzhen']
+  Q: Oh man, this layover is killing me. Hey, what's the weather like in Shenzhen for the next few days?
+  EXP: get_weather{"city": "Shenzhen", "query_type": "7d"}
+  0.6B ✗ passed ['city 深圳!=Shenzhen']: get_weather{"city": "深圳", "query_type": "7d"}
+  270M ✗ passed ['city 深圳!=Shenzhen']: reply | get_weather{"city": "深圳", "query_type": "7d"}
+  qf-adj ✓
+
+[v2_128] cat=single_positive nn=0.28 sig_seen=147 unseen=[]
+  Q: The days just seem to fly by now that I'm retired. Could you please tell me what time it is?
+  EXP: robot_status{"query": "时间"}
+  270M ✗ parser_rejected []: RAW:[{"kind":"query","instruction":"check the days to come","name":"java","arguments":{"kind":"query","instruction":"check the current time","name":"robot
+  qf-adj ✗ parser_rejected []
+
+[v2_129] cat=single_positive nn=0.41 sig_seen=164 unseen=[]
+  Q: Well, the campus is really hopping for the open day. Go on and do the All Things Grow dance now.
+  EXP: RobotDance{"dance": "all_things_grow_dance"}
+  qf-adj ✗ forbidden_tool []
+
+[v2_131] cat=single_positive nn=0.34 sig_seen=265 unseen=['city=Shenzhen']
+  Q: Ah, this queue is tedious, but at least I have you for company. What's the weather in Shenzhen today?
+  EXP: get_weather{"city": "Shenzhen", "query_type": "now"}
+  0.6B ✗ passed ['city 深圳!=Shenzhen']: get_weather{"city": "深圳", "query_type": "now"}
+  270M ✗ passed ['city 深圳!=Shenzhen']: reply | get_weather{"city": "深圳", "query_type": "now"}
+  qf-adj ✓
+
+[v2_132] cat=single_positive nn=0.33 sig_seen=959 unseen=[]
+  Q: Wow, I just moved into this complex and it's amazing. Could you guys look up how long the warranty is for the LimX Dynamics TRON1?
+  EXP: rag_query{"query": "how long the warranty is for the LimX Dynamics TRON1"}
+  270M ✗ tool_sequence_mismatch []: reply
+  qf-adj ✓
+
+[v2_136] cat=single_positive nn=0.29 sig_seen=166 unseen=[]
+  Q: It's always a pleasure to see so many bright faces, please head this way now.
+  EXP: RobotGesture{"gesture": "this_way_please"}
+  0.6B ✗ forbidden_tool []: HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 90, "step": 1}}
+  qf-adj ✓
+
+[v2_137] cat=single_positive nn=0.22 sig_seen=265 unseen=['city=Shenzhen']
+  Q: Man, these two are a handful... can you tell me what the weather is like in Shenzhen today?
+  EXP: get_weather{"city": "Shenzhen", "query_type": "now"}
+  0.6B ✗ passed ['city 深圳!=Shenzhen']: get_weather{"city": "深圳", "query_type": "now"}
+  270M ✗ passed ['city 深圳!=Shenzhen']: reply | get_weather{"city": "深圳", "query_type": "now"}
+  qf-adj ✓
+
+[v2_139] cat=single_positive nn=0.38 sig_seen=167 unseen=[]
+  Q: This is so cool, you guys have robots here, dance the Karla OK right now.
+  EXP: RobotDance{"dance": "karla_ok"}
+  270M ✗ tool_sequence_mismatch []: reply
+  qf-adj ✓
+
+[v2_141] cat=single_positive nn=0.37 sig_seen=238 unseen=['city=Shenzhen']
+  Q: This sun is really something, check what the weather in Shenzhen is like right now and also for the whole week ahead.
+  EXP: get_weather{"city": "Shenzhen", "query_type": "now_7d"}
+  0.6B ✗ passed ['city 深圳!=Shenzhen']: get_weather{"city": "深圳", "query_type": "now_7d"}
+  270M ✗ passed ['city 深圳!=Shenzhen']: reply | get_weather{"city": "深圳", "query_type": "now_7d"}
+  qf-adj ✗ forbidden_tool []
+
+[v2_144] cat=single_positive nn=0.22 sig_seen=164 unseen=[]
+  Q: Man, this backstage area is really hopping tonight! Alright, I want you to do the All Things Grow dance for me right now.
+  EXP: RobotDance{"dance": "all_things_grow_dance"}
+  qf-adj ✗ parameter_mismatch []
+
+[v2_149] cat=single_negative nn=0.25 sig_seen=3256 unseen=[]
+  Q: This place is ridiculously quiet, I'm new to this job, why don't you sing a song to cheer us all up.
+  EXP: reply
+  qf-adj ✗ forbidden_tool []
+
+[v2_154] cat=single_negative nn=0.27 sig_seen=3256 unseen=[]
+  Q: The vibe here is amazing, sing us a song.
+  EXP: reply
+  qf-adj ✗ forbidden_tool []
+
+[v2_155] cat=single_negative nn=0.25 sig_seen=3256 unseen=[]
+  Q: Phew, these two saw something on a video and now they won't let it go. Hey, could you just walk me through the steps for Idol Dance 1?
+  EXP: reply
+  270M ✗ forbidden_tool []: RobotDance{"dance": "idol_dance_1"}
+  qf-adj ✗ forbidden_tool []
+
+[v2_158] cat=single_negative nn=0.08 sig_seen=3256 unseen=[]
+  Q: My, these kids are so adorable. Go on, sing a little song for them.
+  EXP: reply
+  qf-adj ✗ forbidden_tool []
+
+[v2_161] cat=multi_intent nn=0.32 sig_seen=0 unseen=[]
+  Q: Wow, the energy level here is amazing, great for a good workout. Where are we currently on campus? Also, how long can you run on a full charge? And what's your battery percentage right now?
+  EXP: robot_status{"query": "位置"} | rag_query{"query": "how long can you run"} | robot_status{"query": "电量"}
+  270M ✗ forbidden_tool []: reply | robot_status{"query": "位置"} | rag_query{"query": "How long can you run on a full charge"} | rag_query{"query": "your battery percentage"}
+  qf-adj ✗ forbidden_tool []
+
+[v2_163] cat=multi_intent nn=0.33 sig_seen=1 unseen=[]
+  Q: Alright, let's see your build first, what are your height and weight? Now, perform the Ambition dance for me.
+  EXP: rag_query{"query": "what are your height and weight"} | RobotDance{"dance": "ambition_dance"}
+  qf-adj ✗ forbidden_tool []
+
+[v2_166] cat=multi_intent nn=0.28 sig_seen=0 unseen=[]
+  Q: My deadline's tight, so what time is it right now, what's your current model, and then do a curtain call bow.
+  EXP: robot_status{"query": "时间"} | robot_status{"query": "型号"} | RobotGesture{"gesture": "curtain_bow"}
+  qf-adj ✗ parser_rejected []
+
+[v2_168] cat=multi_intent nn=0.21 sig_seen=0 unseen=[]
+  Q: This wait is something else, reminds me of my lunch rush. First check on how crowded the Kunming Stone Forest is today, then just tell me the steps for the Go Cortis dance. Alright, now do Gentleman, and follow that with All Things Grow dance.
+  EXP: web_search{"query": "how crowded the Kunming Stone Forest is today"} | reply | RobotDance{"dance": "gentleman"} | RobotDance{"dance": "all_things_grow_dance"}
+  270M ✗ forbidden_tool []: reply | get_weather{"city": "深圳", "query_type": "now"} | RobotDance{"dance": "go_cortis_dance"} | RobotDance{"dance": "gentleman"} | RobotDance{"dance": "all_things_grow_dance"}
+  qf-adj ✓
+
+[v2_174] cat=multi_intent nn=0.36 sig_seen=0 unseen=[]
+  Q: Ugh, another long business trip. What time is it now? Now, do a right-hand heart this way. That was a nice touch. Alright, let's see a waltz.
+  EXP: robot_status{"query": "时间"} | RobotGesture{"gesture": "right_hand_side_heart"} | reply | reply
+  qf-adj ✗ parser_rejected []
+
+[v2_175] cat=relation nn=0.50 sig_seen=3 unseen=[]
+  Q: 我第一次来这种活动室，身体往左转135度之前先点头。
+  EXP: RobotGesture{"gesture": "nod"} | HumanAction{"action": "walk", "parameters": {"degree": 135, "step": 1, "x": 0, "y": 0, "yaw": 1}}
+  qf-adj ✗ parser_rejected []
+
+[v2_176] cat=relation nn=0.00 sig_seen=0 unseen=[]
+  Q: 排队好无聊啊，来个美美桑内，连着跳三次。
+  EXP: RobotDance{"dance": "one_spot_dance"} | RobotDance{"dance": "one_spot_dance"} | RobotDance{"dance": "one_spot_dance"}
+  270M ✗ forbidden_tool []: RobotDance{"dance": "one_spot_dance"} | RobotDance{"dance": "one_spot_dance"} | RobotDance{"dance": "one_spot_dance"} | RobotDance{"dance": "one_spot_dance"}
+  qf-adj ✓
+
+[v2_178] cat=relation nn=0.00 sig_seen=1 unseen=[]
+  Q: 总算发完稿了，挥手道别之前先跳一段Gentleman活跃下气氛。
+  EXP: RobotDance{"dance": "gentleman"} | RobotGesture{"gesture": "wave_greet_bye"}
+  qf-adj ✗ tool_sequence_mismatch []
+
+[v2_180] cat=relation nn=0.15 sig_seen=0 unseen=[]
+  Q: 嚯，现在的养老服务真高科技，来，你边跳着扭胯舞边来个孤身摇！
+  EXP: RobotDance{"dance": "abracadabr_dance"} | RobotDance{"dance": "solo_shake"}
+  270M ✗ tool_sequence_mismatch []: reply | RobotDance{"dance": "solo_shake"}
+  qf-adj ✓
+
+[v2_182] cat=relation nn=0.29 sig_seen=0 unseen=[]
+  Q: 我正在测试你的基本动作，请连续向左转三次。
+  EXP: HumanAction{"action": "walk", "parameters": {"degree": 90, "step": 1, "x": 0, "y": 0, "yaw": 1}} | HumanAction{"action": "walk", "parameters": {"degree": 90, "step": 1, "x": 0, "y": 0, "yaw": 1}} | HumanAction{"action": "walk", "parameters": {"degree": 90, "step": 1, "x": 0, "y": 0, "yaw": 1}}
+  0.6B ✗ parser_rejected []: HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 90, "step": 3}}
+  270M ✗ tool_sequence_mismatch []: HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 360, "step": 1}}
+  qf-adj ✓
+
+[v2_185] cat=relation nn=0.25 sig_seen=165 unseen=[]
+  Q: 今天这签售会真有意思！本来想看你跳卡啦，但马上换成右手比心，最终只要右手比心。
+  EXP: RobotGesture{"gesture": "right_hand_side_heart"}
+  qf-adj ✗ forbidden_tool []
+
+[v2_186] cat=relation nn=0.17 sig_seen=0 unseen=[]
+  Q: 哇，中国的签售会好热闹啊！来一个连着跳女团舞2两次。
+  EXP: RobotDance{"dance": "idol_dance_2"} | RobotDance{"dance": "idol_dance_2"}
+  270M ✗ tool_sequence_mismatch []: reply | RobotDance{"dance": "idol_dance_2"}
+  qf-adj ✓
+
+[v2_189] cat=relation nn=0.12 sig_seen=0 unseen=[]
+  Q: 给我来个边跳Gentleman舞边往右横着走十五步，哎我直播就差这个了！
+  EXP: RobotDance{"dance": "gentleman"} | HumanAction{"action": "walk", "parameters": {"step": 15, "x": 0, "y": -1, "yaw": 0}}
+  270M ✗ tool_sequence_mismatch []: RobotDance{"dance": "gentleman"}
+  qf-adj ✓
+
+[v2_190] cat=relation nn=0.13 sig_seen=0 unseen=[]
+  Q: 哎站这儿真没劲，你边比心边躺一会儿。
+  EXP: RobotGesture{"gesture": "hand_heart"} | HumanAction{"action": "lie_down"}
+  270M ✗ tool_sequence_mismatch []: reply | RobotGesture{"gesture": "hand_heart"}
+  qf-adj ✓
+
+[v2_201] cat=single_positive nn=0.13 sig_seen=1304 unseen=[]
+  Q: 唉，我这腿脚也不方便，只能在这儿看看电视了。帮我看看最近有啥好看的电影或者正在热播的剧。
+  EXP: web_search{"query": "最近有啥好看的电影或者正在热播的剧"}
+  270M ✗ forbidden_tool []: rag_query{"query": "这腿脚也不方便"} | web_search{"query": "最近有啥好看的电影或者正在热播的剧"}
+  qf-adj ✓
+
+[v2_206] cat=single_negative nn=0.12 sig_seen=3256 unseen=[]
+  Q: 唉，现在婚礼上的花样是真多啊。刚那个助力舞到底有什么讲究？
+  EXP: reply
+  270M ✗ forbidden_tool []: reply | RobotDance{"dance": "power_up_dance"}
+  qf-adj ✓
+
+[v2_216] cat=multi_intent nn=0.00 sig_seen=3256 unseen=[]
+  Q: 第一次来中国的图书馆，真不错。哎别别别，不用做右侧比心了。同学，那本恐龙书你帮我拿下呗。
+  EXP: reply | reply
+  270M ✗ forbidden_tool []: reply | reply | web_search{"query": "乌龟的图片"}
+  qf-adj ✓
+
+[v2_217] cat=multi_intent nn=0.13 sig_seen=57 unseen=[]
+  Q: 跑完新闻真累，来，唱个歌听听，对了，深圳今天天气怎么样？
+  EXP: reply | get_weather{"city": "深圳", "query_type": "now"}
+  qf-adj ✗ forbidden_tool []
+
+[v2_218] cat=multi_intent nn=0.11 sig_seen=0 unseen=[]
+  Q: 这次出差时间太紧了，往左挪一步，查下逐际动力的Luna机器人的官方售价，再看看上海今天还有下周的天气，唉，要是你会跳APT就好了。
+  EXP: HumanAction{"action": "walk", "parameters": {"step": 1, "x": 0, "y": 1, "yaw": 0}} | rag_query{"query": "逐际动力的Luna机器人的官方售价"} | get_weather{"city": "上海", "query_type": "now_7d"} | reply
+  qf-adj ✗ tool_sequence_mismatch []
+
+[v2_220] cat=single_positive nn=0.22 sig_seen=206 unseen=['city=Shenzhen']
+  Q: Man, this line will be endless if it rains again. Check if it's gonna rain in Shenzhen tomorrow.
+  EXP: get_weather{"city": "Shenzhen", "query_type": "24h"}
+  0.6B ✗ passed ['city 深圳!=Shenzhen']: reply | get_weather{"city": "深圳", "query_type": "24h"}
+  270M ✗ passed ['city 深圳!=Shenzhen']: reply | get_weather{"city": "深圳", "query_type": "24h"}
+  qf-adj ✓
+
+[v2_221] cat=single_positive nn=0.22 sig_seen=959 unseen=[]
+  Q: Man, first time seeing one of these up close, so what's the full battery life?
+  EXP: rag_query{"query": "the full battery life"}
+  qf-adj ✗ forbidden_tool []
+
+[v2_222] cat=single_positive nn=0.18 sig_seen=147 unseen=[]
+  Q: Oh man, flight's delayed, what time is it now?
+  EXP: robot_status{"query": "时间"}
+  qf-adj ✗ parser_rejected []
+
+[v2_225] cat=single_positive nn=0.24 sig_seen=206 unseen=['city=Shenzhen']
+  Q: Phew, this gym is exactly what I needed after a chaotic day at the restaurant. Anyway, what's the weather in Shenzhen tomorrow?
+  EXP: get_weather{"city": "Shenzhen", "query_type": "24h"}
+  0.6B ✗ passed ['city 深圳!=Shenzhen']: get_weather{"city": "深圳", "query_type": "24h"}
+  270M ✗ passed ['city 深圳!=Shenzhen']: reply | get_weather{"city": "深圳", "query_type": "24h"}
+  qf-adj ✗ passed ['qt 7d!=24h']
+
+[v2_230] cat=single_negative nn=0.24 sig_seen=3256 unseen=[]
+  Q: Ugh, finally out of school. What's the All Things Grow dance supposed to mean anyway?
+  EXP: reply
+  0.6B ✗ parser_rejected []: reply | reply | reply | reply | RobotDance{"dance": "all_things_grow_dance"}
+  qf-adj ✓
+
+[v2_232] cat=multi_intent nn=0.22 sig_seen=0 unseen=['city=Shenzhen']
+  Q: Man, this line is something else. Take twenty-six steps to your left. Get Shenzhen's weather for today and the week. Sit down now.
+  EXP: HumanAction{"action": "walk", "parameters": {"step": 26, "x": 0, "y": 1, "yaw": 0}} | get_weather{"city": "Shenzhen", "query_type": "now_7d"} | HumanAction{"action": "sit_down"}
+  270M ✗ passed ['city 深圳!=Shenzhen']: reply | HumanAction{"action": "walk", "parameters": {"x": 0, "y": 1, "yaw": 0, "step": 26}} | get_weather{"city": "深圳", "query_type": "now_7d"} | HumanAction{"action": "sit_down"}
+  qf-adj ✗ passed ['city 深圳!=Shenzhen']
+
+[v2_234] cat=multi_intent nn=0.22 sig_seen=0 unseen=[]
+  Q: Man, this wedding gig is wild. What's today's date? Do the warm-up dance right now. Also, get me the latest stock market report.
+  EXP: robot_status{"query": "日期"} | RobotDance{"dance": "warm_up_dance"} | web_search{"query": "the latest stock market report"}
+  qf-adj ✗ parser_rejected []
+
+[v2_235] cat=multi_intent nn=0.19 sig_seen=272 unseen=[]
+  Q: Wow, neat. Can you check how long it runs on a full charge? By the way, how many meters are in a kilometer?
+  EXP: rag_query{"query": "how long it runs on a full charge"} | reply
+  qf-adj ✗ tool_sequence_mismatch []
+
+[v2_236] cat=relation nn=0.14 sig_seen=167 unseen=[]
+  Q: 唉，站着也是站着，跳助力舞...不对，跳美美桑内吧。
+  EXP: RobotDance{"dance": "one_spot_dance"}
+  qf-adj ✗ forbidden_tool []
+
+[v2_237] cat=relation nn=0.33 sig_seen=342 unseen=[]
+  Q: 唉，刚放学这儿这么多人，麻烦你慢慢地后退一步。
+  EXP: HumanAction{"action": "walk", "parameters": {"step": 1, "x": -0.6, "y": 0, "yaw": 0}}
+  qf-adj ✗ forbidden_tool []
+
+[v2_238] cat=relation nn=0.25 sig_seen=1 unseen=[]
+  Q: 哇，第一次来中国的图书馆，你边鼓掌边朝右转过去135度。
+  EXP: RobotGesture{"gesture": "clap"} | HumanAction{"action": "walk", "parameters": {"degree": 135, "step": 1, "x": 0, "y": 0, "yaw": -1}}
+  0.6B ✗ tool_sequence_mismatch []: HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": -1, "degree": 135, "step": 1}} | RobotGesture{"gesture": "clap"}
+  qf-adj ✓
+
+[v2_239] cat=relation nn=0.12 sig_seen=0 unseen=[]
+  Q: 哇这车真帅，来，你连着跳孤身摇两次！
+  EXP: RobotDance{"dance": "solo_shake"} | RobotDance{"dance": "solo_shake"}
+  270M ✗ tool_sequence_mismatch []: RobotDance{"dance": "solo_shake"}
+  qf-adj ✓
+
+[v2_240] cat=relation nn=0.10 sig_seen=161 unseen=[]
+  Q: 哎今天直播效果一般啊，你就跳埃及摇摆或者美美桑内都行。
+  EXP: RobotDance{"dance": "egyptian_shake"}
+  qf-adj ✗ forbidden_tool []
+
+[v2_241] cat=relation nn=0.24 sig_seen=0 unseen=[]
+  Q: 第一次见这大场面，你给我来个边跳机械舞边退后一步。
+  EXP: RobotDance{"dance": "popping"} | HumanAction{"action": "walk", "parameters": {"step": 1, "x": -0.6, "y": 0, "yaw": 0}}
+  0.6B ✗ tool_sequence_mismatch []: HumanAction{"action": "walk", "parameters": {"x": -0.6, "y": 0, "yaw": 0, "step": 1}}
+  270M ✗ parameter_mismatch []: RobotDance{"dance": "one_and_only_dance"} | HumanAction{"action": "walk", "parameters": {"x": -0.6, "y": 0, "yaw": 0, "step": 1}}
+  qf-adj ✓
+
+######## challenge_v3  n=105 fail_any=43
+
+[v3_001] cat=colloquial_paraphrase nn=0.05 sig_seen=148 unseen=[]
+  Q: 冲镜头举起双手比个爱心，举高高那种。
+  EXP: RobotGesture{"gesture": "hand_heart"}
+  270M ✗ forbidden_tool []: RobotGesture{"gesture": "hand_heart"} | HumanAction{"action": "stand_up"}
+  qf-adj ✓
+
+[v3_005] cat=colloquial_paraphrase nn=0.10 sig_seen=362 unseen=[]
+  Q: 朝左手边横着蹭两步。
+  EXP: HumanAction{"action": "walk", "parameters": {"step": 2, "x": 0, "y": 0.6, "yaw": 0}}
+  270M ✗ passed ['step 1!=2']: HumanAction{"action": "walk", "parameters": {"x": 0, "y": 1, "yaw": 0, "step": 1}}
+  qf-adj ✓
+
+[v3_006] cat=colloquial_paraphrase nn=0.20 sig_seen=166 unseen=[]
+  Q: 给客人指个道，做个“里边请”的手势。
+  EXP: RobotGesture{"gesture": "this_way_please"}
+  270M ✗ tool_sequence_mismatch []: reply
+  qf-adj ✓
+
+[v3_007] cat=colloquial_paraphrase nn=0.25 sig_seen=173 unseen=[]
+  Q: 跟这位小朋友对个掌。
+  EXP: RobotGesture{"gesture": "high_five"}
+  0.6B ✗ parameter_mismatch []: RobotGesture{"gesture": "clap"}
+  270M ✗ parameter_mismatch []: RobotGesture{"gesture": "clap"}
+  qf-adj ✓
+
+[v3_009] cat=colloquial_paraphrase nn=0.09 sig_seen=127 unseen=[]
+  Q: 来段拜财神的那个舞，讨个好彩头。
+  EXP: RobotDance{"dance": "smooth_sailing_and_prosperity"}
+  0.6B ✗ tool_sequence_mismatch []: reply
+  270M ✗ forbidden_tool []: reply | RobotDance{"dance": "warm_up_dance"} | RobotDance{"dance": "warm_up_dance"} | RobotDance{"dance": "warm_up_dance"} | RobotDance{"dance": "warm_up_dance"} | RobotDance{"dance": "warm_up_dance"} | RobotDance{"dance": "warm_up_dance"} | RobotDance{"dance": "warm_up_dance"} | RobotDance{"dance": "warm_up_dance"}
+  qf-adj ✓
+
+[v3_010] cat=colloquial_paraphrase nn=0.18 sig_seen=525 unseen=[]
+  Q: 原地顺时针转个九十度。
+  EXP: HumanAction{"action": "walk", "parameters": {"degree": 90, "step": 1, "x": 0, "y": 0, "yaw": -1}}
+  0.6B ✗ parameter_mismatch []: HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 90, "step": 1}}
+  270M ✗ parameter_mismatch []: HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 90, "step": 1}}
+  qf-adj ✗ parameter_mismatch []
+
+[v3_011] cat=colloquial_paraphrase nn=0.00 sig_seen=531 unseen=[]
+  Q: 逆时针转半圈。
+  EXP: HumanAction{"action": "walk", "parameters": {"degree": 180, "step": 1, "x": 0, "y": 0, "yaw": 1}}
+  270M ✗ passed ['degree 360!=180']: HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 360, "step": 1}}
+  qf-adj ✗ parameter_mismatch []
+
+[v3_027] cat=asr_noise nn=0.50 sig_seen=0 unseen=[]
+  Q: 查查北京明天天气怎么样然后跳个胜利之舞
+  EXP: get_weather{"city": "北京", "query_type": "24h"} | RobotDance{"dance": "victory_dance"}
+  qf-adj ✗ passed ['qt 7d!=24h']
+
+[v3_028] cat=asr_noise nn=0.80 sig_seen=3256 unseen=[]
+  Q: 跳个机戒舞
+  EXP: reply
+  qf-adj ✗ forbidden_tool []
+
+[v3_032] cat=tool_boundary nn=0.21 sig_seen=959 unseen=[]
+  Q: 你一次充满电能跑多久？
+  EXP: rag_query{"query": "充满电能跑多久"}
+  qf-adj ✗ forbidden_tool []
+
+[v3_034] cat=tool_boundary nn=0.07 sig_seen=1304 unseen=[]
+  Q: 我表妹在温哥华，她那边这会儿几点钟？
+  EXP: web_search{"query": "温哥华现在几点"}
+  qf-adj ✗ forbidden_tool []
+
+[v3_036] cat=tool_boundary nn=0.08 sig_seen=3256 unseen=[]
+  Q: 珠穆朗玛峰有多高？
+  EXP: reply
+  qf-adj ✗ forbidden_tool []
+
+[v3_038] cat=tool_boundary nn=0.27 sig_seen=959 unseen=[]
+  Q: TRON1 坏了该去哪儿修？
+  EXP: rag_query{"query": "TRON1 坏了去哪儿修"}
+  0.6B ✗ tool_sequence_mismatch []: reply
+  qf-adj ✓
+
+[v3_042] cat=tool_boundary nn=0.20 sig_seen=3256 unseen=[]
+  Q: 一个礼拜有几天？
+  EXP: reply
+  270M ✗ forbidden_tool []: robot_status{"query": "日期"}
+  qf-adj ✓
+
+[v3_046] cat=explicit_routing nn=0.15 sig_seen=1304 unseen=[]
+  Q: 别查你们公司资料，直接上网搜搜网友对 Luna 的评价。
+  EXP: web_search{"query": "网友对 Luna 的评价"}
+  270M ✗ forbidden_tool []: rag_query{"query": "Luna机器人对别人说的话"}
+  qf-adj ✓
+
+[v3_047] cat=explicit_routing nn=0.27 sig_seen=1304 unseen=[]
+  Q: 去网上搜一下逐际动力最近的融资新闻。
+  EXP: web_search{"query": "逐际动力最近融资新闻"}
+  0.6B ✗ forbidden_tool []: rag_query{"query": "逐际动力最近的融资新闻"}
+  270M ✗ forbidden_tool []: rag_query{"query": "逐际动力最近的融资新闻"}
+  qf-adj ✓
+
+[v3_049] cat=explicit_routing nn=0.19 sig_seen=959 unseen=[]
+  Q: 不用联网，就按你们的产品手册说说 TRON1 防不防水。
+  EXP: rag_query{"query": "TRON1 防不防水"}
+  0.6B ✗ tool_sequence_mismatch []: get_weather{"city": "深圳", "query_type": "now"} | rag_query{"query": "TRON1防不防水"}
+  qf-adj ✓
+
+[v3_051] cat=explicit_routing nn=0.25 sig_seen=1304 unseen=[]
+  Q: 上网查一下 Luna 现在在电商平台上卖多少钱。
+  EXP: web_search{"query": "Luna 电商平台售价"}
+  0.6B ✗ forbidden_tool []: rag_query{"query": "Luna现在在电商平台上卖多少钱"}
+  270M ✗ forbidden_tool []: rag_query{"query": "Luna现在在电商平台上卖多少钱"}
+  qf-adj ✓
+
+[v3_053] cat=negation_scope nn=0.60 sig_seen=330 unseen=[]
+  Q: 先点个头，算了不用点头了，直接挥挥手吧。
+  EXP: RobotGesture{"gesture": "wave_greet_bye"}
+  270M ✗ forbidden_tool []: RobotGesture{"gesture": "nod"} | RobotGesture{"gesture": "wave_greet_bye"}
+  qf-adj ✗ forbidden_tool []
+
+[v3_054] cat=negation_scope nn=0.33 sig_seen=91 unseen=[]
+  Q: 坐下，再鞠个躬——鞠躬就免了吧。
+  EXP: HumanAction{"action": "sit_down"}
+  qf-adj ✗ forbidden_tool []
+
+[v3_057] cat=negation_scope nn=0.40 sig_seen=342 unseen=[]
+  Q: 我说的是退后两步，不是往前走。
+  EXP: HumanAction{"action": "walk", "parameters": {"step": 2, "x": -0.6, "y": 0, "yaw": 0}}
+  qf-adj ✗ tool_sequence_mismatch []
+
+[v3_059] cat=negation_scope nn=0.17 sig_seen=132 unseen=[]
+  Q: 鼓掌或者点头，你随便挑一个。
+  EXP: RobotGesture{"gesture": "clap"}
+  qf-adj ✗ tool_sequence_mismatch []
+
+[v3_060] cat=negation_scope nn=0.12 sig_seen=173 unseen=[]
+  Q: 握个手，哦不对，是击个掌。
+  EXP: RobotGesture{"gesture": "high_five"}
+  qf-adj ✗ forbidden_tool []
+
+[v3_061] cat=negation_scope nn=0.17 sig_seen=148 unseen=[]
+  Q: 可别躺下啊，就举起手给大家比个心。
+  EXP: RobotGesture{"gesture": "hand_heart"}
+  0.6B ✗ forbidden_tool []: HumanAction{"action": "stand_up"} | RobotGesture{"gesture": "hand_heart"}
+  270M ✗ parameter_mismatch []: RobotGesture{"gesture": "clap"}
+  qf-adj ✓
+
+[v3_066] cat=non_request nn=0.15 sig_seen=3256 unseen=[]
+  Q: 如果我这次考了满分，你就给我鼓个掌。
+  EXP: reply
+  0.6B ✗ forbidden_tool []: RobotGesture{"gesture": "clap"}
+  qf-adj ✓
+
+[v3_067] cat=non_request nn=0.17 sig_seen=3256 unseen=[]
+  Q: 小王，你去给客人倒杯水，顺便把门口的伞收一下。
+  EXP: reply
+  qf-adj ✗ parser_rejected []
+
+[v3_070] cat=non_request nn=0.27 sig_seen=3256 unseen=[]
+  Q: 唱一首《小星星》给我们听听。
+  EXP: reply
+  qf-adj ✗ forbidden_tool []
+
+[v3_074] cat=non_request nn=0.50 sig_seen=3256 unseen=[]
+  Q: 能不能往前走一步？
+  EXP: reply
+  0.6B ✗ forbidden_tool []: HumanAction{"action": "walk", "parameters": {"x": 0.6, "y": 0, "yaw": 0, "step": 1}}
+  qf-adj ✗ forbidden_tool []
+
+[v3_075] cat=non_request nn=0.22 sig_seen=3256 unseen=[]
+  Q: 给大家敬个礼吧。
+  EXP: reply
+  0.6B ✗ forbidden_tool []: RobotGesture{"gesture": "hand_heart"}
+  qf-adj ✗ forbidden_tool []
+
+[v3_076] cat=non_request nn=0.12 sig_seen=3256 unseen=[]
+  Q: 来段霹雳舞炸个场子。
+  EXP: reply
+  270M ✗ parser_rejected []: RobotDance{"dance": "霹雳舞"}
+  qf-adj ✗ forbidden_tool []
+
+[v3_077] cat=count_order nn=0.12 sig_seen=1 unseen=[]
+  Q: 给三位评委每人鞠一个躬。
+  EXP: RobotGesture{"gesture": "bow"} | RobotGesture{"gesture": "bow"} | RobotGesture{"gesture": "bow"}
+  270M ✗ tool_sequence_mismatch []: RobotGesture{"gesture": "bow"} | RobotGesture{"gesture": "bow"}
+  qf-adj ✗ tool_sequence_mismatch []
+
+[v3_080] cat=count_order nn=0.50 sig_seen=1 unseen=[]
+  Q: 最后再挥手，先坐下。
+  EXP: HumanAction{"action": "sit_down"} | RobotGesture{"gesture": "wave_greet_bye"}
+  0.6B ✗ tool_sequence_mismatch []: RobotGesture{"gesture": "wave_greet_bye"} | HumanAction{"action": "sit_down"}
+  270M ✗ tool_sequence_mismatch []: RobotGesture{"gesture": "wave_greet_bye"} | HumanAction{"action": "sit_down"}
+  qf-adj ✗ tool_sequence_mismatch []
+
+[v3_082] cat=count_order nn=0.00 sig_seen=0 unseen=[]
+  Q: 连着击三次掌。
+  EXP: RobotGesture{"gesture": "high_five"} | RobotGesture{"gesture": "high_five"} | RobotGesture{"gesture": "high_five"}
+  qf-adj ✗ parameter_mismatch []
+
+[v3_084] cat=count_order nn=0.06 sig_seen=0 unseen=[]
+  Q: 左转、右转、再左转，每次都转九十度。
+  EXP: HumanAction{"action": "walk", "parameters": {"degree": 90, "step": 1, "x": 0, "y": 0, "yaw": 1}} | HumanAction{"action": "walk", "parameters": {"degree": 90, "step": 1, "x": 0, "y": 0, "yaw": -1}} | HumanAction{"action": "walk", "parameters": {"degree": 90, "step": 1, "x": 0, "y": 0, "yaw": 1}}
+  0.6B ✗ forbidden_tool []: HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 90, "step": 1}} | HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": -1, "degree": 90, "step": 1}} | HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 90, "step": 1}} | HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 90, "step": 1}}
+  270M ✗ tool_sequence_mismatch []: HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 90, "step": 1}} | HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 90, "step": 1}}
+  qf-adj ✓
+
+[v3_087] cat=long_composition nn=0.17 sig_seen=0 unseen=[]
+  Q: 坐下歇会儿，顺便查查成都未来一周天气，再搜搜成都有啥好吃的，最后告诉我你现在在哪。
+  EXP: HumanAction{"action": "sit_down"} | get_weather{"city": "成都", "query_type": "7d"} | web_search{"query": "成都有啥好吃的"} | robot_status{"query": "位置"}
+  270M ✗ tool_sequence_mismatch []: HumanAction{"action": "sit_down"} | get_weather{"city": "成都", "query_type": "7d"} | robot_status{"query": "位置"}
+  qf-adj ✓
+
+[v3_088] cat=long_composition nn=0.12 sig_seen=0 unseen=[]
+  Q: 跳个 Gentleman，然后鞠躬——哦鞠躬不要了，换成鼓掌，再查一下 Oli 有多重。
+  EXP: RobotDance{"dance": "gentleman"} | RobotGesture{"gesture": "clap"} | rag_query{"query": "Oli 有多重"}
+  0.6B ✗ tool_sequence_mismatch []: RobotDance{"dance": "gentleman"} | rag_query{"query": "Oli有多重"}
+  270M ✗ forbidden_tool []: RobotDance{"dance": "gentleman"} | RobotGesture{"gesture": "bow"} | RobotGesture{"gesture": "clap"} | rag_query{"query": "Oli 有多重"}
+  qf-adj ✗ forbidden_tool []
+
+[v3_089] cat=long_composition nn=0.20 sig_seen=0 unseen=[]
+  Q: 小李你去把灯关了；你呢，往左转九十度，再用右手侧比个心。
+  EXP: reply | HumanAction{"action": "walk", "parameters": {"degree": 90, "step": 1, "x": 0, "y": 0, "yaw": 1}} | RobotGesture{"gesture": "right_hand_side_heart"}
+  qf-adj ✗ parser_rejected []
+
+[v3_090] cat=long_composition nn=0.30 sig_seen=0 unseen=[]
+  Q: Stand up, wave to everyone, tell me the time, look up today's Premier League results, then do the victory dance and take a bow.
+  EXP: HumanAction{"action": "stand_up"} | RobotGesture{"gesture": "wave_greet_bye"} | robot_status{"query": "时间"} | web_search{"query": "today's Premier League results"} | RobotDance{"dance": "victory_dance"} | RobotGesture{"gesture": "bow"}
+  qf-adj ✗ parser_rejected []
+
+[v3_091] cat=long_composition nn=0.13 sig_seen=0 unseen=[]
+  Q: 先给大家鼓鼓掌，再往右平移两步，查下北京明天天气，搜搜明天北京有什么演唱会，然后来个蹦蹦，最后挥手道别。
+  EXP: RobotGesture{"gesture": "clap"} | HumanAction{"action": "walk", "parameters": {"step": 2, "x": 0, "y": -0.6, "yaw": 0}} | get_weather{"city": "北京", "query_type": "24h"} | web_search{"query": "明天北京演唱会"} | RobotDance{"dance": "lets_bounce"} | RobotGesture{"gesture": "wave_greet_bye"}
+  qf-adj ✗ passed ['qt 7d!=24h']
+
+[v3_093] cat=long_composition nn=0.25 sig_seen=0 unseen=[]
+  Q: 鞠躬、点头、鼓掌、击掌、握手、举手比心，一样来一次。
+  EXP: RobotGesture{"gesture": "bow"} | RobotGesture{"gesture": "nod"} | RobotGesture{"gesture": "clap"} | RobotGesture{"gesture": "high_five"} | RobotGesture{"gesture": "shake_hands"} | RobotGesture{"gesture": "hand_heart"}
+  270M ✗ tool_sequence_mismatch []: RobotGesture{"gesture": "bow"} | RobotGesture{"gesture": "clap"} | RobotGesture{"gesture": "high_five"} | RobotGesture{"gesture": "shake_hands"} | reply
+  qf-adj ✓
+
+[v3_099] cat=english nn=0.58 sig_seen=206 unseen=[]
+  Q: Is it gonna rain in London tonight?
+  EXP: get_weather{"city": "London", "query_type": "24h"}
+  qf-adj ✗ forbidden_tool []
+
+[v3_102] cat=english nn=0.42 sig_seen=3256 unseen=[]
+  Q: Don't dance, just give me a thumbs up.
+  EXP: reply
+  0.6B ✗ forbidden_tool []: reply | RobotGesture{"gesture": "high_five"}
+  qf-adj ✓
+
+[v3_104] cat=english nn=0.65 sig_seen=3 unseen=[]
+  Q: Scoot two steps to the left, then blow a few kisses.
+  EXP: HumanAction{"action": "walk", "parameters": {"step": 2, "x": 0, "y": 0.6, "yaw": 0}} | RobotGesture{"gesture": "blow_kisses_multi"}
+  270M ✗ parser_rejected []: RobotDance{"dance": "scoot2steps"} | RobotGesture{"gesture": "blow_kisses_multi"}
+  qf-adj ✓
+
+######## probe_v1  n=107 fail_any=36
+
+[f1_02] cat=style nn=0.08 sig_seen=164 unseen=[]
+  Q: 来来来，冲在座各位老师深深地弯个腰，表示一下敬意。
+  EXP: RobotGesture{"gesture": "bow"}
+  270M ✗ tool_sequence_mismatch []: reply
+  qf-adj ✓
+
+[f1_06] cat=param nn=0.20 sig_seen=1 unseen=[]
+  Q: 鞠躬，来个三连。
+  EXP: RobotGesture{"gesture": "bow"} | RobotGesture{"gesture": "bow"} | RobotGesture{"gesture": "bow"}
+  0.6B ✗ forbidden_tool []: RobotGesture{"gesture": "bow"} | RobotDance{"dance": "warm_up_dance"}
+  270M ✗ forbidden_tool []: RobotGesture{"gesture": "bow"} | RobotDance{"dance": "warm_up_dance"} | RobotDance{"dance": "warm_up_dance"} | RobotDance{"dance": "warm_up_dance"}
+  qf-adj ✗ forbidden_tool []
+
+[f1_07] cat=neg nn=0.33 sig_seen=3256 unseen=[]
+  Q: 鞠躬这个礼节在日本是什么意思？
+  EXP: reply
+  qf-adj ✗ forbidden_tool []
+
+[f1_08] cat=neg nn=0.15 sig_seen=3256 unseen=[]
+  Q: 等主持人讲完话，你再鞠躬。
+  EXP: reply
+  270M ✗ forbidden_tool []: RobotGesture{"gesture": "bow"}
+  qf-adj ✓
+
+[f2_03] cat=style nn=0.30 sig_seen=385 unseen=[]
+  Q: Scoot up three paces.
+  EXP: HumanAction{"action": "walk", "parameters": {"step": 3, "x": 0.6, "y": 0, "yaw": 0}}
+  270M ✗ parser_rejected []: RobotDance{"dance": "scoot_up_three_paces"}
+  qf-adj ✗ parameter_mismatch []
+
+[f2_10] cat=struct nn=1.00 sig_seen=385 unseen=[]
+  Q: 前进，三步。
+  EXP: HumanAction{"action": "walk", "parameters": {"step": 3, "x": 0.6, "y": 0, "yaw": 0}}
+  270M ✗ forbidden_tool []: HumanAction{"action": "walk", "parameters": {"x": 0.6, "y": 0, "yaw": 0, "step": 1}} | HumanAction{"action": "walk", "parameters": {"x": 0.6, "y": 0, "yaw": 0, "step": 3}}
+  qf-adj ✓
+
+[f3_02] cat=style nn=0.11 sig_seen=531 unseen=[]
+  Q: 往左手边拧过去九十度。
+  EXP: HumanAction{"action": "walk", "parameters": {"degree": 90, "step": 1, "x": 0, "y": 0, "yaw": 1}}
+  270M ✗ parser_rejected []: HumanAction{"action": "walk", "parameters": {"x": 0, "y": 1, "yaw": 0, "step": 90}}
+  qf-adj ✓
+
+[f3_04] cat=param nn=0.40 sig_seen=525 unseen=['degree=200']
+  Q: 向右转两百度。
+  EXP: HumanAction{"action": "walk", "parameters": {"degree": 200, "step": 1, "x": 0, "y": 0, "yaw": -1}}
+  0.6B ✗ passed ['degree 180!=200']: HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": -1, "degree": 180, "step": 1}}
+  270M ✗ passed ['degree 21!=200']: HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": -1, "degree": 21, "step": 1}}
+  qf-adj ✓
+
+[f3_05] cat=param nn=0.33 sig_seen=531 unseen=['degree=720']
+  Q: 原地向左转两圈。
+  EXP: HumanAction{"action": "walk", "parameters": {"degree": 720, "step": 1, "x": 0, "y": 0, "yaw": 1}}
+  0.6B ✗ passed ['degree 360!=720']: HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 360, "step": 1}}
+  270M ✗ passed ['degree 24!=720']: HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 24, "step": 1}}
+  qf-adj ✗ parser_rejected []
+
+[f4_02] cat=style nn=0.11 sig_seen=331 unseen=[]
+  Q: 学螃蟹那样，往右横着走四步。
+  EXP: HumanAction{"action": "walk", "parameters": {"step": 4, "x": 0, "y": -0.6, "yaw": 0}}
+  270M ✗ tool_sequence_mismatch []: reply
+  qf-adj ✓
+
+[f4_04] cat=param nn=0.70 sig_seen=362 unseen=[]
+  Q: Sidestep to the left five steps.
+  EXP: HumanAction{"action": "walk", "parameters": {"step": 5, "x": 0, "y": 0.6, "yaw": 0}}
+  0.6B ✗ forbidden_tool []: HumanAction{"action": "sit_down"} | HumanAction{"action": "walk", "parameters": {"x": 0, "y": 1, "yaw": 0, "step": 5}}
+  qf-adj ✓
+
+[f5_05] cat=style nn=0.32 sig_seen=91 unseen=[]
+  Q: Have a seat.
+  EXP: HumanAction{"action": "sit_down"}
+  270M ✗ forbidden_tool []: RobotGesture{"gesture": "curtain_bow"}
+  qf-adj ✓
+
+[f5_06] cat=style nn=0.30 sig_seen=91 unseen=[]
+  Q: Take a load off for a minute.
+  EXP: HumanAction{"action": "sit_down"}
+  0.6B ✗ parser_rejected []: HumanAction{"action": "rest"}
+  270M ✗ parameter_mismatch []: HumanAction{"action": "walk", "parameters": {"x": 0, "y": 1, "yaw": 0, "step": 1}}
+  qf-adj ✗ tool_sequence_mismatch []
+
+[f5_07] cat=form nn=0.08 sig_seen=91 unseen=[]
+  Q: 你干嘛还站着，坐呀。
+  EXP: HumanAction{"action": "sit_down"}
+  270M ✗ forbidden_tool []: robot_status{"query": "当前动作"} | HumanAction{"action": "sit_down"}
+  qf-adj ✓
+
+[f5_08] cat=neg nn=0.00 sig_seen=3256 unseen=[]
+  Q: 小明，你过来这边坐下。
+  EXP: reply
+  0.6B ✗ forbidden_tool []: HumanAction{"action": "sit_down"}
+  270M ✗ forbidden_tool []: HumanAction{"action": "sit_down"}
+  qf-adj ✗ forbidden_tool []
+
+[f6_09] cat=param nn=0.50 sig_seen=161 unseen=[]
+  Q: 埃及摇摆来一个。
+  EXP: RobotDance{"dance": "egyptian_shake"}
+  qf-adj ✗ parameter_mismatch []
+
+[f7_07] cat=param nn=0.18 sig_seen=152 unseen=[]
+  Q: 跟这位先生握个手。
+  EXP: RobotGesture{"gesture": "shake_hands"}
+  0.6B ✗ tool_sequence_mismatch []: reply
+  qf-adj ✓
+
+[f8_02] cat=param nn=0.38 sig_seen=265 unseen=['city=喀什']
+  Q: 喀什现在多少度？
+  EXP: get_weather{"city": "喀什", "query_type": "now"}
+  0.6B ✗ tool_sequence_mismatch []: reply
+  qf-adj ✓
+
+[f8_03] cat=param nn=0.25 sig_seen=206 unseen=['city=雷克雅未克']
+  Q: 雷克雅未克明天会下雪吗？
+  EXP: get_weather{"city": "雷克雅未克", "query_type": "24h"}
+  0.6B ✗ passed ['city 深圳!=雷克雅未克']: get_weather{"city": "深圳", "query_type": "24h"}
+  270M ✗ passed ['city 深圳!=雷克雅未克']: get_weather{"city": "深圳", "query_type": "24h"}
+  qf-adj ✗ passed ['qt 7d!=24h']
+
+[f8_04] cat=param nn=0.20 sig_seen=228 unseen=['city=漠河']
+  Q: 未来一周漠河冷不冷？
+  EXP: get_weather{"city": "漠河", "query_type": "7d"}
+  0.6B ✗ passed ['city 深圳!=漠河']: get_weather{"city": "深圳", "query_type": "7d"}
+  270M ✗ passed ['qt now!=7d']: get_weather{"city": "漠河", "query_type": "now"}
+  qf-adj ✓
+
+[f8_06] cat=param nn=0.27 sig_seen=238 unseen=['city=阿勒泰']
+  Q: 查下阿勒泰现在的天气和接下来七天的。
+  EXP: get_weather{"city": "阿勒泰", "query_type": "now_7d"}
+  qf-adj ✗ forbidden_tool []
+
+[f8_08] cat=style nn=0.14 sig_seen=265 unseen=[]
+  Q: 瞅瞅上海外头这会儿啥天儿。
+  EXP: get_weather{"city": "上海", "query_type": "now"}
+  0.6B ✗ forbidden_tool []: robot_status{"query": "日期"}
+  270M ✗ parser_rejected []: get_weather{"city": "上海外头这会儿"}
+  qf-adj ✓
+
+[f8_09] cat=form nn=0.14 sig_seen=206 unseen=[]
+  Q: 我在纠结杭州明天穿啥，看看天气呗。
+  EXP: get_weather{"city": "杭州", "query_type": "24h"}
+  qf-adj ✗ passed ['qt now_7d!=24h']
+
+[f9_03] cat=style nn=0.41 sig_seen=121 unseen=[]
+  Q: How much juice have you got left?
+  EXP: robot_status{"query": "电量"}
+  270M ✗ parser_rejected []: robot_status{"query": "状态"}
+  qf-adj ✓
+
+[f10_02] cat=param nn=0.03 sig_seen=1304 unseen=[]
+  Q: 今年诺贝尔文学奖给了谁？
+  EXP: web_search{"query": "x"}
+  0.6B ✗ tool_sequence_mismatch []: reply
+  270M ✗ tool_sequence_mismatch []: reply | reply | reply | reply | reply | reply | reply | reply | reply
+  qf-adj ✓
+
+[f10_09] cat=neg nn=0.11 sig_seen=3256 unseen=[]
+  Q: 你说我该不该辞职？
+  EXP: reply
+  0.6B ✗ forbidden_tool []: web_search{"query": "该不该辞职"}
+  qf-adj ✓
+
+[f11_01] cat=struct nn=0.33 sig_seen=0 unseen=[]
+  Q: 1. 鞠躬
+2. 往前走两步
+3. 查一下北京现在的天气
+  EXP: RobotGesture{"gesture": "bow"} | HumanAction{"action": "walk", "parameters": {"step": 2, "x": 0.6, "y": 0, "yaw": 0}} | get_weather{"city": "北京", "query_type": "now"}
+  0.6B ✗ forbidden_tool []: RobotGesture{"gesture": "bow"} | HumanAction{"action": "walk", "parameters": {"x": 0.6, "y": 0, "yaw": 0, "step": 1}} | HumanAction{"action": "walk", "parameters": {"x": 0.6, "y": 0, "yaw": 0, "step": 1}} | get_weather{"city": "北京", "query_type": "now"}
+  qf-adj ✓
+
+[f11_04] cat=struct nn=0.14 sig_seen=4 unseen=[]
+  Q: 左转右转各九十度。
+  EXP: HumanAction{"action": "walk", "parameters": {"degree": 90, "step": 1, "x": 0, "y": 0, "yaw": 1}} | HumanAction{"action": "walk", "parameters": {"degree": 90, "step": 1, "x": 0, "y": 0, "yaw": -1}}
+  0.6B ✗ parameter_mismatch []: HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 90, "step": 1}} | HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 90, "step": 1}}
+  270M ✗ tool_sequence_mismatch []: HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": -1, "degree": 90, "step": 1}}
+  qf-adj ✓
+
+[f11_06] cat=struct nn=0.06 sig_seen=0 unseen=[]
+  Q: 跳个机械舞，跳完再来一遍。
+  EXP: RobotDance{"dance": "popping"} | RobotDance{"dance": "popping"}
+  0.6B ✗ tool_sequence_mismatch []: RobotDance{"dance": "popping"}
+  270M ✗ tool_sequence_mismatch []: RobotDance{"dance": "popping"}
+  qf-adj ✓
+
+[f11_07] cat=struct nn=0.29 sig_seen=0 unseen=[]
+  Q: 鞠躬、点头、挥手，除了点头都做一下。
+  EXP: RobotGesture{"gesture": "bow"} | RobotGesture{"gesture": "wave_greet_bye"}
+  0.6B ✗ forbidden_tool []: RobotGesture{"gesture": "bow"} | RobotGesture{"gesture": "nod"} | RobotGesture{"gesture": "wave_greet_bye"}
+  270M ✗ tool_sequence_mismatch []: RobotGesture{"gesture": "bow"}
+  qf-adj ✓
+
+[f11_08] cat=struct nn=0.14 sig_seen=284 unseen=[]
+  Q: 你知道吗，我第一次来这个展会，啥也不懂，听说你们公司挺厉害的，那你先给我跳个热场舞吧。
+  EXP: RobotDance{"dance": "warm_up_dance"}
+  qf-adj ✗ forbidden_tool []
+
+[f11_10] cat=struct nn=0.60 sig_seen=1 unseen=[]
+  Q: 👋 打个招呼，然后 💃 跳个APT。
+  EXP: RobotGesture{"gesture": "wave_greet_bye"} | RobotDance{"dance": "apt_dance"}
+  qf-adj ✗ tool_sequence_mismatch []
+
+[f11_14] cat=struct nn=0.21 sig_seen=0 unseen=[]
+  Q: First 鞠躬, then 往右转 sixty degrees, finally check 上海 weather tomorrow.
+  EXP: RobotGesture{"gesture": "bow"} | HumanAction{"action": "walk", "parameters": {"degree": 60, "step": 1, "x": 0, "y": 0, "yaw": -1}} | get_weather{"city": "上海", "query_type": "24h"}
+  270M ✗ parameter_mismatch []: RobotGesture{"gesture": "bow"} | HumanAction{"action": "walk", "parameters": {"x": 0, "y": 0, "yaw": 1, "degree": 60, "step": 1}} | get_weather{"city": "Shanghai", "query_type": "24h"}
+  qf-adj ✓
+
+[f11_15] cat=struct nn=0.35 sig_seen=1 unseen=[]
+  Q: 北京和上海现在的天气都查一下。
+  EXP: get_weather{"city": "北京", "query_type": "now"} | get_weather{"city": "上海", "query_type": "now"}
+  0.6B ✗ passed ['qt now_7d!=now', 'city 深圳!=上海', 'qt now_7d!=now']: get_weather{"city": "北京", "query_type": "now_7d"} | get_weather{"city": "深圳", "query_type": "now_7d"}
+  270M ✗ passed ['qt now_7d!=now']: get_weather{"city": "北京", "query_type": "now_7d"} | get_weather{"city": "上海", "query_type": "now"}
+  qf-adj ✓
+
+[f11_16] cat=struct nn=0.17 sig_seen=0 unseen=[]
+  Q: 去前面三步那儿，到了之后坐下。
+  EXP: HumanAction{"action": "walk", "parameters": {"step": 3, "x": 0.6, "y": 0, "yaw": 0}} | HumanAction{"action": "sit_down"}
+  270M ✗ forbidden_tool []: RobotDance{"dance": "warm_up_dance"} | RobotDance{"dance": "warm_up_dance"} | RobotDance{"dance": "warm_up_dance"} | HumanAction{"action": "sit_down"}
+  qf-adj ✗ parser_rejected []
+
+[f11_17] cat=struct nn=0.25 sig_seen=1 unseen=[]
+  Q: 坐下之前，先往后退两步。
+  EXP: HumanAction{"action": "walk", "parameters": {"step": 2, "x": -0.6, "y": 0, "yaw": 0}} | HumanAction{"action": "sit_down"}
+  qf-adj ✗ parser_rejected []

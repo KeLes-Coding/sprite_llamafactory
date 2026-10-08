@@ -189,3 +189,4 @@ data/*.zip
 *.pid
 llamafactory_runs/**/swanlab/
 planner_val/.sdd/
+planner_data/runs/

@@ -1,0 +1,347 @@
+{
+  "schema_version": "action-sequence-contract/v1",
+  "source": {
+    "kind": "curated",
+    "identity": {
+      "agent_commit": "56766b6",
+      "description_revision": "v2"
+    }
+  },
+  "system_prompt": {
+    "id": "action-sequence-system/v1",
+    "content": "你是机器人的意图序列规划子代理。把用户的一句多意图指令拆成有序 JSON 任务数组。\n\nuser message 是一个包含 `tools` 和 `instruction` 的 JSON object。`instruction` 可以使用任意语言；`tools` 是本次可用工具的唯一事实来源。\n\n严格要求：\n1. 一个独立意图对应一个 task，严格保持原话顺序，不合并、不遗漏、不补充；重复意图也必须分别保留。\n2. 每个 task 的 `instruction` 使用与用户原话相同的语言，简洁且能独立表达当前子意图。\n3. 无需工具即可回答的普通问题、能力询问和直接口头内容请求使用 `reply`：`{\"kind\":\"reply\",\"instruction\":<子意图>}`。\n4. 查询或执行意图只能选择 `tools` 中明确支持该意图的工具，原样复制其 `kind` 和 `name`，并输出 `{\"kind\":<query或action>,\"instruction\":<子意图>,\"name\":<工具名>,\"arguments\":{<参数>}}`。\n5. `arguments` 必须精确符合所选工具的 `arguments_schema`，不得遗漏必填字段、增加额外字段或编造 enum 值。\n6. 不得调用 `tools` 中不存在的工具；若没有工具支持某个执行或查询意图，使用 `reply` 表达无法完成该请求。\n7. 输出前检查 task 数量、顺序、kind、name、arguments 和 JSON 结构。\n8. 只输出 JSON 数组，不输出解释、前后缀或代码围栏。"
+  },
+  "tools": [
+    {
+      "name": "HumanAction",
+      "kind": "action",
+      "description": "执行站立、坐下、躺下、平移或转向；仅询问是否具备动作能力时不要调用。",
+      "arguments_schema": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "stand_up",
+                  "sit_down",
+                  "lie_down"
+                ]
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "action": {
+                "const": "walk"
+              },
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1,
+                    "description": "正数前进，负数后退。"
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1,
+                    "description": "正数左移，负数右移。"
+                  },
+                  "yaw": {
+                    "const": 0
+                  },
+                  "step": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 30,
+                    "description": "移动步数；用户明确给出时保留该数值，否则为 1。"
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "yaw",
+                  "step"
+                ],
+                "additionalProperties": false,
+                "anyOf": [
+                  {
+                    "properties": {
+                      "x": {
+                        "not": {
+                          "const": 0
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "properties": {
+                      "y": {
+                        "not": {
+                          "const": 0
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "required": [
+              "action",
+              "parameters"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "action": {
+                "const": "walk"
+              },
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "const": 0
+                  },
+                  "y": {
+                    "const": 0
+                  },
+                  "yaw": {
+                    "type": "number",
+                    "enum": [
+                      -1,
+                      1
+                    ],
+                    "description": "1 表示左转，-1 表示右转。"
+                  },
+                  "step": {
+                    "const": 1,
+                    "description": "移动步数；用户明确给出时保留该数值，否则为 1。"
+                  },
+                  "degree": {
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "maximum": 1080,
+                    "description": "用户要求的转向角度（度），不得替换成常见角度。"
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "yaw",
+                  "step",
+                  "degree"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "action",
+              "parameters"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "RobotGesture",
+      "kind": "action",
+      "description": "立即执行指定预设手势；能力询问、讨论、识别或描述手势时不要调用。",
+      "arguments_schema": {
+        "type": "object",
+        "properties": {
+          "gesture": {
+            "type": "string",
+            "enum": [
+              "blow_kisses_multi",
+              "bow",
+              "clap",
+              "curtain_bow",
+              "hand_heart",
+              "high_five",
+              "left_hand_side_heart",
+              "nod",
+              "right_hand_side_heart",
+              "shake_hands",
+              "shake_head",
+              "this_way_please",
+              "wave_greet_bye"
+            ],
+            "description": "可选值与含义：blow_kisses_multi: 连续飞吻；bow: 鞠躬；clap: 鼓掌；curtain_bow: 谢幕；hand_heart: 上抬手比心；high_five: 击掌；left_hand_side_heart: 左手侧比心；nod: 点头；right_hand_side_heart: 右手侧比心；shake_hands: 握手；shake_head: 摇头；this_way_please: 请这边走的指引手势；wave_greet_bye: 挥手打招呼或道别。"
+          },
+          "repeat": {
+            "const": 1,
+            "description": "可省略；指定时只能是 1，表示执行一次，不产生额外任务。"
+          }
+        },
+        "required": [
+          "gesture"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "RobotDance",
+      "kind": "action",
+      "description": "立即执行指定预设舞蹈；询问舞蹈能力、偏好、风格或知识时不要调用。",
+      "arguments_schema": {
+        "type": "object",
+        "properties": {
+          "dance": {
+            "type": "string",
+            "enum": [
+              "abracadabr_dance",
+              "all_things_grow_dance",
+              "ambition_dance",
+              "apt_dance",
+              "egyptian_shake",
+              "gee",
+              "gentleman",
+              "go_cortis_dance",
+              "idol_dance_1",
+              "idol_dance_2",
+              "karla_ok",
+              "lets_bounce",
+              "luv_each_other",
+              "one_and_only_dance",
+              "one_spot_dance",
+              "popping",
+              "power_up_dance",
+              "pulp_fiction_dance",
+              "smooth_sailing_and_prosperity",
+              "solo_shake",
+              "swag_dance",
+              "sweep_kick_dance",
+              "victory_dance",
+              "warm_up_dance",
+              "whatever"
+            ],
+            "description": "可选值与含义：abracadabr_dance: 扭胯舞；all_things_grow_dance: 万物生；ambition_dance: 大展宏图；apt_dance: APT 舞；egyptian_shake: 埃及摇摆；gee: Gee 同名舞；gentleman: Gentleman 同名舞；go_cortis_dance: Go Cortis 舞；idol_dance_1: 女团舞 1；idol_dance_2: 女团舞 2；karla_ok: 卡啦永远 OK；lets_bounce: 来个蹦蹦；luv_each_other: 相亲相爱；one_and_only_dance: 热烈；one_spot_dance: 美美桑内；popping: 机械舞；power_up_dance: 助力舞；pulp_fiction_dance: 低俗小说；smooth_sailing_and_prosperity: 顺风顺水顺财神；solo_shake: 孤身摇；swag_dance: 展臂舞；sweep_kick_dance: 扫腿舞；victory_dance: 胜利之舞；warm_up_dance: 热场舞；whatever: 管他什么音乐。"
+          },
+          "repeat": {
+            "const": 1,
+            "description": "可省略；指定时只能是 1，表示执行一次，不产生额外任务。"
+          }
+        },
+        "required": [
+          "dance"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "get_weather",
+      "kind": "query",
+      "description": "查询指定城市的当前天气或天气预报；城市活动、景点、交通和新闻不属于天气。",
+      "arguments_schema": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string",
+            "minLength": 1,
+            "description": "用户要求查询的城市名；从本次请求提取，不用其他样本的城市代替；未提及城市时用深圳。"
+          },
+          "query_type": {
+            "type": "string",
+            "enum": [
+              "now",
+              "24h",
+              "7d",
+              "now_7d"
+            ],
+            "description": "可选值与含义：now: 当前天气；24h: 未来 24 小时的逐小时天气（今晚、明天属于此项）；7d: 未来七天的天气预报；now_7d: 当前天气和未来七天的天气预报。"
+          }
+        },
+        "required": [
+          "city",
+          "query_type"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "web_search",
+      "kind": "query",
+      "description": "查询新闻、价格、地点和近期事件等当前公共信息；天气、机器人状态和公司内部知识使用专用工具。",
+      "arguments_schema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "保留当前用户子意图的检索主题，不套用其他请求的固定查询。"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "rag_query",
+      "kind": "query",
+      "description": "查询逐际动力、机器人产品、内部技术文档、购买和售后等私有知识；公共实时信息不属于私有知识查询。query 必须保留当前子意图原话。",
+      "arguments_schema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "保留当前用户子意图的检索主题，不套用其他请求的固定查询。"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "robot_status",
+      "kind": "query",
+      "description": "查询机器人当前的电量、日期、时间、位置、型号或当前动作；公共新闻、价格和天气不属于机器人状态。",
+      "arguments_schema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "enum": [
+              "电量",
+              "日期",
+              "时间",
+              "位置",
+              "型号",
+              "当前动作"
+            ],
+            "description": "可选值与含义：电量: 电量；日期: 日期；时间: 时间；位置: 位置；型号: 型号；当前动作: 当前动作。"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ],
+  "display_order": [
+    "HumanAction",
+    "RobotGesture",
+    "RobotDance",
+    "get_weather",
+    "web_search",
+    "rag_query",
+    "robot_status"
+  ]
+}

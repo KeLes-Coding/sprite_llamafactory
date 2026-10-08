@@ -1,0 +1,55 @@
+### model
+model_name_or_path: models/Qwen3-0.6B
+enable_liger_kernel: true
+
+### method
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_rank: 32
+lora_alpha: 64
+lora_dropout: 0.05
+lora_target: all
+
+### dataset
+dataset_dir: data/v3-3-0-3b82a66e
+dataset: action_sequence_sft_train
+eval_dataset: action_sequence_sft_validation_2k
+template: qwen3_nothink
+cutoff_len: 4096
+preprocessing_num_workers: 16
+dataloader_num_workers: 4
+
+### output
+output_dir: saves/qwen3-0.6b/lora/sft_v330
+logging_steps: 10
+save_strategy: steps
+save_steps: 250
+save_total_limit: 3
+plot_loss: true
+overwrite_output_dir: false
+save_only_model: false
+report_to: none
+
+### training
+per_device_train_batch_size: 16
+gradient_accumulation_steps: 1
+learning_rate: 2.0e-4
+num_train_epochs: 2.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.05
+bf16: true
+ddp_timeout: 180000000
+resume_from_checkpoint: null
+
+### evaluation
+per_device_eval_batch_size: 8
+eval_strategy: steps
+eval_steps: 250
+
+### SwanLab (api key 通过环境变量 SWANLAB_API_KEY 提供，不写入文件)
+use_swanlab: true
+swanlab_project: plan_sft
+swanlab_run_name: qwen3-0.6b-lora-sft-v330-bs16-liger
+swanlab_mode: cloud
+swanlab_logdir: llamafactory_runs/qwen3-0.6b-lora-sft_261005_v330/swanlab

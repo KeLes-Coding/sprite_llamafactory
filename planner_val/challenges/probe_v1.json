@@ -1,0 +1,2899 @@
+{
+ "schema_version": 1,
+ "name": "probe_v1",
+ "cases": [
+  {
+   "case_id": "f1_01",
+   "category": "seed",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "给大家鞠个躬吧。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "bow",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "bow"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f1"
+   ]
+  },
+  {
+   "case_id": "f1_02",
+   "category": "style",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "来来来，冲在座各位老师深深地弯个腰，表示一下敬意。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "bow",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "bow"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f1"
+   ]
+  },
+  {
+   "case_id": "f1_03",
+   "category": "style",
+   "language": "en",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "Take a bow for the folks here, would ya.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "bow",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "bow"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f1"
+   ]
+  },
+  {
+   "case_id": "f1_04",
+   "category": "form",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "客人都到了，还不快鞠个躬？",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "bow",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "bow"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f1"
+   ]
+  },
+  {
+   "case_id": "f1_05",
+   "category": "form",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "我想看你给大家鞠一躬。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "bow",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "bow"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f1"
+   ]
+  },
+  {
+   "case_id": "f1_06",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "鞠躬，来个三连。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "bow",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "bow"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "bow",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "bow"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "bow",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "bow"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f1"
+   ]
+  },
+  {
+   "case_id": "f1_07",
+   "category": "neg",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "negative",
+   "query": "鞠躬这个礼节在日本是什么意思？",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回复"
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f1"
+   ]
+  },
+  {
+   "case_id": "f1_08",
+   "category": "neg",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "negative",
+   "query": "等主持人讲完话，你再鞠躬。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回复"
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f1"
+   ]
+  },
+  {
+   "case_id": "f2_01",
+   "category": "seed",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "往前走三步。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "W:fwd:3",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 3
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f2"
+   ]
+  },
+  {
+   "case_id": "f2_02",
+   "category": "style",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "劳驾您老往前头挪三步呗，别挡着后面的人。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "W:fwd:3",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 3
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f2"
+   ]
+  },
+  {
+   "case_id": "f2_03",
+   "category": "style",
+   "language": "en",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "Scoot up three paces.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "W:fwd:3",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 3
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f2"
+   ]
+  },
+  {
+   "case_id": "f2_04",
+   "category": "form",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "我想让你往前走三步。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "W:fwd:3",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 3
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f2"
+   ]
+  },
+  {
+   "case_id": "f2_05",
+   "category": "form",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "你往前走三步好不好？",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "W:fwd:3",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 3
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f2"
+   ]
+  },
+  {
+   "case_id": "f2_06",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "往前走十七步。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "W:fwd:17",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 17
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f2"
+   ]
+  },
+  {
+   "case_id": "f2_07",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "向前走 12 步。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "W:fwd:12",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 12
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f2"
+   ]
+  },
+  {
+   "case_id": "f2_08",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "往前挪个二十五步。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "W:fwd:25",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 25
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f2"
+   ]
+  },
+  {
+   "case_id": "f2_09",
+   "category": "param",
+   "language": "en",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "Walk forward eight steps.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "W:fwd:8",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 8
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f2"
+   ]
+  },
+  {
+   "case_id": "f2_10",
+   "category": "struct",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "前进，三步。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "W:fwd:3",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 3
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f2"
+   ]
+  },
+  {
+   "case_id": "f3_01",
+   "category": "seed",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "向左转九十度。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "T:L:90",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": 1,
+       "step": 1,
+       "degree": 90
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f3"
+   ]
+  },
+  {
+   "case_id": "f3_02",
+   "category": "style",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "往左手边拧过去九十度。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "T:L:90",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": 1,
+       "step": 1,
+       "degree": 90
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f3"
+   ]
+  },
+  {
+   "case_id": "f3_03",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "向左转七十五度。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "T:L:75",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": 1,
+       "step": 1,
+       "degree": 75
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f3"
+   ]
+  },
+  {
+   "case_id": "f3_04",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "向右转两百度。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "T:R:200",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": -1,
+       "step": 1,
+       "degree": 200
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f3"
+   ]
+  },
+  {
+   "case_id": "f3_05",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "原地向左转两圈。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "T:L:720",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": 1,
+       "step": 1,
+       "degree": 720
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f3"
+   ]
+  },
+  {
+   "case_id": "f3_06",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "向右转一百一十度。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "T:R:110",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": -1,
+       "step": 1,
+       "degree": 110
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f3"
+   ]
+  },
+  {
+   "case_id": "f3_07",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "往右转个 40 度。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "T:R:40",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": -1,
+       "step": 1,
+       "degree": 40
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f3"
+   ]
+  },
+  {
+   "case_id": "f3_08",
+   "category": "param",
+   "language": "en",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "Turn left 270 degrees.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "T:L:270",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": 1,
+       "step": 1,
+       "degree": 270
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f3"
+   ]
+  },
+  {
+   "case_id": "f3_09",
+   "category": "param",
+   "language": "en",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "Rotate right by 100 degrees.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "T:R:100",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": -1,
+       "step": 1,
+       "degree": 100
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f3"
+   ]
+  },
+  {
+   "case_id": "f3_10",
+   "category": "form",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "你朝左转九十度试试。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "T:L:90",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": 1,
+       "step": 1,
+       "degree": 90
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f3"
+   ]
+  },
+  {
+   "case_id": "f4_01",
+   "category": "seed",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "往右边平移两步。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "W:right:2",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": -0.6,
+       "yaw": 0,
+       "step": 2
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f4"
+   ]
+  },
+  {
+   "case_id": "f4_02",
+   "category": "style",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "学螃蟹那样，往右横着走四步。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "W:right:4",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": -0.6,
+       "yaw": 0,
+       "step": 4
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f4"
+   ]
+  },
+  {
+   "case_id": "f4_03",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "往左横移九步。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "W:left:9",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0.6,
+       "yaw": 0,
+       "step": 9
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f4"
+   ]
+  },
+  {
+   "case_id": "f4_04",
+   "category": "param",
+   "language": "en",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "Sidestep to the left five steps.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "W:left:5",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0.6,
+       "yaw": 0,
+       "step": 5
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f4"
+   ]
+  },
+  {
+   "case_id": "f5_01",
+   "category": "seed",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "坐下吧。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "sit_down",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "sit_down"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f5"
+   ]
+  },
+  {
+   "case_id": "f5_02",
+   "category": "style",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "累了吧？一屁股坐下歇会儿。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "sit_down",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "sit_down"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f5"
+   ]
+  },
+  {
+   "case_id": "f5_03",
+   "category": "style",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "躺平吧，摆烂一会儿。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "lie_down",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "lie_down"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f5"
+   ]
+  },
+  {
+   "case_id": "f5_04",
+   "category": "style",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "起立！",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "stand_up",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "stand_up"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f5"
+   ]
+  },
+  {
+   "case_id": "f5_05",
+   "category": "style",
+   "language": "en",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "Have a seat.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "sit_down",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "sit_down"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f5"
+   ]
+  },
+  {
+   "case_id": "f5_06",
+   "category": "style",
+   "language": "en",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "Take a load off for a minute.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "sit_down",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "sit_down"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f5"
+   ]
+  },
+  {
+   "case_id": "f5_07",
+   "category": "form",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "你干嘛还站着，坐呀。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "sit_down",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "sit_down"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f5"
+   ]
+  },
+  {
+   "case_id": "f5_08",
+   "category": "neg",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "negative",
+   "query": "小明，你过来这边坐下。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回复"
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f5"
+   ]
+  },
+  {
+   "case_id": "f6_01",
+   "category": "seed",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "跳个机械舞。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "popping",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "popping"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f6"
+   ]
+  },
+  {
+   "case_id": "f6_02",
+   "category": "style",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "整一段机械舞，嗨起来！",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "popping",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "popping"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f6"
+   ]
+  },
+  {
+   "case_id": "f6_03",
+   "category": "style",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "popping 走一个。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "popping",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "popping"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f6"
+   ]
+  },
+  {
+   "case_id": "f6_04",
+   "category": "form",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "我想看你跳机械舞。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "popping",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "popping"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f6"
+   ]
+  },
+  {
+   "case_id": "f6_05",
+   "category": "form",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "不如来段机械舞热热场？",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "popping",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "popping"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f6"
+   ]
+  },
+  {
+   "case_id": "f6_06",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "来一段卡啦永远OK。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "karla_ok",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "karla_ok"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f6"
+   ]
+  },
+  {
+   "case_id": "f6_07",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "跳低俗小说那个舞。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "pulp_fiction_dance",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "pulp_fiction_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f6"
+   ]
+  },
+  {
+   "case_id": "f6_08",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "跳个相亲相爱。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "luv_each_other",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "luv_each_other"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f6"
+   ]
+  },
+  {
+   "case_id": "f6_09",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "埃及摇摆来一个。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "egyptian_shake",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "egyptian_shake"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f6"
+   ]
+  },
+  {
+   "case_id": "f6_10",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "来段 Gee。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "gee",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "gee"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f6"
+   ]
+  },
+  {
+   "case_id": "f6_11",
+   "category": "neg",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "negative",
+   "query": "我昨天看人跳了段机械舞，挺帅的。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回复"
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f6"
+   ]
+  },
+  {
+   "case_id": "f6_12",
+   "category": "neg",
+   "language": "en",
+   "difficulty": "probe",
+   "polarity": "negative",
+   "query": "If I win this round, you dance for me, deal?",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回复"
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f6"
+   ]
+  },
+  {
+   "case_id": "f7_01",
+   "category": "seed",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "挥挥手跟大家打个招呼。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "wave_greet_bye",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "wave_greet_bye"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f7"
+   ]
+  },
+  {
+   "case_id": "f7_02",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "用左手比个心。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "left_hand_side_heart",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "left_hand_side_heart"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f7"
+   ]
+  },
+  {
+   "case_id": "f7_03",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "右手侧着比个心。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "right_hand_side_heart",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "right_hand_side_heart"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f7"
+   ]
+  },
+  {
+   "case_id": "f7_04",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "来个谢幕动作。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "curtain_bow",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "curtain_bow"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f7"
+   ]
+  },
+  {
+   "case_id": "f7_05",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "给大家飞几个吻。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "blow_kisses_multi",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "blow_kisses_multi"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f7"
+   ]
+  },
+  {
+   "case_id": "f7_06",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "做个请这边走的手势。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "this_way_please",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "this_way_please"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f7"
+   ]
+  },
+  {
+   "case_id": "f7_07",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "跟这位先生握个手。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "shake_hands",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "shake_hands"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f7"
+   ]
+  },
+  {
+   "case_id": "f7_08",
+   "category": "style",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "冲大伙儿摆摆手，打个招呼。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "wave_greet_bye",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "wave_greet_bye"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f7"
+   ]
+  },
+  {
+   "case_id": "f7_09",
+   "category": "style",
+   "language": "en",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "Give everyone a little wave.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "wave_greet_bye",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "wave_greet_bye"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f7"
+   ]
+  },
+  {
+   "case_id": "f7_10",
+   "category": "neg",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "negative",
+   "query": "我家狗都会握手，你会吗？",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回复"
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f7"
+   ]
+  },
+  {
+   "case_id": "f8_01",
+   "category": "seed",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "北京今天天气怎么样？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "WX:北京:now",
+     "name": "get_weather",
+     "arguments": {
+      "city": "北京",
+      "query_type": "now"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f8"
+   ]
+  },
+  {
+   "case_id": "f8_02",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "喀什现在多少度？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "WX:喀什:now",
+     "name": "get_weather",
+     "arguments": {
+      "city": "喀什",
+      "query_type": "now"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f8"
+   ]
+  },
+  {
+   "case_id": "f8_03",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "雷克雅未克明天会下雪吗？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "WX:雷克雅未克:24h",
+     "name": "get_weather",
+     "arguments": {
+      "city": "雷克雅未克",
+      "query_type": "24h"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f8"
+   ]
+  },
+  {
+   "case_id": "f8_04",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "未来一周漠河冷不冷？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "WX:漠河:7d",
+     "name": "get_weather",
+     "arguments": {
+      "city": "漠河",
+      "query_type": "7d"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f8"
+   ]
+  },
+  {
+   "case_id": "f8_05",
+   "category": "param",
+   "language": "en",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "What's the weather like in Tbilisi this week?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "WX:Tbilisi:7d",
+     "name": "get_weather",
+     "arguments": {
+      "city": "Tbilisi",
+      "query_type": "7d"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f8"
+   ]
+  },
+  {
+   "case_id": "f8_06",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "查下阿勒泰现在的天气和接下来七天的。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "WX:阿勒泰:now_7d",
+     "name": "get_weather",
+     "arguments": {
+      "city": "阿勒泰",
+      "query_type": "now_7d"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f8"
+   ]
+  },
+  {
+   "case_id": "f8_07",
+   "category": "style",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "老家驻马店今晚下雨不？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "WX:驻马店:24h",
+     "name": "get_weather",
+     "arguments": {
+      "city": "驻马店",
+      "query_type": "24h"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f8"
+   ]
+  },
+  {
+   "case_id": "f8_08",
+   "category": "style",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "瞅瞅上海外头这会儿啥天儿。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "WX:上海:now",
+     "name": "get_weather",
+     "arguments": {
+      "city": "上海",
+      "query_type": "now"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f8"
+   ]
+  },
+  {
+   "case_id": "f8_09",
+   "category": "form",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "我在纠结杭州明天穿啥，看看天气呗。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "WX:杭州:24h",
+     "name": "get_weather",
+     "arguments": {
+      "city": "杭州",
+      "query_type": "24h"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f8"
+   ]
+  },
+  {
+   "case_id": "f9_01",
+   "category": "seed",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "你还剩多少电？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "S:电量",
+     "name": "robot_status",
+     "arguments": {
+      "query": "电量"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f9"
+   ]
+  },
+  {
+   "case_id": "f9_02",
+   "category": "style",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "电池还剩几格？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "S:电量",
+     "name": "robot_status",
+     "arguments": {
+      "query": "电量"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f9"
+   ]
+  },
+  {
+   "case_id": "f9_03",
+   "category": "style",
+   "language": "en",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "How much juice have you got left?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "S:电量",
+     "name": "robot_status",
+     "arguments": {
+      "query": "电量"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f9"
+   ]
+  },
+  {
+   "case_id": "f9_04",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "你现在在哪儿呢？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "S:位置",
+     "name": "robot_status",
+     "arguments": {
+      "query": "位置"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f9"
+   ]
+  },
+  {
+   "case_id": "f9_05",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "今儿几号？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "S:日期",
+     "name": "robot_status",
+     "arguments": {
+      "query": "日期"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f9"
+   ]
+  },
+  {
+   "case_id": "f9_06",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "现在几点钟了？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "S:时间",
+     "name": "robot_status",
+     "arguments": {
+      "query": "时间"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f9"
+   ]
+  },
+  {
+   "case_id": "f9_07",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "你是哪个型号的？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "S:型号",
+     "name": "robot_status",
+     "arguments": {
+      "query": "型号"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f9"
+   ]
+  },
+  {
+   "case_id": "f10_01",
+   "category": "seed",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "帮我搜一下今天的科技新闻。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "WEB",
+     "name": "web_search",
+     "arguments": {
+      "query": "x"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f10"
+   ]
+  },
+  {
+   "case_id": "f10_02",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "今年诺贝尔文学奖给了谁？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "WEB",
+     "name": "web_search",
+     "arguments": {
+      "query": "x"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f10"
+   ]
+  },
+  {
+   "case_id": "f10_03",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "最近油价涨了没？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "WEB",
+     "name": "web_search",
+     "arguments": {
+      "query": "x"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f10"
+   ]
+  },
+  {
+   "case_id": "f10_04",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "华为 Mate 70 现在卖多少钱？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "WEB",
+     "name": "web_search",
+     "arguments": {
+      "query": "x"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f10"
+   ]
+  },
+  {
+   "case_id": "f10_05",
+   "category": "param",
+   "language": "en",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "Look up the latest iPhone price.",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "WEB",
+     "name": "web_search",
+     "arguments": {
+      "query": "x"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f10"
+   ]
+  },
+  {
+   "case_id": "f10_06",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "Luna 的保修期多长？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "RAG",
+     "name": "rag_query",
+     "arguments": {
+      "query": "x"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f10"
+   ]
+  },
+  {
+   "case_id": "f10_07",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "TRON1 能爬多高的台阶？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "RAG",
+     "name": "rag_query",
+     "arguments": {
+      "query": "x"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f10"
+   ]
+  },
+  {
+   "case_id": "f10_08",
+   "category": "param",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "逐际动力总部在哪？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "RAG",
+     "name": "rag_query",
+     "arguments": {
+      "query": "x"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f10"
+   ]
+  },
+  {
+   "case_id": "f10_09",
+   "category": "neg",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "negative",
+   "query": "你说我该不该辞职？",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回复"
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f10"
+   ]
+  },
+  {
+   "case_id": "f11_01",
+   "category": "struct",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "1. 鞠躬\n2. 往前走两步\n3. 查一下北京现在的天气",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "bow",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "bow"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "W:fwd:2",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 2
+      }
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "WX:北京:now",
+     "name": "get_weather",
+     "arguments": {
+      "city": "北京",
+      "query_type": "now"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  },
+  {
+   "case_id": "f11_02",
+   "category": "struct",
+   "language": "en",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "- wave hello\n- turn right 90 degrees\n- check battery",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "wave_greet_bye",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "wave_greet_bye"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "T:R:90",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": -1,
+       "step": 1,
+       "degree": 90
+      }
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "S:电量",
+     "name": "robot_status",
+     "arguments": {
+      "query": "电量"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  },
+  {
+   "case_id": "f11_03",
+   "category": "struct",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "我跟你说啊，今天早上地铁挤死了，差点没挤上去。你先挥个手跟大家打个招呼。然后我同事说中午吃火锅，我是吃不了辣的，算了不说这个。你再往左转四十五度。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "wave_greet_bye",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "wave_greet_bye"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "T:L:45",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": 1,
+       "step": 1,
+       "degree": 45
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  },
+  {
+   "case_id": "f11_04",
+   "category": "struct",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "左转右转各九十度。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "T:L:90",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": 1,
+       "step": 1,
+       "degree": 90
+      }
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "T:R:90",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": -1,
+       "step": 1,
+       "degree": 90
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  },
+  {
+   "case_id": "f11_05",
+   "category": "struct",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "依次鞠躬、点头、挥手。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "bow",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "bow"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "nod",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "nod"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "wave_greet_bye",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "wave_greet_bye"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  },
+  {
+   "case_id": "f11_06",
+   "category": "struct",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "跳个机械舞，跳完再来一遍。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "popping",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "popping"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "popping",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "popping"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  },
+  {
+   "case_id": "f11_07",
+   "category": "struct",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "鞠躬、点头、挥手，除了点头都做一下。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "bow",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "bow"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "wave_greet_bye",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "wave_greet_bye"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  },
+  {
+   "case_id": "f11_08",
+   "category": "struct",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "你知道吗，我第一次来这个展会，啥也不懂，听说你们公司挺厉害的，那你先给我跳个热场舞吧。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "warm_up_dance",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "warm_up_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  },
+  {
+   "case_id": "f11_09",
+   "category": "struct",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "往前走（大概五步吧）然后坐下。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "W:fwd:5",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 5
+      }
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "sit_down",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "sit_down"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  },
+  {
+   "case_id": "f11_10",
+   "category": "struct",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "👋 打个招呼，然后 💃 跳个APT。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "wave_greet_bye",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "wave_greet_bye"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "apt_dance",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "apt_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  },
+  {
+   "case_id": "f11_11",
+   "category": "struct",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "先站起来，然后往前走两步，然后右转九十度，然后再往前走三步，然后坐下，然后告诉我现在几点。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "stand_up",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "stand_up"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "W:fwd:2",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 2
+      }
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "T:R:90",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": -1,
+       "step": 1,
+       "degree": 90
+      }
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "W:fwd:3",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 3
+      }
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "sit_down",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "sit_down"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "S:时间",
+     "name": "robot_status",
+     "arguments": {
+      "query": "时间"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  },
+  {
+   "case_id": "f11_12",
+   "category": "struct",
+   "language": "en",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "Stand up, walk forward 4 steps, turn left 180 degrees, do the popping dance, nod, check the weather in Paris right now, and tell me your battery level.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "stand_up",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "stand_up"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "W:fwd:4",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 4
+      }
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "T:L:180",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": 1,
+       "step": 1,
+       "degree": 180
+      }
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "popping",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "popping"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "nod",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "nod"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "WX:Paris:now",
+     "name": "get_weather",
+     "arguments": {
+      "city": "Paris",
+      "query_type": "now"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "S:电量",
+     "name": "robot_status",
+     "arguments": {
+      "query": "电量"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  },
+  {
+   "case_id": "f11_13",
+   "category": "struct",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "第一，挥手；第二，鞠躬；第三，跳个胜利之舞。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "wave_greet_bye",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "wave_greet_bye"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "bow",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "bow"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "victory_dance",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "victory_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  },
+  {
+   "case_id": "f11_14",
+   "category": "struct",
+   "language": "mix",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "First 鞠躬, then 往右转 sixty degrees, finally check 上海 weather tomorrow.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "bow",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "bow"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "T:R:60",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": -1,
+       "step": 1,
+       "degree": 60
+      }
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "WX:上海:24h",
+     "name": "get_weather",
+     "arguments": {
+      "city": "上海",
+      "query_type": "24h"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  },
+  {
+   "case_id": "f11_15",
+   "category": "struct",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "北京和上海现在的天气都查一下。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "WX:北京:now",
+     "name": "get_weather",
+     "arguments": {
+      "city": "北京",
+      "query_type": "now"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "WX:上海:now",
+     "name": "get_weather",
+     "arguments": {
+      "city": "上海",
+      "query_type": "now"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  },
+  {
+   "case_id": "f11_16",
+   "category": "struct",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "去前面三步那儿，到了之后坐下。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "W:fwd:3",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 3
+      }
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "sit_down",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "sit_down"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  },
+  {
+   "case_id": "f11_17",
+   "category": "struct",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "坐下之前，先往后退两步。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "W:back:2",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": -0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 2
+      }
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "sit_down",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "sit_down"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  },
+  {
+   "case_id": "f11_18",
+   "category": "struct",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "你先往前走两步再左转九十度然后鞠个躬最后查一下北京明天的天气",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "W:fwd:2",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 2
+      }
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "T:L:90",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": 1,
+       "step": 1,
+       "degree": 90
+      }
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "bow",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "bow"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "WX:北京:24h",
+     "name": "get_weather",
+     "arguments": {
+      "city": "北京",
+      "query_type": "24h"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  },
+  {
+   "case_id": "f11_19",
+   "category": "struct",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "如果待会下雨你就跳舞，现在先查一下广州今晚会不会下雨。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回复"
+    },
+    {
+     "kind": "query",
+     "instruction": "WX:广州:24h",
+     "name": "get_weather",
+     "arguments": {
+      "city": "广州",
+      "query_type": "24h"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  },
+  {
+   "case_id": "f11_20",
+   "category": "struct",
+   "language": "zh",
+   "difficulty": "probe",
+   "polarity": "positive",
+   "query": "能先帮我查下深圳现在的天气吗？再跳个舞。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "WX:深圳:now",
+     "name": "get_weather",
+     "arguments": {
+      "city": "深圳",
+      "query_type": "now"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "warm_up_dance",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "warm_up_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "f11"
+   ]
+  }
+ ]
+}

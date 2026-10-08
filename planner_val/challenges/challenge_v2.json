@@ -1,0 +1,6789 @@
+{
+ "schema_version": 1,
+ "name": "challenge_v2",
+ "authored_after_training": false,
+ "sealed": true,
+ "writer": "glm-4.6",
+ "judges": [
+  "qwen-max",
+  "deepseek-v3.2"
+ ],
+ "pool": "runs/pool-1007_152342",
+ "cases": [
+  {
+   "case_id": "v2_001",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "这队排得真让人提不起劲，现在就跳个胜利之舞吧！",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳胜利之舞",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "victory_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotDance"
+   ]
+  },
+  {
+   "case_id": "v2_002",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，今天这腿脚更不利索了。帮我查查深圳今天的天气。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询深圳今天的天气情况",
+     "name": "get_weather",
+     "arguments": {
+      "city": "深圳",
+      "query_type": "now"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "get_weather"
+   ]
+  },
+  {
+   "case_id": "v2_003",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，我这老胳膊老腿的，你说Luna都用什么技术来保证安全性啊？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Luna使用什么样的技术来保证安全性",
+     "name": "rag_query",
+     "arguments": {
+      "query": "Luna都用什么技术来保证安全性"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "rag_query"
+   ]
+  },
+  {
+   "case_id": "v2_004",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，我这脑子，今天是几号了？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询今天是几号",
+     "name": "robot_status",
+     "arguments": {
+      "query": "日期"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "robot_status"
+   ]
+  },
+  {
+   "case_id": "v2_005",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，今晚这开放日估计要挺晚下班了，福州的地铁现在还在运营吗？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "福州的地铁现在是不是还在运行",
+     "name": "web_search",
+     "arguments": {
+      "query": "福州的地铁现在还在运营吗"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "web_search"
+   ]
+  },
+  {
+   "case_id": "v2_006",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "哇中国的年会后台好热闹啊，你现在右手侧比个心。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "右手侧比心",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "right_hand_side_heart"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotGesture"
+   ]
+  },
+  {
+   "case_id": "v2_007",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "哎，这开放日人真多，深圳这周天气怎么样？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询深圳这周的天气如何",
+     "name": "get_weather",
+     "arguments": {
+      "city": "深圳",
+      "query_type": "7d"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "get_weather"
+   ]
+  },
+  {
+   "case_id": "v2_008",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "作业写烦了，你报一下你的型号呗。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询当前型号",
+     "name": "robot_status",
+     "arguments": {
+      "query": "型号"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "robot_status"
+   ]
+  },
+  {
+   "case_id": "v2_009",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉今天考试终于考完了，在这等飞机好无聊啊，快帮我看看有什么新出的剧集",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "有什么新出的剧集",
+     "name": "web_search",
+     "arguments": {
+      "query": "新出的剧集"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "web_search"
+   ]
+  },
+  {
+   "case_id": "v2_010",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "跑了一天新闻终于赶上了，快帮我看看石家庄今天气温最高最低几度。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询石家庄今天气温高低",
+     "name": "get_weather",
+     "arguments": {
+      "city": "石家庄",
+      "query_type": "now"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "get_weather"
+   ]
+  },
+  {
+   "case_id": "v2_011",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "这新项目可真有看头，对了，TRON1怎么模仿人动作？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "TRON1怎么模仿人动作",
+     "name": "rag_query",
+     "arguments": {
+      "query": "TRON1怎么模仿人动作"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "rag_query"
+   ]
+  },
+  {
+   "case_id": "v2_012",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "哎我这记性，查查上周的羽毛球比赛结果。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "上周的羽毛球比赛结果",
+     "name": "web_search",
+     "arguments": {
+      "query": "上周的羽毛球比赛结果"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "web_search"
+   ]
+  },
+  {
+   "case_id": "v2_013",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "今天生意不错，来，击个掌！",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "击掌",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "high_five"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotGesture"
+   ]
+  },
+  {
+   "case_id": "v2_014",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "带这对双胞胎参加婚礼可真够呛，帮我看看深圳明天天气怎么样。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询深圳明天的天气情况",
+     "name": "get_weather",
+     "arguments": {
+      "city": "深圳",
+      "query_type": "24h"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "get_weather"
+   ]
+  },
+  {
+   "case_id": "v2_015",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "这次开放日可以写个学生消费力专题，你帮我查下最新款小米手机的价格。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "最新款的小米手机的价格",
+     "name": "web_search",
+     "arguments": {
+      "query": "最新款小米手机的价格"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "web_search"
+   ]
+  },
+  {
+   "case_id": "v2_016",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "第一次来中国，什么都是新奇的，你现在跳一段助力舞吧。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳助力舞",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "power_up_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotDance"
+   ]
+  },
+  {
+   "case_id": "v2_017",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，第一次来中国，这社区养老活动室也太大了吧，我这是在哪儿啊。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询当前位置",
+     "name": "robot_status",
+     "arguments": {
+      "query": "位置"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "robot_status"
+   ]
+  },
+  {
+   "case_id": "v2_018",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "开放日气氛真不错，麻烦查下昨天的乒乓球比赛谁赢了。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "昨天的乒乓球比赛谁赢了",
+     "name": "web_search",
+     "arguments": {
+      "query": "昨天的乒乓球比赛谁赢了"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "web_search"
+   ]
+  },
+  {
+   "case_id": "v2_019",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "哇，这科技真厉害，现在来段胜利之舞吧！",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳胜利之舞",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "victory_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotDance"
+   ]
+  },
+  {
+   "case_id": "v2_020",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，坐这儿半天了，腿都麻了。来，你给我点个头。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "点头",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "nod"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotGesture"
+   ]
+  },
+  {
+   "case_id": "v2_021",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，刚来这站岗还真有点不习惯，你帮我看看重庆现在跟未来一周的天气预报。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询重庆现在和未来一周的天气情况",
+     "name": "get_weather",
+     "arguments": {
+      "city": "重庆",
+      "query_type": "now_7d"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "get_weather"
+   ]
+  },
+  {
+   "case_id": "v2_022",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "这签售会人真多。你帮我查查Oli能不能做商场导览。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Oli可以用来做商场导览吗",
+     "name": "rag_query",
+     "arguments": {
+      "query": "Oli能不能做商场导览"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "rag_query"
+   ]
+  },
+  {
+   "case_id": "v2_023",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，又得去外地招聘了，看下时间。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询当前时间",
+     "name": "robot_status",
+     "arguments": {
+      "query": "时间"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "robot_status"
+   ]
+  },
+  {
+   "case_id": "v2_024",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "哎，等客户提车真磨人，给我说说最近有什么热门的娱乐新闻。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "最近有什么热门的娱乐新闻",
+     "name": "web_search",
+     "arguments": {
+      "query": "最近有什么热门的娱乐新闻"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "web_search"
+   ]
+  },
+  {
+   "case_id": "v2_025",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "第一次来中国的图书馆，这里的少儿区真不错，你现在站好。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "站好",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "stand_up"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "HumanAction"
+   ]
+  },
+  {
+   "case_id": "v2_026",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "哇，这里的科技真有意思，你现在马上来一段助力舞看看。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳助力舞",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "power_up_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotDance"
+   ]
+  },
+  {
+   "case_id": "v2_027",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "放学了来玩还要排队，烦死了，你帮我看看深圳明天天气怎么样。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询深圳明天的天气情况",
+     "name": "get_weather",
+     "arguments": {
+      "city": "深圳",
+      "query_type": "24h"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "get_weather"
+   ]
+  },
+  {
+   "case_id": "v2_028",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，新员工怎么还没到呢，现在几点了？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询当前时间",
+     "name": "robot_status",
+     "arguments": {
+      "query": "时间"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "robot_status"
+   ]
+  },
+  {
+   "case_id": "v2_029",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，又要去接人了。帮我看下桂林机场现在有没有什么延误的情况。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "桂林机场现在有没有什么延误的情况",
+     "name": "web_search",
+     "arguments": {
+      "query": "桂林机场现在有没有什么延误的情况"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "web_search"
+   ]
+  },
+  {
+   "case_id": "v2_030",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，这趟出差跑得真累，你现在跳个孤身摇我看看。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳孤身摇",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "solo_shake"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotDance"
+   ]
+  },
+  {
+   "case_id": "v2_031",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "哎哟，现在这科技真厉害，挥挥手跟我打个招呼。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "挥手打招呼",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "wave_greet_bye"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotGesture"
+   ]
+  },
+  {
+   "case_id": "v2_032",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "这候机厅的空调开得真足。现在宁波天气怎么样啊？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询宁波现在天气",
+     "name": "get_weather",
+     "arguments": {
+      "city": "宁波",
+      "query_type": "now"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "get_weather"
+   ]
+  },
+  {
+   "case_id": "v2_033",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "总算能歇会儿了，现在几点了？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询当前时间",
+     "name": "robot_status",
+     "arguments": {
+      "query": "时间"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "robot_status"
+   ]
+  },
+  {
+   "case_id": "v2_034",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，这后台真热闹啊，我想知道西安机场今天的航班都正常吗？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "西安机场今天的航班都正常吗",
+     "name": "web_search",
+     "arguments": {
+      "query": "西安机场今天的航班都正常吗"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "web_search"
+   ]
+  },
+  {
+   "case_id": "v2_035",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，人老了活动活动筋骨也好。来，你现在往右边转120度。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "往右边转120度",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": -1,
+       "degree": 120,
+       "step": 1
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "HumanAction"
+   ]
+  },
+  {
+   "case_id": "v2_036",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，今天带新人来熟悉环境，请你现在鞠个躬。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "鞠躬",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "bow"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotGesture"
+   ]
+  },
+  {
+   "case_id": "v2_037",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "我们店里今天不忙，就带孩子过来看看书。让我查一下我们现在在哪儿。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询当前位置",
+     "name": "robot_status",
+     "arguments": {
+      "query": "位置"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "robot_status"
+   ]
+  },
+  {
+   "case_id": "v2_038",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉我这直播设备又得更新了，我问下最近出的那个华为手表多少钱。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "最近出的那个华为手表的价格",
+     "name": "web_search",
+     "arguments": {
+      "query": "最近出的那个华为手表"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "web_search"
+   ]
+  },
+  {
+   "case_id": "v2_039",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，人老了记性就是不行了，你现在是哪个动作来着？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询当前动作",
+     "name": "robot_status",
+     "arguments": {
+      "query": "当前动作"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "robot_status"
+   ]
+  },
+  {
+   "case_id": "v2_040",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "最近团建真是没头绪，帮我看看洛阳今天或这周末有什么活动、展览或演出。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "洛阳今天或这周末有什么活动、展览或演出",
+     "name": "web_search",
+     "arguments": {
+      "query": "洛阳今天或这周末有什么活动、展览或演出"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "web_search"
+   ]
+  },
+  {
+   "case_id": "v2_041",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "今天气氛真不错，来，现在就给我们跳段埃及摇摆！",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳埃及摇摆",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "egyptian_shake"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotDance"
+   ]
+  },
+  {
+   "case_id": "v2_042",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，刚采访完，对了深圳今天天气怎么样。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询深圳今天的天气",
+     "name": "get_weather",
+     "arguments": {
+      "city": "深圳",
+      "query_type": "now"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "get_weather"
+   ]
+  },
+  {
+   "case_id": "v2_043",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "我刚来，啥都不懂，你帮我查查那个TRON1，能不能用在婚礼这种场合？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "TRON1能不能用在婚礼这样的场合",
+     "name": "rag_query",
+     "arguments": {
+      "query": "TRON1，能不能用在婚礼这种场合"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "rag_query"
+   ]
+  },
+  {
+   "case_id": "v2_044",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，我孩子在外面读书，最近汇率怎么样啊",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "最近的汇率情况如何？",
+     "name": "web_search",
+     "arguments": {
+      "query": "最近汇率怎么样啊"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "web_search"
+   ]
+  },
+  {
+   "case_id": "v2_045",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "哇，第一次来中国玩，人真多啊，你现在轻轻往左转。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "轻轻往左转",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": 1,
+       "degree": 15,
+       "step": 1
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "HumanAction"
+   ]
+  },
+  {
+   "case_id": "v2_046",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "深圳这车站真大，帮我看看深圳今天跟接下来一个礼拜的天气。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询深圳现在和未来一周的天气情况",
+     "name": "get_weather",
+     "arguments": {
+      "city": "深圳",
+      "query_type": "now_7d"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "get_weather"
+   ]
+  },
+  {
+   "case_id": "v2_047",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "哎，出差来这里看到你们这个设备，挺有意思的。那TRON1的主要特点是什么？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "TRON1的主要特点是什么",
+     "name": "rag_query",
+     "arguments": {
+      "query": "TRON1的主要特点是什么"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "rag_query"
+   ]
+  },
+  {
+   "case_id": "v2_048",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，排队真磨人，来，现在挥手道别一下。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "挥手道别",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "wave_greet_bye"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotGesture"
+   ]
+  },
+  {
+   "case_id": "v2_049",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，人一退休啊，日子都过糊涂了。今天几号来着？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询今天是几号",
+     "name": "robot_status",
+     "arguments": {
+      "query": "日期"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "robot_status"
+   ]
+  },
+  {
+   "case_id": "v2_050",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "你会查天气吗？我跑新闻的，总得关心这个。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回答是否能查天气"
+    }
+   ],
+   "forbidden_functions": [
+    "get_weather"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "ability"
+   ]
+  },
+  {
+   "case_id": "v2_051",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "这美美桑内跳得真有活力，看得我这老骨头都精神了。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应对跳美美桑内的评价"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "comment"
+   ]
+  },
+  {
+   "case_id": "v2_052",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "这队伍长得没谱了，你先别动，等会儿再说吧。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应稍后再查的安排"
+    }
+   ],
+   "forbidden_functions": [
+    "rag_query"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "deferred"
+   ]
+  },
+  {
+   "case_id": "v2_053",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "唉，这队排得真没劲，来，给我们唱个歌。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "说明唱不了歌"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "sing"
+   ]
+  },
+  {
+   "case_id": "v2_054",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "每次出差长时间坐飞机，都感觉全身肌肉都快僵住了，真不舒服。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应用户的闲聊"
+    }
+   ],
+   "forbidden_functions": [
+    "get_weather"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "statement"
+   ]
+  },
+  {
+   "case_id": "v2_055",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "唉，最近生意不好做，你会不会帮我迎宾啊？",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回答是否会跳热场舞"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "ability"
+   ]
+  },
+  {
+   "case_id": "v2_056",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "刚才那段舞跳得真不错，我们公司团建就该来这种。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应对跳个舞的评价"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "comment"
+   ]
+  },
+  {
+   "case_id": "v2_057",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "我刚到中国，好奇你们常说的一石二鸟是什么意思？",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回答成语一石二鸟的意思是什么"
+    }
+   ],
+   "forbidden_functions": [
+    "get_weather"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "common"
+   ]
+  },
+  {
+   "case_id": "v2_058",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "哎呀人太多了，你那个扫扫腿舞，等会儿再跳吧。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应稍后再跳扫腿舞的安排"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "deferred"
+   ]
+  },
+  {
+   "case_id": "v2_059",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "这作者太会调动气氛了，你也来一个，唱首歌助助兴。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "说明唱不了歌"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "sing"
+   ]
+  },
+  {
+   "case_id": "v2_060",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "唉，这附近人流量真大，想问下会不会查我们店的菜单？",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回答是否能查产品介绍"
+    }
+   ],
+   "forbidden_functions": [
+    "rag_query"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "ability"
+   ]
+  },
+  {
+   "case_id": "v2_061",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "新来的真搞不懂，你先歇会儿，这事儿等忙完再说。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应稍后再查的安排"
+    }
+   ],
+   "forbidden_functions": [
+    "rag_query"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "deferred"
+   ]
+  },
+  {
+   "case_id": "v2_062",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "出差刚到这儿有点累，讲个笑话吧",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "讲一个笑话"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "joke"
+   ]
+  },
+  {
+   "case_id": "v2_063",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "唉，现在年轻人的玩意儿真看不懂，这孤身摇到底是个什么舞啊，有什么来历？",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回答关于跳孤身摇的问题"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "mention"
+   ]
+  },
+  {
+   "case_id": "v2_064",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "哎今天直播真没劲，你来给大家唱首歌吧。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "说明唱不了歌"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "sing"
+   ]
+  },
+  {
+   "case_id": "v2_065",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "这场签售会阵容真强，哎先不用跳那个胜利之舞了。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应不用跳胜利之舞"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "stop"
+   ]
+  },
+  {
+   "case_id": "v2_066",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "唉排队好无聊，你会不会跳女团舞2？",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回答是否会跳女团舞2"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "ability"
+   ]
+  },
+  {
+   "case_id": "v2_067",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "哇，你刚才跳得真带劲！比我们校庆的舞蹈还好看。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应对跳热烈的评价"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "comment"
+   ]
+  },
+  {
+   "case_id": "v2_068",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "哎，这个新鲜，来，给我们唱首歌。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "说明唱不了歌"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "sing"
+   ]
+  },
+  {
+   "case_id": "v2_069",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "哎哟我刚放学想安静会儿，你别在这儿跳展臂舞了。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应不用跳展臂舞"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "stop"
+   ]
+  },
+  {
+   "case_id": "v2_070",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "你会不会跳顺风顺水顺财神啊？唉，这队伍排得真慢，跟等财神爷似的。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回答是否会跳顺风顺水顺财神"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "ability"
+   ]
+  },
+  {
+   "case_id": "v2_071",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "刚那个Gee的动作很精准啊，现在的开放日真不一样了。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应对跳Gee的评价"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "comment"
+   ]
+  },
+  {
+   "case_id": "v2_072",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "这校园的科技感真强啊，先来个简单的，中国的首都是哪里？",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回答中国的首都是哪里"
+    }
+   ],
+   "forbidden_functions": [
+    "robot_status"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "common"
+   ]
+  },
+  {
+   "case_id": "v2_073",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "唉，这队伍真没劲。你待会儿再帮我查下花车巡游几点开始吧。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应稍后再查的安排"
+    }
+   ],
+   "forbidden_functions": [
+    "get_weather"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "deferred"
+   ]
+  },
+  {
+   "case_id": "v2_074",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "唉，刚办完公司团建，你讲个笑话听听吧。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "讲一个笑话"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "joke"
+   ]
+  },
+  {
+   "case_id": "v2_075",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "哎，刚才那个谢幕手势还挺有模有样的，老了运动一下就是累，对了，纽约现在是几点了？",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应对谢幕手势的评价"
+    },
+    {
+     "kind": "query",
+     "instruction": "查询纽约现在的时间",
+     "name": "web_search",
+     "arguments": {
+      "query": "纽约现在是几点了？"
+     }
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_076",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "negative",
+   "query": "等下飞机还得回去看店，小王你给店里打个电话问问今天的备货情况，现在就跳个Go Cortis吧，你说句对不起，再帮我查一下Oli可以用在公司前台吗。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应用户对别人说的话"
+    },
+    {
+     "kind": "action",
+     "instruction": "跳Go Cortis",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "go_cortis_dance"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "说声对不起"
+    },
+    {
+     "kind": "query",
+     "instruction": "Oli可以用在公司前台吗",
+     "name": "rag_query",
+     "arguments": {
+      "query": "Oli可以用在公司前台吗"
+     }
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L4"
+   ]
+  },
+  {
+   "case_id": "v2_077",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "negative",
+   "query": "唉，这火车站等车真难熬，帮我看看长春今天和往后一周的天气预报，哎，那个谢幕手势你可别做，对了，你说水的沸点是多少度来着？现在几点了？最后，给我跳个女团舞2吧。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询长春现在的天气以及未来一周的天气情况",
+     "name": "get_weather",
+     "arguments": {
+      "city": "长春",
+      "query_type": "now_7d"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "回应不用谢幕手势"
+    },
+    {
+     "kind": "reply",
+     "instruction": "回答水的沸点是多少"
+    },
+    {
+     "kind": "query",
+     "instruction": "查询当前时间",
+     "name": "robot_status",
+     "arguments": {
+      "query": "时间"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳女团舞2",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "idol_dance_2"
+     }
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture",
+    "web_search"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L5"
+   ]
+  },
+  {
+   "case_id": "v2_078",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "negative",
+   "query": "现在孩子们可真会玩儿。哎，你先跳段女团舞1看看，再做个连续飞吻的动作。帮我看看深圳今天天气怎么样。光做不说可不行，你口头讲讲怎么做。对了，那个TRON2能做些什么啊？再查查深圳今天及未来一周的天气情况。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳女团舞1",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "idol_dance_1"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "连续飞吻",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "blow_kisses_multi"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "查询深圳今天天气状况",
+     "name": "get_weather",
+     "arguments": {
+      "city": "深圳",
+      "query_type": "now"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "讲解怎么跳万物生"
+    },
+    {
+     "kind": "query",
+     "instruction": "TRON2能做些什么",
+     "name": "rag_query",
+     "arguments": {
+      "query": "TRON2能做些什么"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "查询深圳今天及未来一周的天气情况",
+     "name": "get_weather",
+     "arguments": {
+      "city": "深圳",
+      "query_type": "now_7d"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L6"
+   ]
+  },
+  {
+   "case_id": "v2_079",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "negative",
+   "query": "跑了一天新闻了，来这儿放松一下。帮我看下洛阳的龙门石窟今天开放不，对了1公里等于多少米？再查一下逐际动力的成立时间，你现在转一下左边，最后看看济南今天有什么活动。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "洛阳的龙门石窟今天开放不",
+     "name": "web_search",
+     "arguments": {
+      "query": "洛阳的龙门石窟今天开放不"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "回答1公里等于多少米"
+    },
+    {
+     "kind": "query",
+     "instruction": "逐际动力的成立时间",
+     "name": "rag_query",
+     "arguments": {
+      "query": "逐际动力的成立时间"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "转向左边",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": 1,
+       "degree": 90,
+       "step": 1
+      }
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "济南今天有什么活动",
+     "name": "web_search",
+     "arguments": {
+      "query": "济南今天有什么活动"
+     }
+    }
+   ],
+   "forbidden_functions": [
+    "robot_status"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L5"
+   ]
+  },
+  {
+   "case_id": "v2_080",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "唉排队好无聊，你现在跳个美美桑内，再顺便查下上海今晚会不会下雨。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳美美桑内",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "one_spot_dance"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "查询上海今晚是否会下雨",
+     "name": "get_weather",
+     "arguments": {
+      "city": "上海",
+      "query_type": "24h"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_081",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "negative",
+   "query": "现在的年轻人真厉害，造出这些东西。首尔现在几点了？你会查天气预报吗？充满一次电要多久？Luna保修多久？Oli是干嘛的？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "问首尔现在几点",
+     "name": "web_search",
+     "arguments": {
+      "query": "首尔现在几点了"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "回答是否能查天气"
+    },
+    {
+     "kind": "query",
+     "instruction": "回答电池充满电需要的时间",
+     "name": "rag_query",
+     "arguments": {
+      "query": "充满一次电要多久"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "Luna机器人的保修期是多久",
+     "name": "rag_query",
+     "arguments": {
+      "query": "Luna保修多久"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "Oli机器人是做什么用的",
+     "name": "rag_query",
+     "arguments": {
+      "query": "Oli是干嘛的"
+     }
+    }
+   ],
+   "forbidden_functions": [
+    "get_weather"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L5"
+   ]
+  },
+  {
+   "case_id": "v2_082",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "这个队排得好久啊。给我讲个笑话吧。再帮我看看深圳今天及未来一周的天气。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "讲一个笑话"
+    },
+    {
+     "kind": "query",
+     "instruction": "查询深圳今天及未来一周的天气情况",
+     "name": "get_weather",
+     "arguments": {
+      "city": "深圳",
+      "query_type": "now_7d"
+     }
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_083",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "哎，这俩孩子总算安静下来了，来，先跟我击个掌，再跳个展臂舞给他们看看，对了，顺便看看你还有多少电。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "击掌",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "high_five"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳展臂舞",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "swag_dance"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "查询当前电量",
+     "name": "robot_status",
+     "arguments": {
+      "query": "电量"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L3"
+   ]
+  },
+  {
+   "case_id": "v2_084",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "negative",
+   "query": "我们公司年会就缺个你这样的节目。来，先对着大家来几个飞吻。然后报一下现在几点了。接下来，给我们跳一段埃及摇摆吧。最后我问你，一米等于多少厘米？",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "连续飞吻",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "blow_kisses_multi"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "查询这里的当前时间",
+     "name": "robot_status",
+     "arguments": {
+      "query": "时间"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳埃及摇摆",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "egyptian_shake"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "回答单位换算问题"
+    }
+   ],
+   "forbidden_functions": [
+    "web_search"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L4"
+   ]
+  },
+  {
+   "case_id": "v2_085",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "negative",
+   "query": "刚放学来看看，你现在跳个相亲相爱。然后唱个歌。这歌挺有年代感的。对了，相亲相爱这个舞是啥意思啊？",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳相亲相爱",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "luv_each_other"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "说明唱不了歌"
+    },
+    {
+     "kind": "reply",
+     "instruction": "回应用户的闲聊"
+    },
+    {
+     "kind": "reply",
+     "instruction": "回答关于跳卡啦永远OK的问题"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture",
+    "get_weather"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L4"
+   ]
+  },
+  {
+   "case_id": "v2_086",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "我来这儿拍个新闻，先给我讲讲TRON2的功能具体有哪些，然后你现在给我跳一段科目三看看。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "TRON2的功能具体有哪些",
+     "name": "rag_query",
+     "arguments": {
+      "query": "TRON2的功能具体有哪些"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "说明不会跳科目三"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_087",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "家人们看，火车站里居然有这玩意儿，那你现在给我跳一段卡啦永远OK，再来一个上抬手比心。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳卡啦永远OK",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "karla_ok"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "上抬手比心",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "hand_heart"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_088",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "哎，我这腿脚不行了，你先说说怎么跳个舞，再查查大连今天天气，然后现在就跳个胜利之舞。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "讲解怎么跳个舞"
+    },
+    {
+     "kind": "query",
+     "instruction": "查询大连今天天气",
+     "name": "get_weather",
+     "arguments": {
+      "city": "大连",
+      "query_type": "now"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳胜利之舞",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "victory_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L3"
+   ]
+  },
+  {
+   "case_id": "v2_089",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "唉开放日真热闹让我也来试试你，查查洛阳今天或这周末有什么活动、展览或演出，那你现在跳一个科目三我看看，那这科目三到底是个什么舞呢。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "洛阳今天或这周末有什么活动、展览或演出",
+     "name": "web_search",
+     "arguments": {
+      "query": "洛阳今天或这周末有什么活动、展览或演出"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "说明不会跳最炫民族风"
+    },
+    {
+     "kind": "reply",
+     "instruction": "回答关于跳女团舞2的问题"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L3"
+   ]
+  },
+  {
+   "case_id": "v2_090",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "negative",
+   "query": "老了记性是真差了，帮我看看深圳今天和未来一周的天气情况。顺便问下今天是周几？对了，郑州的地铁现在还能不能坐？哎，考考你，一公斤等于多少克啊？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询深圳今天和未来一周的天气变化",
+     "name": "get_weather",
+     "arguments": {
+      "city": "深圳",
+      "query_type": "now_7d"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "查询今天是星期几",
+     "name": "robot_status",
+     "arguments": {
+      "query": "日期"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "郑州的地铁现在还能不能坐",
+     "name": "web_search",
+     "arguments": {
+      "query": "郑州的地铁现在还能不能坐"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "回答一公斤等于多少克"
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L4"
+   ]
+  },
+  {
+   "case_id": "v2_091",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "小张，你帮我看下我的背包在哪儿。哇，后台设备真专业。要是现在有人能跳个Go Cortis就好了。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应用户对别人说的话"
+    },
+    {
+     "kind": "reply",
+     "instruction": "回应想看跳Go Cortis的愿望"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance",
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_092",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "第一次来中国的游乐园，感觉好热闹。你现在讲个笑话呗。哎哎，你可别跳女团舞1啊。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应用户的闲聊"
+    },
+    {
+     "kind": "reply",
+     "instruction": "讲一个笑话"
+    },
+    {
+     "kind": "reply",
+     "instruction": "回应不用跳女团舞1"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance",
+    "web_search"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L3"
+   ]
+  },
+  {
+   "case_id": "v2_093",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "唉，现在这玩意儿真高级，逐际动力的TRON2机器人配件多少钱一个？再看看天津明早几度。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "逐际动力的TRON2机器人的配件价格",
+     "name": "rag_query",
+     "arguments": {
+      "query": "逐际动力的TRON2机器人配件"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "查询天津明早的气温",
+     "name": "get_weather",
+     "arguments": {
+      "city": "天津",
+      "query_type": "24h"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_094",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "negative",
+   "query": "哎终于放学了，深圳明天天气怎么样，看看兰州白塔山公园今天挤不挤，搜下大疆Mini 5最近打折没，唱个歌，跳个助力舞。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询深圳明天的天气情况",
+     "name": "get_weather",
+     "arguments": {
+      "city": "深圳",
+      "query_type": "24h"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "兰州的白塔山公园今天人多不多",
+     "name": "web_search",
+     "arguments": {
+      "query": "兰州白塔山公园今天挤不挤"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "大疆Mini 5最近有没有优惠",
+     "name": "web_search",
+     "arguments": {
+      "query": "大疆Mini 5最近打折没"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "说明唱不了歌"
+    },
+    {
+     "kind": "action",
+     "instruction": "跳助力舞",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "power_up_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L5"
+   ]
+  },
+  {
+   "case_id": "v2_095",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "negative",
+   "query": "哇这真有意思，快看看你剩多少电了，赶紧给我跳个相亲相爱，你会不会查天气啊，等下记得帮我查个东西，查下纽约的时代广场今天人多吗，再查查宝马X5最新款的价格是多少。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询当前电量",
+     "name": "robot_status",
+     "arguments": {
+      "query": "电量"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳相亲相爱",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "luv_each_other"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "回答是否能查天气"
+    },
+    {
+     "kind": "reply",
+     "instruction": "回应稍后再查的安排"
+    },
+    {
+     "kind": "query",
+     "instruction": "纽约的时代广场今天人多吗",
+     "name": "web_search",
+     "arguments": {
+      "query": "纽约的时代广场今天人多吗"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "宝马X5最新款的价格是多少",
+     "name": "web_search",
+     "arguments": {
+      "query": "宝马X5最新款的价格是多少"
+     }
+    }
+   ],
+   "forbidden_functions": [
+    "get_weather"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L6"
+   ]
+  },
+  {
+   "case_id": "v2_096",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "在机场等飞机好无聊啊，小米13的售价是多少，你往右边横着挪一步，给我讲讲怎么握手。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "小米13的售价是多少",
+     "name": "web_search",
+     "arguments": {
+      "query": "小米13的售价是多少"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "往右横着走一步",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": -1,
+       "yaw": 0,
+       "step": 1
+      }
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "讲解怎么握手"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L3"
+   ]
+  },
+  {
+   "case_id": "v2_097",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "唉，这队排的，真是磨人。你快帮我查一下TRON1适合用在哪些场合，我好奇。对了，你现在给我跳一段机械舞看看。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "TRON1适合用在哪些场合",
+     "name": "rag_query",
+     "arguments": {
+      "query": "TRON1适合用在哪些场合"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳机械舞",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "popping"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_098",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "终于轮到我了，快快快，先教教我怎么右手侧比心，查一下Luna机器人多少钱，再看看台北现在天气怎么样。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "讲解怎么右手侧比心"
+    },
+    {
+     "kind": "query",
+     "instruction": "Luna机器人多少钱",
+     "name": "rag_query",
+     "arguments": {
+      "query": "Luna机器人多少钱"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "查询台北当前的天气状况",
+     "name": "get_weather",
+     "arguments": {
+      "city": "台北",
+      "query_type": "now"
+     }
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L3"
+   ]
+  },
+  {
+   "case_id": "v2_099",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "negative",
+   "query": "现在这车玩意儿可真先进，先唱首歌活跃下气氛，帮我看看沈阳今天和接下来一周的展览，跳个顺风顺水顺财神，这是啥型号，讲个笑话呗。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "说明唱不了歌"
+    },
+    {
+     "kind": "query",
+     "instruction": "沈阳今天和接下来一周的展览情况",
+     "name": "web_search",
+     "arguments": {
+      "query": "沈阳今天和接下来一周的展览"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳顺风顺水顺财神",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "smooth_sailing_and_prosperity"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "查询当前型号",
+     "name": "robot_status",
+     "arguments": {
+      "query": "型号"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "讲一个笑话"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L5"
+   ]
+  },
+  {
+   "case_id": "v2_100",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "这次出差真是让人筋疲力尽。来，先跳来个蹦蹦活跃下气氛。对了，顺便查下逐际动力的Oli机器人的配件怎么购买。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳来个蹦蹦",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "lets_bounce"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "逐际动力的Oli机器人的配件怎么购买",
+     "name": "rag_query",
+     "arguments": {
+      "query": "逐际动力的Oli机器人的配件怎么购买"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_101",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "negative",
+   "query": "来武汉出差顺便逛逛，感觉真不错，先查下武汉现在天气吧，接着讲讲怎么跳个舞的步骤，然后往后挪八步，最后讲个笑话就行。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询武汉现在天气",
+     "name": "get_weather",
+     "arguments": {
+      "city": "武汉",
+      "query_type": "now"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "讲解怎么跳个舞"
+    },
+    {
+     "kind": "action",
+     "instruction": "往后挪八步",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": -0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 8
+      }
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "讲一个笑话"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L4"
+   ]
+  },
+  {
+   "case_id": "v2_102",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "刚放学真累啊，你先给大家唱首流行歌曲活跃一下气氛吧，唱完之后再给我们说一句加油打气的话助助兴怎么样。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "说明唱不了歌"
+    },
+    {
+     "kind": "reply",
+     "instruction": "说句辛苦了"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance",
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_103",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "negative",
+   "query": "唉，第一天上班真够闲的。往前走二十步。讲个笑话听听。查一下逐际动力的Luna机器人啥时候发布的。再查查你满电续航是多少。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "往前来二十步",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 20
+      }
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "讲一个笑话"
+    },
+    {
+     "kind": "query",
+     "instruction": "逐际动力的Luna机器人啥时候发布的",
+     "name": "rag_query",
+     "arguments": {
+      "query": "逐际动力的Luna机器人啥时候发布的"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "查一下你满电续航是多少",
+     "name": "rag_query",
+     "arguments": {
+      "query": "你满电续航是多少"
+     }
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L4"
+   ]
+  },
+  {
+   "case_id": "v2_104",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "唉，现在的新玩意儿真多。逐际动力这家公司的发展历史是什么？你刚才点头点得不错，挺自然的。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "逐际动力这家公司的发展历史是什么？",
+     "name": "rag_query",
+     "arguments": {
+      "query": "逐际动力这家公司的发展历史是什么？"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "回应对点头的评价"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_105",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "positive",
+   "query": "我刚来这边出差，这地方真有意思，帮我看看上星期的田径比赛结果和比分，来，咱们击个掌，再跳个扭胯舞给我看看，最后来个鼓掌。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "上星期的田径比赛结果和比分",
+     "name": "web_search",
+     "arguments": {
+      "query": "上星期的田径比赛结果和比分"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "击掌",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "high_five"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳扭胯舞",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "abracadabr_dance"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "鼓掌",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "clap"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L4"
+   ]
+  },
+  {
+   "case_id": "v2_106",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "现在的年轻人真会啊，来，现在你左手给我比个心，还有，看看深圳未来几天天气怎么样。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "左手比心",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "left_hand_side_heart"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "查询深圳未来几天的天气状况",
+     "name": "get_weather",
+     "arguments": {
+      "city": "深圳",
+      "query_type": "7d"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_107",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "唉，我们店里的小年轻就爱热闹。来，别客气，跟我击个掌。你先说说，相亲相爱这个舞什么意思？行，那你现在就随便给我唱一首歌。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "击掌",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "high_five"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "回答关于跳相亲相爱的问题"
+    },
+    {
+     "kind": "reply",
+     "instruction": "说明唱不了歌"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L3"
+   ]
+  },
+  {
+   "case_id": "v2_108",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "唉，火车站这边生意不好做啊，你现在往右横着走二十一步，再说句话给我听听。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "往右横着走二十一步",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": -1,
+       "yaw": 0,
+       "step": 21
+      }
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "说声再见"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_109",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "negative",
+   "query": "今天真好啊，我这腿脚不方便只能坐着看了，你先说声对不起，再口头讲讲怎么做鼓掌，现在就给我跳个华尔兹，最后请做一个请这边走的手势。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "说声对不起"
+    },
+    {
+     "kind": "reply",
+     "instruction": "讲解怎么鼓掌"
+    },
+    {
+     "kind": "reply",
+     "instruction": "说明不会跳华尔兹"
+    },
+    {
+     "kind": "action",
+     "instruction": "请这边走的手势",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "this_way_please"
+     }
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L4"
+   ]
+  },
+  {
+   "case_id": "v2_110",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "positive",
+   "query": "唉，转机等得真无聊，帮我看看台北现在天气怎么样，现在几点了，你现在在做什么，对了，Luna和别的型号相比有什么特点，来，现在跳个Go Cortis。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询台北当前的天气状况",
+     "name": "get_weather",
+     "arguments": {
+      "city": "台北",
+      "query_type": "now"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "查询当前时间",
+     "name": "robot_status",
+     "arguments": {
+      "query": "时间"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "查询当前动作",
+     "name": "robot_status",
+     "arguments": {
+      "query": "当前动作"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "Luna和别的型号相比有什么特点",
+     "name": "rag_query",
+     "arguments": {
+      "query": "Luna和别的型号相比有什么特点"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳Go Cortis",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "go_cortis_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L5"
+   ]
+  },
+  {
+   "case_id": "v2_111",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "今天客户真多啊，先确认下你的电量百分比还够不够，然后现在就跳个热场舞把气氛搞起来。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询当前电量",
+     "name": "robot_status",
+     "arguments": {
+      "query": "电量"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳热场舞",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "warm_up_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_112",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "positive",
+   "query": "新来的什么都得试试看，报一下今天几号，再告诉我你是哪个型号的。往左边走五步，来段大展宏图，然后点点头，最后鼓个掌。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询今天是几号",
+     "name": "robot_status",
+     "arguments": {
+      "query": "日期"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "查询当前型号",
+     "name": "robot_status",
+     "arguments": {
+      "query": "型号"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "左移五步",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 1,
+       "yaw": 0,
+       "step": 5
+      }
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳大展宏图",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "ambition_dance"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "点头",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "nod"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "鼓掌",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "clap"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L6"
+   ]
+  },
+  {
+   "case_id": "v2_113",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "刚带完一节高强度课真累，你现在给我摇一下头，然后顺便帮我查一下伦敦机场的航班延误情况。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "摇头",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "shake_head"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "伦敦机场的航班延误情况",
+     "name": "web_search",
+     "arguments": {
+      "query": "伦敦机场的航班延误情况"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_114",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Ugh, the queue at my restaurant is never this bad. Do the Pulp Fiction dance right now.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Perform the Pulp Fiction dance",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "pulp_fiction_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotDance"
+   ]
+  },
+  {
+   "case_id": "v2_115",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "School's out, finally! Go on, give me a wave.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Wave",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "wave_greet_bye"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotGesture"
+   ]
+  },
+  {
+   "case_id": "v2_116",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Man, this station is so confusing for a first-timer, can you check what the weather in Shenzhen is like tomorrow?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Reply with weather information",
+     "name": "get_weather",
+     "arguments": {
+      "city": "Shenzhen",
+      "query_type": "24h"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "get_weather"
+   ]
+  },
+  {
+   "case_id": "v2_117",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "I just wanted to see the Luna model and totally lost track of time. Can you tell me what time it is now?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Reply with the current time",
+     "name": "robot_status",
+     "arguments": {
+      "query": "时间"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "robot_status"
+   ]
+  },
+  {
+   "case_id": "v2_118",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "What a beautiful ceremony, I just need to quickly check if Seoul's subway is running normally today.",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Report on the subway status",
+     "name": "web_search",
+     "arguments": {
+      "query": "if Seoul's subway is running normally today"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "web_search"
+   ]
+  },
+  {
+   "case_id": "v2_119",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Man, I'm finally free from school, and this wedding is so cool, gimme a high five.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Perform high five",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "high_five"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotGesture"
+   ]
+  },
+  {
+   "case_id": "v2_120",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Just getting my workout in before the lunch rush. Hey, can you check the weather in Shenzhen today?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Report weather",
+     "name": "get_weather",
+     "arguments": {
+      "city": "Shenzhen",
+      "query_type": "now"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "get_weather"
+   ]
+  },
+  {
+   "case_id": "v2_121",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Tell me your model number, will you? You new helpers are quite something to see around here these days.",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Reply with the current model number",
+     "name": "robot_status",
+     "arguments": {
+      "query": "型号"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "robot_status"
+   ]
+  },
+  {
+   "case_id": "v2_122",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "My, this backstage is a whirlwind of activity! Say, could you find out what the current Tokyo subway operation situation is for me?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Search for information about the current Tokyo subway operation situation",
+     "name": "web_search",
+     "arguments": {
+      "query": "the current Tokyo subway operation situation"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "web_search"
+   ]
+  },
+  {
+   "case_id": "v2_123",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "It's so nice seeing our team happy at a wedding, turn right in a full circle now.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Turn right in a full circle",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": -1,
+       "degree": 360,
+       "step": 1
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "HumanAction"
+   ]
+  },
+  {
+   "case_id": "v2_124",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Ugh, this airport wait is endless. Hey, you should totally do the Luv Each Other dance right now.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Perform the Luv Each Other dance",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "luv_each_other"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotDance"
+   ]
+  },
+  {
+   "case_id": "v2_125",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "My, these new cars are flashy. Go on, make a raised-hands heart for me right now.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Do raised-hands heart",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "hand_heart"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotGesture"
+   ]
+  },
+  {
+   "case_id": "v2_126",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Oh man, this layover is killing me. Hey, what's the weather like in Shenzhen for the next few days?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Check weather forecast",
+     "name": "get_weather",
+     "arguments": {
+      "city": "Shenzhen",
+      "query_type": "7d"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "get_weather"
+   ]
+  },
+  {
+   "case_id": "v2_127",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Phew, keeping these two occupied... hey, when was that new LimX Dynamics TRON1 robot actually released?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Reply with the release date",
+     "name": "rag_query",
+     "arguments": {
+      "query": "that new LimX Dynamics TRON1 robot"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "rag_query"
+   ]
+  },
+  {
+   "case_id": "v2_128",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "The days just seem to fly by now that I'm retired. Could you please tell me what time it is?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Report the current time",
+     "name": "robot_status",
+     "arguments": {
+      "query": "时间"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "robot_status"
+   ]
+  },
+  {
+   "case_id": "v2_129",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Well, the campus is really hopping for the open day. Go on and do the All Things Grow dance now.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Perform the All Things Grow dance",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "all_things_grow_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotDance"
+   ]
+  },
+  {
+   "case_id": "v2_130",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Whew, keeping up with these two is a workout. Go on, make a heart with your left hand.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Make a left-hand heart",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "left_hand_side_heart"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotGesture"
+   ]
+  },
+  {
+   "case_id": "v2_131",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Ah, this queue is tedious, but at least I have you for company. What's the weather in Shenzhen today?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Reply with the weather in Shenzhen today",
+     "name": "get_weather",
+     "arguments": {
+      "city": "Shenzhen",
+      "query_type": "now"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "get_weather"
+   ]
+  },
+  {
+   "case_id": "v2_132",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Wow, I just moved into this complex and it's amazing. Could you guys look up how long the warranty is for the LimX Dynamics TRON1?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Reply with the warranty period",
+     "name": "rag_query",
+     "arguments": {
+      "query": "how long the warranty is for the LimX Dynamics TRON1"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "rag_query"
+   ]
+  },
+  {
+   "case_id": "v2_133",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "I always lose track of the date with all this travel. What's the date today?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "State today's date",
+     "name": "robot_status",
+     "arguments": {
+      "query": "日期"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "robot_status"
+   ]
+  },
+  {
+   "case_id": "v2_134",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Man, this queue is something else. Look up last weekend's track and field results.",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Look up last weekend's track and field results",
+     "name": "web_search",
+     "arguments": {
+      "query": "last weekend's track and field results"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "web_search"
+   ]
+  },
+  {
+   "case_id": "v2_135",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Seeing all these happy people at the wedding really makes my day. Do the Sweep Kick dance right now.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Perform the Sweep Kick dance now",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "sweep_kick_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotDance"
+   ]
+  },
+  {
+   "case_id": "v2_136",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "It's always a pleasure to see so many bright faces, please head this way now.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Walk this way",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "this_way_please"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotGesture"
+   ]
+  },
+  {
+   "case_id": "v2_137",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Man, these two are a handful... can you tell me what the weather is like in Shenzhen today?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Report the weather forecast",
+     "name": "get_weather",
+     "arguments": {
+      "city": "Shenzhen",
+      "query_type": "now"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "get_weather"
+   ]
+  },
+  {
+   "case_id": "v2_138",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "My lunch rush is about to start, so I need to know how much battery you have left.",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Report the current battery level",
+     "name": "robot_status",
+     "arguments": {
+      "query": "电量"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "robot_status"
+   ]
+  },
+  {
+   "case_id": "v2_139",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "This is so cool, you guys have robots here, dance the Karla OK right now.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Dance the Karla OK",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "karla_ok"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotDance"
+   ]
+  },
+  {
+   "case_id": "v2_140",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Ugh, finally done with school, now do the 'this-way-please gesture' to get this line moving.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Perform the 'this-way-please gesture'",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "this_way_please"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotGesture"
+   ]
+  },
+  {
+   "case_id": "v2_141",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "This sun is really something, check what the weather in Shenzhen is like right now and also for the whole week ahead.",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Query weather for Shenzhen for the current time and the next seven days",
+     "name": "get_weather",
+     "arguments": {
+      "city": "Shenzhen",
+      "query_type": "now_7d"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "get_weather"
+   ]
+  },
+  {
+   "case_id": "v2_142",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Man, this wedding is so fancy. Look up the development history of LimX Dynamics.",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Look up",
+     "name": "rag_query",
+     "arguments": {
+      "query": "the development history of LimX Dynamics"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "rag_query"
+   ]
+  },
+  {
+   "case_id": "v2_143",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "This crowd is amazing, reminds me of the holiday rush. Anyway, find out about the temple fairs in Guangzhou for the next few days.",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Search for",
+     "name": "web_search",
+     "arguments": {
+      "query": "the temple fairs in Guangzhou for the next few days"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "web_search"
+   ]
+  },
+  {
+   "case_id": "v2_144",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Man, this backstage area is really hopping tonight! Alright, I want you to do the All Things Grow dance for me right now.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Perform the All Things Grow dance",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "all_things_grow_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotDance"
+   ]
+  },
+  {
+   "case_id": "v2_145",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "This is so adorable for my segment, make a heart with your right hand now.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Do right-hand heart",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "right_hand_side_heart"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotGesture"
+   ]
+  },
+  {
+   "case_id": "v2_146",
+   "category": "single_negative",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "For our company wellness event, that One Spot dance was a nice touch, not too complicated.",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Reply to evaluation"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "comment"
+   ]
+  },
+  {
+   "case_id": "v2_147",
+   "category": "single_negative",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "Ugh, the train station is so chaotic for my stream. Can you handle that for me later?",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Reply with an arrangement to check later"
+    }
+   ],
+   "forbidden_functions": [
+    "web_search"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "deferred"
+   ]
+  },
+  {
+   "case_id": "v2_148",
+   "category": "single_negative",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "Okay I'm on a tight deadline for this story, but I really need the background on that Victory dance, what's its meaning and where did it originate?",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Explain the Victory dance's meaning and origin"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "mention"
+   ]
+  },
+  {
+   "case_id": "v2_149",
+   "category": "single_negative",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "This place is ridiculously quiet, I'm new to this job, why don't you sing a song to cheer us all up.",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Explain you cannot sing"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "sing"
+   ]
+  },
+  {
+   "case_id": "v2_150",
+   "category": "single_negative",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "Good grief, this line is moving so slow, no need for a Sweep Kick dance, really.",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Say you will not do the Sweep Kick dance"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "stop"
+   ]
+  },
+  {
+   "case_id": "v2_151",
+   "category": "single_negative",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "That popping performance was so sharp and clean, my viewers are going to love this replay.",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Reply to the performance evaluation"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "comment"
+   ]
+  },
+  {
+   "case_id": "v2_152",
+   "category": "single_negative",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "For my story, the boiling point of water is up next.",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Reply with the boiling point of water"
+    }
+   ],
+   "forbidden_functions": [
+    "web_search"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "common"
+   ]
+  },
+  {
+   "case_id": "v2_153",
+   "category": "single_negative",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "This line is insane, let's do a high five later on.",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Reply with a plan to do the task later"
+    }
+   ],
+   "forbidden_functions": [
+    "rag_query"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "deferred"
+   ]
+  },
+  {
+   "case_id": "v2_154",
+   "category": "single_negative",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "The vibe here is amazing, sing us a song.",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Explain you cannot sing"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "sing"
+   ]
+  },
+  {
+   "case_id": "v2_155",
+   "category": "single_negative",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "Phew, these two saw something on a video and now they won't let it go. Hey, could you just walk me through the steps for Idol Dance 1?",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Explain how to do Idol Dance 1"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "teach"
+   ]
+  },
+  {
+   "case_id": "v2_156",
+   "category": "single_negative",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "Wow, interesting. As a coach, I have to say that Idol Dance 2 was surprisingly sharp.",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Reply to evaluation"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "comment"
+   ]
+  },
+  {
+   "case_id": "v2_157",
+   "category": "single_negative",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "Ugh, long day at school. Can you get to that in a little bit?",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Reply acknowledging you will do the task later"
+    }
+   ],
+   "forbidden_functions": [
+    "rag_query"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "deferred"
+   ]
+  },
+  {
+   "case_id": "v2_158",
+   "category": "single_negative",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "My, these kids are so adorable. Go on, sing a little song for them.",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Explain you cannot sing"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "sing"
+   ]
+  },
+  {
+   "case_id": "v2_159",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "My, these kids are so full of energy. Tell me the development history of LimX Dynamics, and then do a curtain call bow.",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Explain the development history of LimX Dynamics",
+     "name": "rag_query",
+     "arguments": {
+      "query": "the development history of LimX Dynamics"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "Do a curtain call bow",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "curtain_bow"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_160",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "Please check if the Nanjing Presidential Palace is open today; by the way, that Gee dance was impressive. Now, take seven steps backward.",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Query open status for Nanjing Presidential Palace",
+     "name": "web_search",
+     "arguments": {
+      "query": "the Nanjing Presidential Palace"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "Reply to comment on Gee dance"
+    },
+    {
+     "kind": "action",
+     "instruction": "Move backward seven steps",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": -0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 7
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L3"
+   ]
+  },
+  {
+   "case_id": "v2_161",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "Wow, the energy level here is amazing, great for a good workout. Where are we currently on campus? Also, how long can you run on a full charge? And what's your battery percentage right now?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Reply with the current location",
+     "name": "robot_status",
+     "arguments": {
+      "query": "位置"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "Explain the full battery runtime",
+     "name": "rag_query",
+     "arguments": {
+      "query": "how long can you run"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "Say the current battery level",
+     "name": "robot_status",
+     "arguments": {
+      "query": "电量"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L3"
+   ]
+  },
+  {
+   "case_id": "v2_162",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "hard",
+   "polarity": "positive",
+   "query": "Wow, what a lively community center. Alright, make a raised-hands heart. What's the last Wuxi Metro time? Okay, now do the APT dance. And finish with a quick clap.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Do raised-hands heart",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "hand_heart"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "Reply with the last Wuxi Metro time",
+     "name": "web_search",
+     "arguments": {
+      "query": "the last Wuxi Metro time"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "Do APT dance",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "apt_dance"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "Clap hands",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "clap"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L4"
+   ]
+  },
+  {
+   "case_id": "v2_163",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "Alright, let's see your build first, what are your height and weight? Now, perform the Ambition dance for me.",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "State your height and weight",
+     "name": "rag_query",
+     "arguments": {
+      "query": "what are your height and weight"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "Perform the Ambition dance",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "ambition_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_164",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "Ah, another slow day in this lobby... do the Pulp Fiction dance for me now, then look up any funny new shows that are out, and just say one little thing to me.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Perform the Pulp Fiction dance",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "pulp_fiction_dance"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "Search for recent funny new shows",
+     "name": "web_search",
+     "arguments": {
+      "query": "any funny new shows that are out"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "Say a phrase"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L3"
+   ]
+  },
+  {
+   "case_id": "v2_165",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "Man, this station is a maze for deliveries, can you tell me where I am right now in this train station? Alright, now that that's settled, I need you to do the One and Only dance for me right now.",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Reply with the current location information",
+     "name": "robot_status",
+     "arguments": {
+      "query": "位置"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "Perform the One and Only dance",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "one_and_only_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_166",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "My deadline's tight, so what time is it right now, what's your current model, and then do a curtain call bow.",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Reply with the current time",
+     "name": "robot_status",
+     "arguments": {
+      "query": "时间"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "Explain your current model",
+     "name": "robot_status",
+     "arguments": {
+      "query": "型号"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "Perform a curtain call bow",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "curtain_bow"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L3"
+   ]
+  },
+  {
+   "case_id": "v2_167",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "Don't do that left-hand heart, seriously your popping is so smooth.",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Respond to stop gesture"
+    },
+    {
+     "kind": "reply",
+     "instruction": "Acknowledge user's small talk"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture",
+    "web_search"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_168",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "hard",
+   "polarity": "negative",
+   "query": "This wait is something else, reminds me of my lunch rush. First check on how crowded the Kunming Stone Forest is today, then just tell me the steps for the Go Cortis dance. Alright, now do Gentleman, and follow that with All Things Grow dance.",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Check crowd status for Kunming Stone Forest",
+     "name": "web_search",
+     "arguments": {
+      "query": "how crowded the Kunming Stone Forest is today"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "Explain how to do Go Cortis dance"
+    },
+    {
+     "kind": "action",
+     "instruction": "Perform Gentleman",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "gentleman"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "Perform All Things Grow dance",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "all_things_grow_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L4"
+   ]
+  },
+  {
+   "case_id": "v2_169",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "You know, I'm thinking of adding something to my restaurant, so find out what the price of a TRON1 is, and hey, what's the boiling point of water anyway?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Look up TRON1 price",
+     "name": "rag_query",
+     "arguments": {
+      "query": "what the price of a TRON1 is"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "Answer water boiling point"
+    }
+   ],
+   "forbidden_functions": [
+    "get_weather"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_170",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "hard",
+   "polarity": "positive",
+   "query": "Wow, this station is huge. Okay first, do a right-hand heart, and then give me a wave goodbye, and then just nod, and finally you can lie down and rest.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Make right-hand heart",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "right_hand_side_heart"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "Wave",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "wave_greet_bye"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "Nod",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "nod"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "Lie down and rest",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "lie_down"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L4"
+   ]
+  },
+  {
+   "case_id": "v2_171",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "Wow, this is my first Chinese wedding, it's so beautiful! Could you save the Pulp Fiction dance for a little later please, not right this moment? By the way, how many milliliters are in a standard cup of water?",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Reply that the Pulp Fiction dance will be arranged for later"
+    },
+    {
+     "kind": "reply",
+     "instruction": "Answer the question about how many milliliters are in a cup of water"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance",
+    "rag_query"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_172",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "Huh, this is bigger than I expected. Move left five steps now, and then move forward just a little.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Move left 5 steps",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 1,
+       "yaw": 0,
+       "step": 5
+      }
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "Move forward a little",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 1
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_173",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "The community activities here are so nice, what does that curtain call bow mean, by the way check how much charge you have left, and now do that All Things Grow dance for me.",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Explain the curtain call bow"
+    },
+    {
+     "kind": "query",
+     "instruction": "Report the battery level",
+     "name": "robot_status",
+     "arguments": {
+      "query": "电量"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "Perform the All Things Grow dance",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "all_things_grow_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L3"
+   ]
+  },
+  {
+   "case_id": "v2_174",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "hard",
+   "polarity": "negative",
+   "query": "Ugh, another long business trip. What time is it now? Now, do a right-hand heart this way. That was a nice touch. Alright, let's see a waltz.",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Check current time",
+     "name": "robot_status",
+     "arguments": {
+      "query": "时间"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "Do right-hand heart gesture",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "right_hand_side_heart"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "Reply to comment on previous action"
+    },
+    {
+     "kind": "reply",
+     "instruction": "Explain you cannot waltz"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L4"
+   ]
+  },
+  {
+   "case_id": "v2_175",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "我第一次来这种活动室，身体往左转135度之前先点头。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "点头",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "nod"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "身体往左转135度",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": 1,
+       "degree": 135,
+       "step": 1
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "before"
+   ]
+  },
+  {
+   "case_id": "v2_176",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "排队好无聊啊，来个美美桑内，连着跳三次。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳美美桑内",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "one_spot_dance"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳美美桑内",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "one_spot_dance"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳美美桑内",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "one_spot_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "count"
+   ]
+  },
+  {
+   "case_id": "v2_177",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，想当年我也有辆车，快退一小步。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "倒退一小步",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": -0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 1
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "speed"
+   ]
+  },
+  {
+   "case_id": "v2_178",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "总算发完稿了，挥手道别之前先跳一段Gentleman活跃下气氛。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳Gentleman",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "gentleman"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "挥手道别",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "wave_greet_bye"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "before"
+   ]
+  },
+  {
+   "case_id": "v2_179",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "唉，人老了就爱看个新鲜劲，来，就给连着跳两遍孤身摇吧。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳孤身摇",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "solo_shake"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳孤身摇",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "solo_shake"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "count"
+   ]
+  },
+  {
+   "case_id": "v2_180",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "嚯，现在的养老服务真高科技，来，你边跳着扭胯舞边来个孤身摇！",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳扭胯舞",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "abracadabr_dance"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳孤身摇",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "solo_shake"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "while"
+   ]
+  },
+  {
+   "case_id": "v2_181",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "这儿的老人们可真热情，跳大展宏图之前先跳女团舞1。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳女团舞1",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "idol_dance_1"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳大展宏图",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "ambition_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "before"
+   ]
+  },
+  {
+   "case_id": "v2_182",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "我正在测试你的基本动作，请连续向左转三次。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "向左转",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": 1,
+       "degree": 90,
+       "step": 1
+      }
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "向左转",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": 1,
+       "degree": 90,
+       "step": 1
+      }
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "向左转",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": 1,
+       "degree": 90,
+       "step": 1
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "count"
+   ]
+  },
+  {
+   "case_id": "v2_183",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "哎，快看这个，孩子们肯定喜欢。你一边连续送飞吻，一边跟我握个手。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "连续做飞吻",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "blow_kisses_multi"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "握手",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "shake_hands"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "while"
+   ]
+  },
+  {
+   "case_id": "v2_184",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "我刚来这上班看你挺有意思的，跳热场舞之前先挥手。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "挥手",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "wave_greet_bye"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳热场舞",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "warm_up_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "before"
+   ]
+  },
+  {
+   "case_id": "v2_185",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "今天这签售会真有意思！本来想看你跳卡啦，但马上换成右手比心，最终只要右手比心。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "右手比心",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "right_hand_side_heart"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "correct"
+   ]
+  },
+  {
+   "case_id": "v2_186",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "哇，中国的签售会好热闹啊！来一个连着跳女团舞2两次。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳女团舞2",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "idol_dance_2"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳女团舞2",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "idol_dance_2"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "count"
+   ]
+  },
+  {
+   "case_id": "v2_187",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉这大学校园逛得真累，别连续飞吻了，只要你跳热场舞就行。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳热场舞",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "warm_up_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "only"
+   ]
+  },
+  {
+   "case_id": "v2_188",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "这展厅空间够大正好测试，你慢慢地朝前走八步我看看你的平衡感。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "朝前走八步",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 8
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "speed"
+   ]
+  },
+  {
+   "case_id": "v2_189",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "给我来个边跳Gentleman舞边往右横着走十五步，哎我直播就差这个了！",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳Gentleman",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "gentleman"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "往右横着走十五步",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": -1,
+       "yaw": 0,
+       "step": 15
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "while"
+   ]
+  },
+  {
+   "case_id": "v2_190",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "哎站这儿真没劲，你边比心边躺一会儿。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "比心",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "hand_heart"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "躺一会儿",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "lie_down"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "while"
+   ]
+  },
+  {
+   "case_id": "v2_191",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "这婚礼真让人怀念，麻烦你先轻轻地往后退四步。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "往后撤四步",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": -0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 4
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "speed"
+   ]
+  },
+  {
+   "case_id": "v2_192",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "唉，今天排队真久啊，来，跟我连着击掌两次。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "击掌",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "high_five"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "击掌",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "high_five"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "count"
+   ]
+  },
+  {
+   "case_id": "v2_193",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "哎，这儿有点挡路了，你现在往左边走二十二步。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "左移二十二步",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 1,
+       "yaw": 0,
+       "step": 22
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "HumanAction"
+   ]
+  },
+  {
+   "case_id": "v2_194",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，人老了就图个乐呵，你现在来几个飞吻看看。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "连续飞吻",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "blow_kisses_multi"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotGesture"
+   ]
+  },
+  {
+   "case_id": "v2_195",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "刚在机场看到一个公司的广告，帮我看下逐际动力的主要业务是什么。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "逐际动力的主要业务是什么",
+     "name": "rag_query",
+     "arguments": {
+      "query": "逐际动力的主要业务是什么"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "rag_query"
+   ]
+  },
+  {
+   "case_id": "v2_196",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "刚签售完，我得查下兰州现在和未来一周的天气，好安排接下来的行程。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询兰州当前与未来一周的天气以便规划行程",
+     "name": "get_weather",
+     "arguments": {
+      "city": "兰州",
+      "query_type": "now_7d"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "get_weather"
+   ]
+  },
+  {
+   "case_id": "v2_197",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，现在的小孩真幸福，朝左转过去60度。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "朝左转过去60度",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": 1,
+       "degree": 60,
+       "step": 1
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "HumanAction"
+   ]
+  },
+  {
+   "case_id": "v2_198",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "今天婚礼太嗨了，来，跳个扭胯舞",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳扭胯舞",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "abracadabr_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotDance"
+   ]
+  },
+  {
+   "case_id": "v2_199",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "后台里真闷啊，查下深圳今天天气怎么样？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询深圳今天天气如何",
+     "name": "get_weather",
+     "arguments": {
+      "city": "深圳",
+      "query_type": "now"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "get_weather"
+   ]
+  },
+  {
+   "case_id": "v2_200",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "今天这婚礼真不错，帮我查查逐际动力的TRON2机器人的维修服务政策。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "逐际动力的TRON2机器人的维修服务政策",
+     "name": "rag_query",
+     "arguments": {
+      "query": "逐际动力的TRON2机器人的维修服务政策"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "rag_query"
+   ]
+  },
+  {
+   "case_id": "v2_201",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，我这腿脚也不方便，只能在这儿看看电视了。帮我看看最近有啥好看的电影或者正在热播的剧。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "最近有啥好看的电影或者正在热播的剧",
+     "name": "web_search",
+     "arguments": {
+      "query": "最近有啥好看的电影或者正在热播的剧"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "web_search"
+   ]
+  },
+  {
+   "case_id": "v2_202",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，今天生意不好做啊，来，给我跳个扭胯舞看看。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳扭胯舞",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "abracadabr_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotDance"
+   ]
+  },
+  {
+   "case_id": "v2_203",
+   "category": "single_positive",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "今天婚礼现场气氛真好，你现在用左手比个心吧。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "左手比心",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "left_hand_side_heart"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotGesture"
+   ]
+  },
+  {
+   "case_id": "v2_204",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "这车线条真有力道。你刚才那Go Cortis跳得，核心很稳啊。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应对跳Go Cortis的评价"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "comment"
+   ]
+  },
+  {
+   "case_id": "v2_205",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "哎，刚放学脑子都乱了，太阳是不是从东边升起来的？",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回答喜马拉雅山是否为世界最高峰"
+    }
+   ],
+   "forbidden_functions": [
+    "rag_query"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "common"
+   ]
+  },
+  {
+   "case_id": "v2_206",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "唉，现在婚礼上的花样是真多啊。刚那个助力舞到底有什么讲究？",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回答关于跳助力舞的问题"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "mention"
+   ]
+  },
+  {
+   "case_id": "v2_207",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "刚放学，给我们唱首歌吧，让大家开心开心。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "说明唱不了歌"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "sing"
+   ]
+  },
+  {
+   "case_id": "v2_208",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "唉，又得在机场候机厅里赶稿了，真是我们记者的宿命啊。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应用户的闲聊"
+    }
+   ],
+   "forbidden_functions": [
+    "get_weather"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "statement"
+   ]
+  },
+  {
+   "case_id": "v2_209",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "不用跳万物生了，我们公司HR都看不下去了。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应不用跳万物生"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "stop"
+   ]
+  },
+  {
+   "case_id": "v2_210",
+   "category": "single_negative",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "刚才跳女团舞2跳得真不错，孩子们可喜欢了。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应对跳女团舞2的评价"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "comment"
+   ]
+  },
+  {
+   "case_id": "v2_211",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "唉，今天这条新闻得加点猛料才行，你马上给我们来一段助力舞把这里气氛搞起来点，然后你就对着镜头连续地给我们飞几个吻吧。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳助力舞",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "power_up_dance"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "连续做飞吻",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "blow_kisses_multi"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_212",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "negative",
+   "query": "你们这儿的场景挺有意思的，报一下今天几号，讲讲握手怎么做，查查Luna和别的型号有什么区别，现在摇头。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询今天是几号",
+     "name": "robot_status",
+     "arguments": {
+      "query": "日期"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "讲解怎么握手"
+    },
+    {
+     "kind": "query",
+     "instruction": "Luna和别的型号有什么区别",
+     "name": "rag_query",
+     "arguments": {
+      "query": "Luna和别的型号有什么区别"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "摇头",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "shake_head"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L4"
+   ]
+  },
+  {
+   "case_id": "v2_213",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "人老了记性不好，今天是几号？对了，再看看这周福州有什么演出。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询今天是几号",
+     "name": "robot_status",
+     "arguments": {
+      "query": "日期"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "这周福州有什么演出",
+     "name": "web_search",
+     "arguments": {
+      "query": "这周福州有什么演出"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_214",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "negative",
+   "query": "先看看西安现在和未来一周的天气，然后看看你现在电量还剩多少，再给我们来一段万物生吧，对了，那个TRON1要多少钱？唉，要是我孙子小时候也有一个就好了。",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询西安现在和未来一周的天气",
+     "name": "get_weather",
+     "arguments": {
+      "city": "西安",
+      "query_type": "now_7d"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "查询当前电量",
+     "name": "robot_status",
+     "arguments": {
+      "query": "电量"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳万物生",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "all_things_grow_dance"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "TRON1机器人的价格是多少",
+     "name": "rag_query",
+     "arguments": {
+      "query": "那个TRON1要多少钱"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "回应想看请这边走的手势的愿望"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L5"
+   ]
+  },
+  {
+   "case_id": "v2_215",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "第一次来中国出差，好多事不习惯。看看你剩多少电了。昆明的地铁现在通车了没？",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "查询当前电量",
+     "name": "robot_status",
+     "arguments": {
+      "query": "电量"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "昆明的地铁现在能不能坐",
+     "name": "web_search",
+     "arguments": {
+      "query": "昆明的地铁"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_216",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "第一次来中国的图书馆，真不错。哎别别别，不用做右侧比心了。同学，那本恐龙书你帮我拿下呗。",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "回应不用右侧比心"
+    },
+    {
+     "kind": "reply",
+     "instruction": "回应用户对别人说的话"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture",
+    "web_search"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_217",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "跑完新闻真累，来，唱个歌听听，对了，深圳今天天气怎么样？",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "说明唱不了歌"
+    },
+    {
+     "kind": "query",
+     "instruction": "查询深圳今天的天气情况",
+     "name": "get_weather",
+     "arguments": {
+      "city": "深圳",
+      "query_type": "now"
+     }
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_218",
+   "category": "multi_intent",
+   "language": "zh",
+   "difficulty": "hard",
+   "polarity": "negative",
+   "query": "这次出差时间太紧了，往左挪一步，查下逐际动力的Luna机器人的官方售价，再看看上海今天还有下周的天气，唉，要是你会跳APT就好了。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "往左横着走一步",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 1,
+       "yaw": 0,
+       "step": 1
+      }
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "逐际动力的Luna机器人的官方售价",
+     "name": "rag_query",
+     "arguments": {
+      "query": "逐际动力的Luna机器人的官方售价"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "查询上海当前及未来一周的天气",
+     "name": "get_weather",
+     "arguments": {
+      "city": "上海",
+      "query_type": "now_7d"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "回应想看跳APT的愿望"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L4"
+   ]
+  },
+  {
+   "case_id": "v2_219",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "This showroom is amazing. Go on and do the Let's Bounce dance for everyone.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Perform: Let's Bounce dance",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "lets_bounce"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotDance"
+   ]
+  },
+  {
+   "case_id": "v2_220",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Man, this line will be endless if it rains again. Check if it's gonna rain in Shenzhen tomorrow.",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Reply with the weather forecast",
+     "name": "get_weather",
+     "arguments": {
+      "city": "Shenzhen",
+      "query_type": "24h"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "get_weather"
+   ]
+  },
+  {
+   "case_id": "v2_221",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Man, first time seeing one of these up close, so what's the full battery life?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Reply with the full battery life",
+     "name": "rag_query",
+     "arguments": {
+      "query": "the full battery life"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "rag_query"
+   ]
+  },
+  {
+   "case_id": "v2_222",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Oh man, flight's delayed, what time is it now?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Report the current time",
+     "name": "robot_status",
+     "arguments": {
+      "query": "时间"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "robot_status"
+   ]
+  },
+  {
+   "case_id": "v2_223",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "This line is taking forever, what are the latest news headlines or hot topics?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Search for",
+     "name": "web_search",
+     "arguments": {
+      "query": "the latest news headlines or hot topics"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "web_search"
+   ]
+  },
+  {
+   "case_id": "v2_224",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Phew, what a nice change of pace from the restaurant. Okay, do the Sweep Kick dance for me now.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Perform Sweep Kick dance",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "sweep_kick_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "RobotDance"
+   ]
+  },
+  {
+   "case_id": "v2_225",
+   "category": "single_positive",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "Phew, this gym is exactly what I needed after a chaotic day at the restaurant. Anyway, what's the weather in Shenzhen tomorrow?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Retrieve weather forecast",
+     "name": "get_weather",
+     "arguments": {
+      "city": "Shenzhen",
+      "query_type": "24h"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "get_weather"
+   ]
+  },
+  {
+   "case_id": "v2_226",
+   "category": "single_negative",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "For my story, I have to say that Swag dance really livened up the room.",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Reply to evaluation of Swag dance"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "comment"
+   ]
+  },
+  {
+   "case_id": "v2_227",
+   "category": "single_negative",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "Ugh, school's finally over, so how many meters are in a kilometer?",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Reply with the answer"
+    }
+   ],
+   "forbidden_functions": [
+    "robot_status"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "common"
+   ]
+  },
+  {
+   "case_id": "v2_228",
+   "category": "single_negative",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "I have to get my story in, so we can come back to that later.",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Reply to arrangement to do it later"
+    }
+   ],
+   "forbidden_functions": [
+    "web_search"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "deferred"
+   ]
+  },
+  {
+   "case_id": "v2_229",
+   "category": "single_negative",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "I'm the new security guard here and this first shift is something else, just tell me a joke.",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Tell a joke"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "joke"
+   ]
+  },
+  {
+   "case_id": "v2_230",
+   "category": "single_negative",
+   "language": "en",
+   "difficulty": "easy",
+   "polarity": "negative",
+   "query": "Ugh, finally out of school. What's the All Things Grow dance supposed to mean anyway?",
+   "expected": [
+    {
+     "kind": "reply",
+     "instruction": "Explain the All Things Grow dance"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotDance"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "mention"
+   ]
+  },
+  {
+   "case_id": "v2_231",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "Strange day for a book signing. Just check if Luna is right for this kind of event, and then sing for us now.",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Search",
+     "name": "rag_query",
+     "arguments": {
+      "query": "Luna is right for this kind of event"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "Explain inability"
+    }
+   ],
+   "forbidden_functions": [
+    "RobotGesture"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_232",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "Man, this line is something else. Take twenty-six steps to your left. Get Shenzhen's weather for today and the week. Sit down now.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Move left 26 steps",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 1,
+       "yaw": 0,
+       "step": 26
+      }
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "Reply with the weather for Shenzhen today and the week",
+     "name": "get_weather",
+     "arguments": {
+      "city": "Shenzhen",
+      "query_type": "now_7d"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "Sit down",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "sit_down"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L3"
+   ]
+  },
+  {
+   "case_id": "v2_233",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "This is great for my story. First, make a right-hand heart. Then, I need to know when LimX Dynamics was founded.",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "Do a right-hand heart",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "right_hand_side_heart"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "Reply with the founding date of LimX Dynamics",
+     "name": "rag_query",
+     "arguments": {
+      "query": "when LimX Dynamics was founded"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_234",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "Man, this wedding gig is wild. What's today's date? Do the warm-up dance right now. Also, get me the latest stock market report.",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Report today's date",
+     "name": "robot_status",
+     "arguments": {
+      "query": "日期"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "Perform warm-up dance",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "warm_up_dance"
+     }
+    },
+    {
+     "kind": "query",
+     "instruction": "Report latest stock market report",
+     "name": "web_search",
+     "arguments": {
+      "query": "the latest stock market report"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L3"
+   ]
+  },
+  {
+   "case_id": "v2_235",
+   "category": "multi_intent",
+   "language": "en",
+   "difficulty": "medium",
+   "polarity": "negative",
+   "query": "Wow, neat. Can you check how long it runs on a full charge? By the way, how many meters are in a kilometer?",
+   "expected": [
+    {
+     "kind": "query",
+     "instruction": "Retrieve",
+     "name": "rag_query",
+     "arguments": {
+      "query": "how long it runs on a full charge"
+     }
+    },
+    {
+     "kind": "reply",
+     "instruction": "Answer"
+    }
+   ],
+   "forbidden_functions": [
+    "web_search"
+   ],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "L2"
+   ]
+  },
+  {
+   "case_id": "v2_236",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，站着也是站着，跳助力舞...不对，跳美美桑内吧。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳美美桑内",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "one_spot_dance"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "correct"
+   ]
+  },
+  {
+   "case_id": "v2_237",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "唉，刚放学这儿这么多人，麻烦你慢慢地后退一步。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "后退一步",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": -0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 1
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "speed"
+   ]
+  },
+  {
+   "case_id": "v2_238",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "哇，第一次来中国的图书馆，你边鼓掌边朝右转过去135度。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "鼓掌",
+     "name": "RobotGesture",
+     "arguments": {
+      "gesture": "clap"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "朝右转过去135度",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": 0,
+       "y": 0,
+       "yaw": -1,
+       "degree": 135,
+       "step": 1
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "while"
+   ]
+  },
+  {
+   "case_id": "v2_239",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "哇这车真帅，来，你连着跳孤身摇两次！",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳孤身摇",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "solo_shake"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "跳孤身摇",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "solo_shake"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "count"
+   ]
+  },
+  {
+   "case_id": "v2_240",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "easy",
+   "polarity": "positive",
+   "query": "哎今天直播效果一般啊，你就跳埃及摇摆或者美美桑内都行。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳埃及摇摆",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "egyptian_shake"
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "either"
+   ]
+  },
+  {
+   "case_id": "v2_241",
+   "category": "relation",
+   "language": "zh",
+   "difficulty": "medium",
+   "polarity": "positive",
+   "query": "第一次见这大场面，你给我来个边跳机械舞边退后一步。",
+   "expected": [
+    {
+     "kind": "action",
+     "instruction": "跳机械舞",
+     "name": "RobotDance",
+     "arguments": {
+      "dance": "popping"
+     }
+    },
+    {
+     "kind": "action",
+     "instruction": "退后一步",
+     "name": "HumanAction",
+     "arguments": {
+      "action": "walk",
+      "parameters": {
+       "x": -0.6,
+       "y": 0,
+       "yaw": 0,
+       "step": 1
+      }
+     }
+    }
+   ],
+   "forbidden_functions": [],
+   "novelty_tags": [
+    "writer:glm-4.6",
+    "while"
+   ]
+  }
+ ]
+}
